@@ -1,0 +1,128 @@
+
+#ifndef ACTIONS_H
+#define ACTIONS_H
+
+/** @brief Número máximo de cartas por pilha no início do jogo. */
+#define NUM_LINHAS 5
+
+/** @brief Número de pilhas (colunas) distribuídas na mesa. */
+#define NUM_COLUNAS 7
+
+/** @brief Número máximo de jogadas que ficam guardadas no histórico para o Undo. */
+#define MAX_UNDO 5
+
+/**
+ * @brief Estrutura que representa uma única carta do baralho.
+ * 
+ */
+typedef struct {
+    int valor; /**< Valor numérico da carta (ex: 1 para Ás, 11 para Valete, 12 para Dama, 13 para Rei). */
+    char naipe; /**< Carácter que representa o naipe da carta (ex: 'P' paus, 'O' ouros, 'C' copas, 'E' espadas). */
+} CARTAS;
+
+/**
+ * @brief Estrutura que regista os detalhes de uma jogada efetuada.
+ * Utilizada para o sistema de histórico e "Desfazer" (Undo).
+ *
+ */
+struct JOGADA {
+    int tipo; /**< Identificador do tipo de jogada (ex: 1 para tirar carta do baralho, 0 para mover carta da mesa). */
+    int fila; /**< O índice da fila (pilha) da mesa onde a jogada ocorreu. */
+    int coluna; /**< O índice da posição da carta dentro da pilha. */
+    CARTAS carta; /**< A carta exata que foi movida durante esta jogada. */
+};
+
+/**
+ * @brief Estrutura principal que guarda todo o estado atual da partida.
+ * 
+ */
+typedef struct {
+    char naipes[4];     /**< Array com os caracteres dos 4 naipes possíveis. */
+    CARTAS baralho[52];     /**< O baralho principal (monte de onde se tiram cartas). */
+    int tamanho_baralho;    /**< Número de cartas que ainda restam no baralho principal. */
+    CARTAS matriz[NUM_COLUNAS][NUM_LINHAS];     /**< A matriz que representa as cartas espalhadas na mesa. */
+    int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 7 pilhas. */
+    CARTAS pilha_descarte[52];      /**< O monte de descarte para onde as cartas são movidas. */
+    int tamanho_pilha_descarte;     /**< Número de cartas atualmente no monte de descarte. */
+    struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
+    int jogadas_historial;      /**< Número atual de jogadas guardadas no histórico. */
+} JOGO;
+
+/**
+ * @brief Tira uma carta nova do baralho principal (bisca).
+ * Move a carta do topo do baralho para o monte de descarte.
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void bisca(JOGO *game);
+
+/**
+ * @brief Valida se o movimento selecionado pelo jogador é legal.
+ * 
+ * @param r O identificador numérico da zona clicada (0-6 para as pilhas, 7 para o baralho, 8 Hint, 9 Undo, 10 Novo Jogo, 11 Descarte).
+ * @param game Ponteiro para o estado atual do jogo.
+ * @return int Retorna 1 se a jogada for válida, ou 0 se for inválida.
+ */
+int valida_jogada(int r , JOGO *game);
+
+/**
+ * @brief Executa o movimento de uma carta da mesa para o descarte.
+ * Remove a carta do topo da pilha especificada e coloca-a no descarte.
+ * 
+ * @param r O identificador numérico da zona clicada (0-6 para as pilhas, 7 para o baralho, 8 Hint, 9 Undo, 10 Novo Jogo, 11 Descarte).
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void joga(int r, JOGO *game);
+
+/**
+ * @brief Fornece uma dica (hint) ao jogador.
+ * Analisa a mesa para encontrar uma carta que possa ser validamente movida
+ * para o descarte e destaca-a visualmente.
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void hint(JOGO *game);
+
+/**
+ * @brief Função auxiliar para o sistema de dicas.
+ * Procura na matriz se existe alguma carta compatível com a carta atual do descarte.
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @param carta_descarte A carta que se encontra atualmente no topo do descarte.
+ * @return int Retorna o índice da pilha onde está a jogada possível, ou -1 se não houver jogadas.
+ */
+int auxiliar_hint(JOGO *game, CARTAS carta_descarte);
+
+/**
+ * @brief Regista uma jogada no histórico para permitir o "Desfazer" (Undo).
+ * 
+ * @param tipo O tipo de jogada efetuada (baralho ou mesa).
+ * @param fila A fila associada à jogada.
+ * @param coluna A posição da carta na fila.
+ * @param carta_played A carta que foi movida.
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void registar_jogada(int tipo, int fila, int coluna, CARTAS carta_played, JOGO *game);
+
+/**
+ * @brief Desfaz a última jogada realizada pelo jogador.
+ * Lê a última entrada do histórico e reverte o movimento da carta,
+ * devolvendo-a à sua posição original (seja no baralho ou na mesa).
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void undo(JOGO *game);
+
+/**
+ * @brief Reinicia a partida e prepara um novo jogo.
+ * Baralha as cartas, limpa o histórico, redefine os montes e
+ * distribui as cartas novamente pela matriz da mesa.
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ */
+void novo_jogo(JOGO *game);
+
+
+
+#endif
+
