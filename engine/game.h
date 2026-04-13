@@ -8,7 +8,7 @@
 void init(POINTERS *janelas, JOGO *game);
 void ativaNcurses();
 void start_game(JOGO *game);
-void inicializa_baralho(JOGO *game;
+void inicializa_baralho(JOGO *game);
 void inicializa_matriz(JOGO *game);
 
 
