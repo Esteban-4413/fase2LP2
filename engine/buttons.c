@@ -1,3 +1,4 @@
+/*
 #include "actions.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -115,3 +116,5 @@ void novo_jogo(JOGO *game){
     // Tira a primeira carta para o descarte
     bisca(game);
 }
+
+*/

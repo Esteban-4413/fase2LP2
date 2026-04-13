@@ -11,7 +11,7 @@ void start_game(JOGO *game);
 void inicializa_baralho(JOGO *game);
 void inicializa_matriz(JOGO *game);
 
-
+void loop_principal(JOGO *game, POINTERS *janelas, int jogando);
 
 
 

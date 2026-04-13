@@ -32,8 +32,7 @@ void define_TodasJanelas (POINTERS *p, JOGO *game){
     definePilhas(game->matriz, game->tamanho_pilha, p->end_pilhas);
     
     // BARALHO & DESCARTE
-    p->end_baralho = defineBaralho(game->tamanho_baralho);
-    p->end_foundations = defineFoundations; 
+    defineFoundations(p->end_foundations); 
     
     // BOTÕES 
     p->end_undo = defineButtonUndo();
@@ -46,7 +45,7 @@ void define_TodasJanelas (POINTERS *p, JOGO *game){
 // -- BOTÕES --
 WINDOW* defineButtonHint(){
         WINDOW *janela_hint;
-        janela_hint = newwin(3, 10, 2, 10);
+        janela_hint = newwin(3, 10, 2, 20);
         box(janela_hint, 0, 0);
         wattron(janela_hint, COLOR_PAIR(3));
         mvwprintw(janela_hint, 1, 1, "  HINT");
@@ -59,7 +58,7 @@ WINDOW* defineButtonHint(){
 
 WINDOW* defineButtonUndo(){ 
         WINDOW *janela_undo;
-        janela_undo = newwin(3, 10, 2, 20);
+        janela_undo = newwin(3, 10, 2, 30);
         box(janela_undo, 0, 0);
         wattron(janela_undo, COLOR_PAIR(3));
         mvwprintw(janela_undo, 1, 1, "  UNDO");
@@ -72,7 +71,7 @@ WINDOW* defineButtonUndo(){
 
 WINDOW* defineButtonNgame(){
         WINDOW *janela_ngame;
-        janela_ngame = newwin(3, 10, 2, 30);
+        janela_ngame = newwin(3, 10, 2, 40);
         box(janela_ngame, 0, 0);
         wattron(janela_ngame, COLOR_PAIR(3));
         mvwprintw(janela_ngame, 1, 1, "NEW GAME");
@@ -89,15 +88,15 @@ void defineFoundations(WINDOW *janela_foundations[]){
         c.naipe = '?';
         c.valor = 0;
 
-        int x = 2;
-        int y = 50; 
+        int x = 1;
+        int y = 120; 
 
         // Cria as 4 janelas das foundations 
         for(int i = 0; i < 4; i++){
                 janela_foundations[i] = newwin(10, 15, x, y);
                 box(janela_foundations[i], 0, 0);
-                mvwprintw(janela_baralho, 1, 1, "Baralho: %d", tamanho_baralho);
-                x += 12;
+                mvwprintw(janela_foundations[i], 1, 1, "Foundation %d", i+1);
+                wprint_cartaInt(janela_foundations[i], 3,3, c);
                 y += 18; 
 
                 wrefresh(janela_foundations[i]); 
@@ -114,7 +113,7 @@ void definePilhas(CARTAS matriz[10][25], int tamanho_pilha[10], WINDOW *janela_p
     int x = 10;
 
     for(i = 0; i < 10; i++) {
-        janela_pilha[i] = newwin(18, 15, y, x);
+        janela_pilha[i] = newwin(25, 15, y, x);
         print_nomePilha(janela_pilha, i); 
         
 
@@ -138,7 +137,7 @@ void print_nomePilha (WINDOW *janela_pilha[], int i){
 }
 
 
-void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[7][5],  int x_local, int y_local, int i, int ultCarta){
+void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[10][25],  int x_local, int y_local, int i, int ultCarta){
         for(int j = 0; j <= ultCarta; j++) {
             if (j == ultCarta) wprint_cartaInt(janela_pilha[i], y_local, x_local, matriz[i][j]);
             else wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);

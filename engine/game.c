@@ -71,7 +71,7 @@ void start_game(JOGO *game){
 
     int max_pilha = 8; //numero de cartas por pilha 
     // Inicializa cada pilha da mesa com o seu devido num de cartas 
-    for (int i = 0; i < 7; i++){
+    for (int i = 0; i < 10; i++){
         if (i < 3) max_pilha = 8;
         else max_pilha -= 1;
         // Número de cartas na pilha i 
@@ -118,7 +118,7 @@ void inicializa_matriz(JOGO *game){
     for(int i = 0; i < 10; i++){
         if(i<3){  // Três primeiras pilhas com 8 cartas, as outras com -1 da anterior; 
             max_pilha = 8;
-        } else {max_pilha -= 1}
+        } else {max_pilha -= 1;}
         for(int j = 0; j < max_pilha; j++){
 
             // Seleciona uma carta aleatória 
@@ -131,5 +131,15 @@ void inicializa_matriz(JOGO *game){
             game->baralho[indice_carta] = game->baralho[game->tamanho_baralho - 1];
             (game->tamanho_baralho)--;
         }
+    }
+}
+
+
+void loop_principal(JOGO *game, POINTERS *janelas, int jogando){
+    while (jogando) {
+        int ch = getch();  
+
+        if (ch == 'q') jogando = 0; // Condição de saida do jogo, clicar no "q"
+        //else if (ch == KEY_MOUSE) processa_rato(game, janelas);
     }
 }

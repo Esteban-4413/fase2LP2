@@ -24,11 +24,9 @@ int verifica_click (POINTERS *janelas) {
 
 
 int eclickValido(int x, int y, POINTERS *janelas) {
-    if (eJanela(janelas->end_baralho, x, y)) return 7;
-    else if (eJanela(janelas->end_hint, x, y)) return 8;
+    if (eJanela(janelas->end_hint, x, y)) return 8;
     else if (eJanela(janelas->end_undo, x, y)) return (9);
     else if (eJanela(janelas->end_ngame, x, y)) return (10);
-    else if (eJanela(janelas->end_descarte, x, y)) return 11;
     else return eclicknaPilha(x, y, janelas->end_pilhas); 
         // Verifica as pilhas 
 

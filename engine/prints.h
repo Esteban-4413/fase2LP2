@@ -99,7 +99,7 @@ void wprint_cartaTop(WINDOW *win, int x, int y, CARTAS c);
  * @param tamanho_pilha array onde é guardado o tamanho de cada uma das 7 pilhas
  * @param janela_pilha array onde estão guadados os endereços de cada um adas 7 pilhas 
  */
-void definePilhas(CARTAS matriz[7][5], int tamanho_pilha[7], WINDOW *janela_pilha[]);
+void definePilhas(CARTAS matriz[10][25], int tamanho_pilha[10], WINDOW *janela_pilha[]);
 
 /**
  * @brief Faz print do nome da pilha 
@@ -122,7 +122,7 @@ void print_nomePilha (WINDOW *janela_pilha[], int i);
  * @param i       indice da pilha no array 
  * @param ult_carta 
  */
-void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[7][5],  int x_local, int y_local, int i, int ult_carta);
+void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[10][25],  int x_local, int y_local, int i, int ult_carta);
 
 
 /**
@@ -130,7 +130,9 @@ void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[7][5],  int x_local, in
  * 
  * @param janela_foundations 
  */
-void defineFoundations(WINDOW *janela_foundations[]); // a funcao na linha 82 de prints.c recebe como argumento o tamanho do baralho
+void defineFoundations(WINDOW *janela_foundations[
+    
+]); // a funcao na linha 82 de prints.c recebe como argumento o tamanho do baralho
 
 /**
  * @brief Define a janela do botão hint 
