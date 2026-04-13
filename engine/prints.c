@@ -26,8 +26,8 @@ void define_TodasJanelas (POINTERS *p, JOGO *game){
     definePilhas(game->matriz, game->tamanho_pilha, p->end_pilhas);
     
     // BARALHO & DESCARTE
-    p->end_descarte = defineDescarte(game->pilha_descarte, game->tamanho_pilha_descarte);  
     p->end_baralho = defineBaralho(game->tamanho_baralho);
+    p->end_foundations = defineFoundations; 
     
     // BOTÕES 
     p->end_undo = defineButtonUndo();
@@ -40,7 +40,7 @@ void define_TodasJanelas (POINTERS *p, JOGO *game){
 // -- BOTÕES --
 WINDOW* defineButtonHint(){
         WINDOW *janela_hint;
-        janela_hint = newwin(3, 10, 30, 90);
+        janela_hint = newwin(3, 10, 2, 10);
         box(janela_hint, 0, 0);
         wattron(janela_hint, COLOR_PAIR(3));
         mvwprintw(janela_hint, 1, 1, "  HINT");
@@ -53,7 +53,7 @@ WINDOW* defineButtonHint(){
 
 WINDOW* defineButtonUndo(){ 
         WINDOW *janela_undo;
-        janela_undo = newwin(3, 10, 33, 90);
+        janela_undo = newwin(3, 10, 2, 20);
         box(janela_undo, 0, 0);
         wattron(janela_undo, COLOR_PAIR(3));
         mvwprintw(janela_undo, 1, 1, "  UNDO");
@@ -66,7 +66,7 @@ WINDOW* defineButtonUndo(){
 
 WINDOW* defineButtonNgame(){
         WINDOW *janela_ngame;
-        janela_ngame = newwin(3, 10, 36, 90);
+        janela_ngame = newwin(3, 10, 2, 30);
         box(janela_ngame, 0, 0);
         wattron(janela_ngame, COLOR_PAIR(3));
         mvwprintw(janela_ngame, 1, 1, "NEW GAME");
@@ -76,51 +76,38 @@ WINDOW* defineButtonNgame(){
 
 }
 
-// -- BARALHO E DESCARTE 
-WINDOW* defineBaralho(int tamanho_baralho){ //argumento --> CARTA baralho[]
+// -- BARALHO  
+void defineFoundations(WINDOW *janela_foundations[]){ 
         // Define a carta que vai ser mostrada 
         CARTAS c;
         c.naipe = '?';
         c.valor = 0;
 
-        WINDOW *janela_baralho; 
-        janela_baralho = newwin(10, 15, 30, 40);
-        box(janela_baralho, 0, 0);
-        mvwprintw(janela_baralho, 1, 1, "Baralho: %d", tamanho_baralho);
+        int x = 2;
+        int y = 50; 
 
-        if (tamanho_baralho){ // Verifica se o baralho está vazio 
-                wprint_cartaInt(janela_baralho, 3,3, c);
+        // Cria as 4 janelas das foundations 
+        for(int i = 0; i < 4; i++){
+                janela_foundations[i] = newwin(10, 15, x, y);
+                box(janela_foundations[i], 0, 0);
+                mvwprintw(janela_baralho, 1, 1, "Baralho: %d", tamanho_baralho);
+                x += 12;
+                y += 18; 
+
+                wrefresh(janela_foundations[i]); 
+
         }
 
-        wrefresh(janela_baralho); 
-
-        return janela_baralho;
-          // não funcionaria, o array não vai diminuir de tamanho...
-         // if (len(baralho) != 0)  
-
-}
-
-WINDOW* defineDescarte(CARTAS pilha_descarte[52], int tamanho_pilha_descarte){
-        WINDOW *janela_descarte = newwin(10, 15, 30, 60);
-        box(janela_descarte, 0, 0);
-        mvwprintw(janela_descarte, 1, 1, "Descarte");
-        if(tamanho_pilha_descarte > 0){
-                 wprint_cartaInt(janela_descarte, 3,3, pilha_descarte[tamanho_pilha_descarte-1] ); 
-        }
-
-        wrefresh(janela_descarte); 
-
-        return janela_descarte;
 }
 
 // -- PILHAS -- 
 
-void definePilhas(CARTAS matriz[7][5], int tamanho_pilha[7], WINDOW *janela_pilha[]) {
+void definePilhas(CARTAS matriz[10][25], int tamanho_pilha[10], WINDOW *janela_pilha[]) {
     int i;
     int y = 10;
-    int x = 30;
+    int x = 10;
 
-    for(i = 0; i < 7; i++) {
+    for(i = 0; i < 10; i++) {
         janela_pilha[i] = newwin(18, 15, y, x);
         print_nomePilha(janela_pilha, i); 
         
@@ -149,7 +136,7 @@ void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[7][5],  int x_local, in
         for(int j = 0; j <= ultCarta; j++) {
             if (j == ultCarta) wprint_cartaInt(janela_pilha[i], y_local, x_local, matriz[i][j]);
             else wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);
-            x_local += 2; // Ajusta conforme a tua lógica de empilhamento
+            x_local += 2; // Ajusta conforme a lógica de empilhamento
         }
 }
 

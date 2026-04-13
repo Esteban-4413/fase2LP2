@@ -2,11 +2,11 @@
 #ifndef ACTIONS_H
 #define ACTIONS_H
 
-/** @brief Número máximo de cartas por pilha no início do jogo. */
-#define NUM_LINHAS 5
+/** @brief Número máximo de cartas por pilha . */
+#define NUM_LINHAS 25
 
 /** @brief Número de pilhas (colunas) distribuídas na mesa. */
-#define NUM_COLUNAS 7
+#define NUM_COLUNAS 10
 
 /** @brief Número máximo de jogadas que ficam guardadas no histórico para o Undo. */
 #define MAX_UNDO 5
@@ -41,9 +41,7 @@ typedef struct {
     CARTAS baralho[52];     /**< O baralho principal (monte de onde se tiram cartas). */
     int tamanho_baralho;    /**< Número de cartas que ainda restam no baralho principal. */
     CARTAS matriz[NUM_COLUNAS][NUM_LINHAS];     /**< A matriz que representa as cartas espalhadas na mesa. */
-    int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 7 pilhas. */
-    CARTAS pilha_descarte[52];      /**< O monte de descarte para onde as cartas são movidas. */
-    int tamanho_pilha_descarte;     /**< Número de cartas atualmente no monte de descarte. */
+    int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 10 pilhas. */
     struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
     int jogadas_historial;      /**< Número atual de jogadas guardadas no histórico. */
 } JOGO;

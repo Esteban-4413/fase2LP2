@@ -23,9 +23,8 @@
  *  das funções, no lugar de cada um dos pointers individualmente. 
  */
 typedef struct {
-    WINDOW *end_pilhas[7];  /**< Array com os endereços das janelas das 7 pilhas da mesa. */
-    WINDOW *end_descarte;   /**< Endereço da janela do monte de descarte. */
-    WINDOW *end_baralho;    /**< Endereço da janela do baralho principal (bisca). */
+    WINDOW *end_pilhas[10];  /**< Array com os endereços das janelas das 10 pilhas da mesa. */
+    WINDOW *end_foundations[4];    /**< Endereço das janelas do faundations  */
     WINDOW *end_hint;       /**< Endereço da janela do botão Hint. */
     WINDOW *end_undo;       /**< Endereço da janela do botão Undo. */
     WINDOW *end_ngame;      /**< Endereço da janela do botão New Game. */
@@ -125,27 +124,13 @@ void print_nomePilha (WINDOW *janela_pilha[], int i);
  */
 void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[7][5],  int x_local, int y_local, int i, int ult_carta);
 
-/**
- * @brief define a janela, e faz print da carta 
- * Com o auxilio do tamanho_pilha_descarte verifica, se temos alguma carta no descarte 
- * e fazemos print da que está no topo. 
- * 
- * @param pilha_descarte Array do descarte 
- * @param tamanho_pilha_descarte Int que guada o tamanho do descarte 
- * @return WINDOW* Endereço da janela da pilha de descarte 
- */
-WINDOW* defineDescarte(CARTAS pilha_descarte[52], int tamanho_pilha_descarte);
 
 /**
- * @brief Define a janela do baralho, e faz print da carta virada 
- * Com auxilio do tamanho_baralho, verificamos se ainda há cartas no baralho, se houver, 
- * é feito print de uma carta definida nesta função, apenas para ilustrar a parte de trás da carta. 
- *  Para além de fazer print do número de cartas que ainda há no baralho. 
+ * @brief 
  * 
- * @param tamanho_baralho IInt que guarda o tamanho do baralho
- * @return WINDOW* Endereço da janela do baralho
+ * @param janela_foundations 
  */
-WINDOW* defineBaralho(int tamanho_baralho); // a funcao na linha 82 de prints.c recebe como argumento o tamanho do baralho
+void defineFoundations(WINDOW *janela_foundations[]); // a funcao na linha 82 de prints.c recebe como argumento o tamanho do baralho
 
 /**
  * @brief Define a janela do botão hint 
