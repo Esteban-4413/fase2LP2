@@ -16,9 +16,15 @@
 #include "prints.h"
 #include "actions.h"
 
+// ----- ATUALIZA PILHAS DA JOGADA  -----
+/*
+void atualizaPilhas (CARTAS matriz[][], int saida, int chegada, POINTERS *p){
+        //updateOUT(); // Atualiza a pilha de onde a/as cartas sairam 
+        //updateIN(); // Atualiza a pilha em que as cartas chegam 
+}
+*/
 
 //  ----- PRINCIPAIS PRINTS + DEFINIÇÃO DAS JANELAS/BOTÕES -----
-
 
 void define_TodasJanelas (POINTERS *p, JOGO *game){ 
     
