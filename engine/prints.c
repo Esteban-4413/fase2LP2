@@ -178,10 +178,12 @@ void wprint_cartaInt(WINDOW *win, int x, int y, CARTAS c){
 }
 
 
-void wprint_cartaTop(WINDOW *win, int x, int y, CARTAS c){
+void wprint_cartaTop(WINDOW *win, int x, int y,  CARTAS c){
 
         char valor[3]; // guarda o valor da carta 
         traduzvalor(valor, c.valor);
+
+        const char *s = traduzsimbolo(c.naipe);
 
         // Ativa as cores específicas de cada carta
         if (c.naipe == 'C' || c.naipe == 'O')
@@ -191,7 +193,7 @@ void wprint_cartaTop(WINDOW *win, int x, int y, CARTAS c){
 
 
         mvwprintw(win, y,   x, "+ ----- +");
-        mvwprintw(win, y+1, x, "| %-2s    |", valor);
+        mvwprintw(win, y+1, x, "| %-2s%s   |", valor, s);
 
         refresh();
 

@@ -24,11 +24,14 @@ int verifica_click (POINTERS *janelas) {
 
 
 int eclickValido(int x, int y, POINTERS *janelas) {
-    if (eJanela(janelas->end_hint, x, y)) return 8;
-    else if (eJanela(janelas->end_undo, x, y)) return (9);
-    else if (eJanela(janelas->end_ngame, x, y)) return (10);
+    if (eJanela(janelas->end_hint, x, y)) return 11;
+    else if (eJanela(janelas->end_undo, x, y)) return (12);
+    else if (eJanela(janelas->end_ngame, x, y)) return (13);
     else return eclicknaPilha(x, y, janelas->end_pilhas); 
         // Verifica as pilhas 
+        /* 
+        Vai passar a dar de 0 a 10 correpondendo ao número da pilha 
+        */
 
     return -1;
 
@@ -37,7 +40,7 @@ int eclickValido(int x, int y, POINTERS *janelas) {
 
 
 int eclicknaPilha(int x, int y, WINDOW *janela_pilha[]){
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 10; i++) {
         if (eJanela(janela_pilha[i], x, y)) {
             return i; 
             }

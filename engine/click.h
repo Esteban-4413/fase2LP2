@@ -32,13 +32,11 @@ int verifica_click (POINTERS *janelas);
  *
  * A lógica é:
  * Para as pilhas, se o click for na pilha vai retornar o próprio número da pilha 
- *  ( Ou seja, um número de 0 a 6)
+ *  ( Ou seja, um número de 0 a 10)
  *  Se for:
- *  Baralho -> 7
- *  Botão Hint -> 8
- *  Botão Undo -> 9
- *  Botão NewGame -> 10
- *  Descarte -> 11
+ *  Botão Hint -> 11
+ *  Botão Undo -> 12
+ *  Botão NewGame -> 13
  *  
  * Definindo se o click se enquadra, ou não, em alguma destas janelas 
  * com o auxilio da função eclicknaPilha.

@@ -42,6 +42,7 @@ typedef struct {
     int tamanho_baralho;    /**< Número de cartas que ainda restam no baralho principal. */
     CARTAS matriz[NUM_COLUNAS][NUM_LINHAS];     /**< A matriz que representa as cartas espalhadas na mesa. */
     int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 10 pilhas. */
+    int foundations[4];                 /**< Array de flags, que indicam se as foundations já foram preenchidas */
     struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
     int jogadas_historial;      /**< Número atual de jogadas guardadas no histórico. */
 } JOGO;
