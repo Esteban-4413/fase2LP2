@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
@@ -143,3 +142,10 @@ void loop_principal(JOGO *game, POINTERS *janelas, int jogando){
         //else if (ch == KEY_MOUSE) processa_rato(game, janelas);
     }
 }
+
+int ganhou_jogo(JOGO *game){}
+
+/*for(int y = 0; y < sizeof(game->tamanho_pilha)/4; y++){
+        if (tamanho_sequencia(0, y, game) == 13) return 1;
+    }
+    return 0;*/
