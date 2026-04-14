@@ -62,7 +62,7 @@ void bisca(JOGO *game);
  * @param game Ponteiro para o estado atual do jogo.
  * @return int Retorna 1 se a jogada for válida, ou 0 se for inválida.
  */
-int valida_jogada(int r , JOGO *game);
+int valida_jogada(int r, int x, JOGO *game);
 
 /**
  * @brief Executa o movimento de uma carta da mesa para o descarte.
