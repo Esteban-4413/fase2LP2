@@ -3,7 +3,7 @@
 #define ACTIONS_H
 
 /** @brief Número máximo de cartas por pilha . */
-#define NUM_LINHAS 25
+#define NUM_LINHAS 17
 
 /** @brief Número de pilhas (colunas) distribuídas na mesa. */
 #define NUM_COLUNAS 10
@@ -26,9 +26,11 @@ typedef struct {
  *
  */
 struct JOGADA {
-    int tipo; /**< Identificador do tipo de jogada (ex: 1 para tirar carta do baralho, 0 para mover carta da mesa). */
-    int fila; /**< O índice da fila (pilha) da mesa onde a jogada ocorreu. */
-    int coluna; /**< O índice da posição da carta dentro da pilha. */
+    int pilha; /**< Indice da pilha de onde a carta saiu. */
+    int coluna; /**< O índice da posição da carta dentro da pilha de saida. */
+    int num_cartas; /**< Número de cartas que vão ser movidas. */
+    int chegada; /**< O índice da pilha de onde a carta vai passar. */
+    int flag; /**< Inicializada a 0; -1 se a jogada não for possível */
     CARTAS carta; /**< A carta exata que foi movida durante esta jogada. */
 };
 
@@ -43,6 +45,7 @@ typedef struct {
     CARTAS matriz[NUM_COLUNAS][NUM_LINHAS];     /**< A matriz que representa as cartas espalhadas na mesa. */
     int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 10 pilhas. */
     int foundations[4];                 /**< Array de flags, que indicam se as foundations já foram preenchidas */
+    struct JOGADA jog_atual;
     struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
     int jogadas_historial;      /**< Número atual de jogadas guardadas no histórico. */
 } JOGO;
@@ -65,13 +68,16 @@ void bisca(JOGO *game);
 int valida_jogada(int r, int x, JOGO *game);
 
 /**
- * @brief Executa o movimento de uma carta da mesa para o descarte.
- * Remove a carta do topo da pilha especificada e coloca-a no descarte.
+ * @brief 
  * 
- * @param r O identificador numérico da zona clicada (0-6 para as pilhas, 7 para o baralho, 8 Hint, 9 Undo, 10 Novo Jogo, 11 Descarte).
- * @param game Ponteiro para o estado atual do jogo.
+ * @param y 
+ * @param x 
+ * @param y2 
+ * @param x2 
+ * @param game 
  */
-void joga(int r, JOGO *game);
+void joga(int y, int x, int y2, int x2, JOGO *game);
+
 
 /**
  * @brief Fornece uma dica (hint) ao jogador.

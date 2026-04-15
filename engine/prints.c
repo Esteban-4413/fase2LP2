@@ -17,12 +17,9 @@
 #include "actions.h"
 
 // ----- ATUALIZA PILHAS DA JOGADA  -----
-/*
-void atualizaPilhas (CARTAS matriz[][], int saida, int chegada, POINTERS *p){
-        //updateOUT(); // Atualiza a pilha de onde a/as cartas sairam 
-        //updateIN(); // Atualiza a pilha em que as cartas chegam 
-}
-*/
+
+
+
 
 //  ----- PRINCIPAIS PRINTS + DEFINIÇÃO DAS JANELAS/BOTÕES -----
 
@@ -107,13 +104,15 @@ void defineFoundations(WINDOW *janela_foundations[]){
 
 // -- PILHAS -- 
 
-void definePilhas(CARTAS matriz[10][25], int tamanho_pilha[10], WINDOW *janela_pilha[]) {
+void definePilhas(CARTAS matriz[10][17], int tamanho_pilha[10], WINDOW *janela_pilha[]) {
     int i;
     int y = 10;
     int x = 10;
 
     for(i = 0; i < 10; i++) {
-        janela_pilha[i] = newwin(25, 15, y, x);
+        janela_pilha[i] = newwin(42, 15, y, x);
+        box(janela_pilha[i], 0, 0);
+
         print_nomePilha(janela_pilha, i); 
         
 
@@ -137,7 +136,7 @@ void print_nomePilha (WINDOW *janela_pilha[], int i){
 }
 
 
-void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[10][25],  int x_local, int y_local, int i, int ultCarta){
+void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[10][17],  int x_local, int y_local, int i, int ultCarta){
         for(int j = 0; j <= ultCarta; j++) {
             if (j == ultCarta) wprint_cartaInt(janela_pilha[i], y_local, x_local, matriz[i][j]);
             else wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);

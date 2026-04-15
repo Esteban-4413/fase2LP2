@@ -93,8 +93,15 @@ void start_game(JOGO *game){
     game->naipes[1] = 'E';
     game->naipes[2] = 'O';
     game->naipes[3] = 'P';
+
+    inicializa_jogAtual(game);
 }
 
+void inicializa_jogAtual(JOGO *game){
+    game->jog_atual.pilha = (-1);
+    game->jog_atual.chegada = (-1);
+    game->jog_atual.flag = 0;
+}
 
 void inicializa_baralho(JOGO *game){
     int indice = 0;
