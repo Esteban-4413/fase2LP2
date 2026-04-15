@@ -13,8 +13,9 @@ void inicializa_baralho(JOGO *game);
 void inicializa_matriz(JOGO *game);
 
 void loop_principal(JOGO *game, POINTERS *janelas, int jogando);
-
-
+void processa_rato(JOGO *game, POINTERS *p);
+void next_step (int r, int num_carta, JOGO *game, POINTERS *p);
+void define_jogAtual(int r, int num_carta,  JOGO *game);
 
 
 #endif

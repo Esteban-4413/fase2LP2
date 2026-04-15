@@ -100,7 +100,7 @@ void start_game(JOGO *game){
 void inicializa_jogAtual(JOGO *game){
     game->jog_atual.pilha = (-1);
     game->jog_atual.chegada = (-1);
-    game->jog_atual.flag = 0;
+    game->jog_atual.flag = -2; //número que não corresponde a nenhuma das condições definidas 
 }
 
 void inicializa_baralho(JOGO *game){
@@ -141,18 +141,80 @@ void inicializa_matriz(JOGO *game){
 }
 
 
-void loop_principal(JOGO *game, POINTERS *janelas, int jogando){
+void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
         int ch = getch();  
-        if (ganhou_jogo(game)){ mvprintw(0,2,"Vitória!"); jogando = 0;}
+        // if (ganhou_jogo(game)){ mvprintw(0,2,"Vitória!"); jogando = 0;}
         if (ch == 'q') jogando = 0; // Condição de saida do jogo, clicar no "q"
-        //else if (ch == KEY_MOUSE) processa_rato(game, janelas);
+        else if (ch == KEY_MOUSE) processa_rato(game, p);
     }
 }
 
+void processa_rato(JOGO *game, POINTERS *p){
+    int num_carta;
+    // Verifica a existencia de um click
+    int r = verifica_click(game, p, &num_carta);
+    next_step(r, num_carta, game, p);
+}
+
+
+// Funções meio definidas da logica do jogo 
+
+
+void next_step (int r, int num_carta, JOGO *game, POINTERS *p){        
+    if (r >= 0 && r <= 10){
+        if (game->jog_atual.flag == 1){
+            //add_historial 
+            inicializa_jogAtual(game);
+        }
+        else if( game->jog_atual.flag == -1){
+            inicializa_jogAtual(game);
+        }
+        else {
+            define_jogAtual(r, num_carta, game);
+            updateWin(game,p);
+        }
+    }
+    /*
+    if (r == 11) {
+        hint(game);
+    }
+    if (r == 12){
+        undo(game);
+        define_TodasJanelas(p, game); 
+    }
+    if(r == 13){
+        novo_jogo(game);
+        init(p, game);
+
+    }
+    */
+}
+
+void define_jogAtual(int r, int num_carta, JOGO *game){
+    if(game->jog_atual.flag == -2){
+        game->jog_atual.pilha = r;
+        game->jog_atual.coluna = num_carta; 
+        // game->jog_atual.n = com a função do Martim isso será desnecessário
+        game->jog_atual.flag = 0;
+        
+    }
+    else if (game->jog_atual.flag == 0) {
+        game->jog_atual.chegada = r;
+        if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
+        // preciso que no caso da chegada = saída der 1 também. 
+        //else if (valida_jogada(...)) game->jog_atual.flag = 1;
+        //else { game->jog_atual.flag = -1; }
+    }
+    
+}
+
+
+/*
+
 int ganhou_jogo(JOGO *game){}
 
-/*for(int y = 0; y < sizeof(game->tamanho_pilha)/4; y++){
+for(int y = 0; y < sizeof(game->tamanho_pilha)/4; y++){
         if (tamanho_sequencia(0, y, game) == 13) return 1;
     }
     return 0;*/
