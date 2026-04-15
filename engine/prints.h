@@ -170,4 +170,13 @@ WINDOW* defineButtonNgame();
  */
 void define_TodasJanelas (POINTERS *p, JOGO *game);
 
+// FUNÇÕES QUE ATUALIZAM AS JANELAS 
+
+void updateWin(JOGO *game, POINTERS *p);
+
+// Atualiza as pilhas 
+void update_pilha(JOGO *game, POINTERS *p);
+void redesenha_pilha(int pilha, CARTAS matriz[10][17], WINDOW *janela_pilha[], int tamanho_pilha[]);
+void pilha_negrito(JOGO*game, POINTERS * p);
+void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local, int i, int lim, int ultCarta);
 #endif

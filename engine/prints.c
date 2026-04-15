@@ -18,8 +18,87 @@
 
 // ----- ATUALIZA PILHAS DA JOGADA  -----
 
+void updateWin(JOGO *game, POINTERS *p){
+        // Verifica os foundations e os atualiza 
+        update_pilha(game, p);
+}
 
+void update_pilha(JOGO *game, POINTERS *p){
+        if (game->jog_atual.flag == 0 && game->jog_atual.pilha != (-1)) pilha_negrito(game, p);
+        else if (game->jog_atual.flag == 1 && game->jog_atual.coluna != (-1)){
+                redesenha_pilha(game->jog_atual.pilha, game->matriz, p->end_pilhas, game->tamanho_pilha); // SAIDA
+                redesenha_pilha(game->jog_atual.chegada, game->matriz, p->end_pilhas, game->tamanho_pilha); // CHEGADA
+               
+        }
+        else redesenha_pilha(game->jog_atual.pilha, game->matriz, p->end_pilhas, game->tamanho_pilha); // TIRA O QUE TAVA EM NEGRITO - jogada inválida
+}
 
+// Função que faz o print das cartas da pilha x
+void redesenha_pilha(int pilha, CARTAS matriz[10][17], WINDOW *janela_pilha[], int tamanho_pilha[]){
+        werase(janela_pilha[pilha]);
+
+        print_nomePilha(janela_pilha, pilha); 
+        
+        int y_local = 3; 
+        int x_local = 4;
+        int ultCarta = tamanho_pilha[pilha] - 1; 
+        desenha_pilha(janela_pilha, matriz, x_local, y_local, pilha, ultCarta); 
+
+        wrefresh(janela_pilha[pilha]);
+}
+
+// Função que principal que faz o print em NEGRITO 
+void pilha_negrito(JOGO*game, POINTERS * p){
+        int pilha = game->jog_atual.pilha ;
+        int coluna = game ->jog_atual.coluna;
+        werase(p->end_pilhas[pilha]);
+
+        print_nomePilha(p->end_pilhas, pilha); 
+        
+        int y_local = 3; 
+        int x_local = 4;
+        int lim = coluna -1;
+        int ultCarta = game->tamanho_pilha[pilha] - 1; 
+        print_pilha(p->end_pilhas[pilha],game->matriz, x_local, y_local, pilha, lim, ultCarta); 
+
+        wrefresh(p->end_pilhas[pilha]);
+}
+
+// Função AUXILIAR que faz o print em negrito 
+void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local, int i, int lim, int ultCarta){
+    for(int j = 0; j <= ultCarta; j++) {
+        // Se a carta atual (j) for igual ou maior que o limite clicado, ativa o destaque
+        if (j > lim) { 
+            wattron(janela, A_REVERSE | A_BOLD);
+        }
+
+        if (j == ultCarta) 
+            wprint_cartaInt(janela, x_local, y_local, matriz[i][j]);
+        else 
+            wprint_cartaTop(janela, x_local, y_local, matriz[i][j]);
+
+        // Desliga IMEDIATAMENTE após imprimir a carta para não pintar o fundo da janela
+        wattroff(janela, A_REVERSE | A_BOLD);
+        
+        y_local += 2; // EMPILHAMENTO VERTICAL 
+    }
+}
+/*
+void print_pilha(WINDOW *janela_pilha[],CARTAS matriz[10][17],  int x_local, int y_local, int i, int lim, int ultCarta){
+        for(int j = 0; j <= lim; j++) {
+                wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);
+                x_local += 2; // Ajusta conforme a lógica de empilhamento
+        }
+        wattron(janela_pilha[i], A_BOLD);
+        for(int j = lim; j <= ultCarta; j++) {
+            if (j == ultCarta) wprint_cartaInt(janela_pilha[i], y_local, x_local, matriz[i][j]);
+            else wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);
+            x_local += 2; // Ajusta conforme a lógica de empilhamento
+        }
+        wattroff(janela_pilha[i], A_BOLD);
+        
+}
+*/
 
 //  ----- PRINCIPAIS PRINTS + DEFINIÇÃO DAS JANELAS/BOTÕES -----
 
@@ -91,7 +170,7 @@ void defineFoundations(WINDOW *janela_foundations[]){
         // Cria as 4 janelas das foundations 
         for(int i = 0; i < 4; i++){
                 janela_foundations[i] = newwin(10, 15, x, y);
-                box(janela_foundations[i], 0, 0);
+                
                 mvwprintw(janela_foundations[i], 1, 1, "Foundation %d", i+1);
                 wprint_cartaInt(janela_foundations[i], 3,3, c);
                 y += 18; 
@@ -111,8 +190,7 @@ void definePilhas(CARTAS matriz[10][17], int tamanho_pilha[10], WINDOW *janela_p
 
     for(i = 0; i < 10; i++) {
         janela_pilha[i] = newwin(42, 15, y, x);
-        box(janela_pilha[i], 0, 0);
-
+        
         print_nomePilha(janela_pilha, i); 
         
 
