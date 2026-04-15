@@ -57,7 +57,7 @@ void pilha_negrito(JOGO*game, POINTERS * p){
         
         int y_local = 3; 
         int x_local = 4;
-        int lim = coluna -1;
+        int lim = coluna; // a coluna que a função do Martim está a atribuir está mal 
         int ultCarta = game->tamanho_pilha[pilha] - 1; 
         print_pilha(p->end_pilhas[pilha],game->matriz, x_local, y_local, pilha, lim, ultCarta); 
 
@@ -68,19 +68,19 @@ void pilha_negrito(JOGO*game, POINTERS * p){
 void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local, int i, int lim, int ultCarta){
     for(int j = 0; j <= ultCarta; j++) {
         // Se a carta atual (j) for igual ou maior que o limite clicado, ativa o destaque
-        if (j > lim) { 
-            wattron(janela, A_REVERSE | A_BOLD);
+        if (j >= lim) { 
+            wattron(janela, A_BOLD | A_BLINK);
         }
 
         if (j == ultCarta) 
-            wprint_cartaInt(janela, x_local, y_local, matriz[i][j]);
+            wprint_cartaInt(janela, y_local, x_local, matriz[i][j]);
         else 
-            wprint_cartaTop(janela, x_local, y_local, matriz[i][j]);
+            wprint_cartaTop(janela, y_local, x_local, matriz[i][j]);
 
         // Desliga IMEDIATAMENTE após imprimir a carta para não pintar o fundo da janela
-        wattroff(janela, A_REVERSE | A_BOLD);
+        wattroff(janela, A_BOLD | A_BLINK);
         
-        y_local += 2; // EMPILHAMENTO VERTICAL 
+        x_local += 2; // EMPILHAMENTO VERTICAL 
     }
 }
 /*

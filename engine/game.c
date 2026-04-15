@@ -194,9 +194,10 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
 void define_jogAtual(int r, int num_carta, JOGO *game){
     if(game->jog_atual.flag == -2){
         game->jog_atual.pilha = r;
-        game->jog_atual.coluna = num_carta; 
+        game->jog_atual.coluna = num_carta -1; 
         // game->jog_atual.n = com a função do Martim isso será desnecessário
-        game->jog_atual.flag = 0;
+        if (num_carta <0 ) game->jog_atual.flag = 0;
+        else game->jog_atual.flag = -1;
         
     }
     else if (game->jog_atual.flag == 0) {
