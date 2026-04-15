@@ -13,6 +13,7 @@
 #include <ncurses.h>
 #include "click.h"
 #include "prints.h"
+#include "main.c"
 
 int verifica_click (POINTERS *janelas) {
     MEVENT event;
@@ -70,4 +71,23 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax) {
 
     *ymax = *ymin + altura - 1; // -1 porque as coordenadas são inclusivas
     *xmax = *xmin + largura - 1; 
+}
+
+int coords_para_carta(int x, int pilha, JOGO *game){
+    const int offset = 314;
+    const int comprimento_cabeca_carta = 314;
+    const int comprimento_carta = 314;
+
+    if (x < offset) return -1; /*< Clique fora da pilha (em cima dela)*/
+    
+    int idx = (x - offset) / comprimento_cabeca_carta;
+    
+    if (idx >= game->tamanho_pilha[pilha] - 1){
+        int cabeca_ultima_carta = offset + comprimento_cabeca_carta*(game->tamanho_pilha[pilha]-1);
+        int pes_ultima_carta = cabeca_ultima_carta + comprimento_carta;
+        if (x > pes_ultima_carta){
+            return -1;
+        }
+    }
+    return idx;
 }
