@@ -13,12 +13,13 @@
 #include <ncurses.h>
 #include "click.h"
 #include "prints.h"
-#include "main.c"
 
-int verifica_click (POINTERS *janelas) {
+int verifica_click (JOGO *game, POINTERS *janelas, int *num_carta) {
     MEVENT event;
     if (getmouse(&event) == OK) {
-        return eclickValido(event.x, event.y, janelas);
+        int r = eclickValido(event.x, event.y, janelas);
+        if(r >= 0 && r < 11) *num_carta = coords_para_carta(event.y, r, game);
+        return r;
     }
     return -1;
 }

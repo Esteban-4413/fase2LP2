@@ -17,15 +17,18 @@
 #include <ncurses.h>
 #include "prints.h"
 
+
 /**
  * @brief Identifica o evento do rato e o classifica
- * 
+ *
  * Depois de identificar o evento do rato, chama a função eclickValido,
- * para classificar se o click foi em algum lugar válido para o jogo. 
+ * para classificar se o click foi em algum lugar válido para o jogo.
+ * @param game 
  * @param janelas Ponteiro para a estrutura que guarda todas as janelas (POINTERS).
+ * @param num_carta Ponteiro de onde, caso preciso, deve guarda o número da carta na pilha que foi clicada.
  * @return int 
  */
-int verifica_click (POINTERS *janelas);
+int verifica_click (JOGO *game, POINTERS *janelas, int *num_carta);
 
 /**
  * @brief Atribui um int para cada tipo específico de click
@@ -93,5 +96,10 @@ int eJanela(WINDOW *win, int x, int y);
  * @param ymax Endereço recebido da eJanela para guardar o valor máximo da linha
  */
 void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax);
+
+
+
+
+int coords_para_carta(int x, int pilha, JOGO *game); 
 
 #endif
