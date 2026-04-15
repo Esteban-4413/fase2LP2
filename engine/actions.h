@@ -68,13 +68,16 @@ void bisca(JOGO *game);
 int valida_jogada(int r, int x, JOGO *game);
 
 /**
- * @brief Executa o movimento de uma carta da mesa para o descarte.
- * Remove a carta do topo da pilha especificada e coloca-a no descarte.
+ * @brief 
  * 
- * @param r O identificador numérico da zona clicada (0-6 para as pilhas, 7 para o baralho, 8 Hint, 9 Undo, 10 Novo Jogo, 11 Descarte).
- * @param game Ponteiro para o estado atual do jogo.
+ * @param y 
+ * @param x 
+ * @param y2 
+ * @param x2 
+ * @param game 
  */
-void joga(int r, JOGO *game);
+void joga(int y, int x, int y2, int x2, JOGO *game);
+
 
 /**
  * @brief Fornece uma dica (hint) ao jogador.
