@@ -137,7 +137,7 @@ void inicializa_matriz(JOGO *game){
 void loop_principal(JOGO *game, POINTERS *janelas, int jogando){
     while (jogando) {
         int ch = getch();  
-
+        if (ganhou_jogo(game)){ mvprintw(0,2,"Vitória!"); jogando = 0;}
         if (ch == 'q') jogando = 0; // Condição de saida do jogo, clicar no "q"
         //else if (ch == KEY_MOUSE) processa_rato(game, janelas);
     }
