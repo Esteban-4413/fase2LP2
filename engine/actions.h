@@ -26,11 +26,11 @@ typedef struct {
  *
  */
 struct JOGADA {
-    int pilha; /**< Indice da pilha de onde a carta saiu. */
-    int coluna; /**< O índice da posição da carta dentro da pilha de saida. */
-    int num_cartas; /**< Número de cartas que vão ser movidas. */
-    int chegada; /**< O índice da pilha de onde a carta vai passar. */
-    int flag; /**< Inicializada a 0; -1 se a jogada não for possível */
+    int pilha;    /**< Indice da pilha de onde a carta saiu. */
+    int coluna;   /**< O índice da posição da carta dentro da pilha de saida. */
+    int n;        /**< Número de cartas na sequência que vão ser movidas. */
+    int chegada;  /**< O índice da pilha de onde a carta vai passar. */
+    int flag;     /**< Inicializada a 0; -1 se a jogada não for possível */
     CARTAS carta; /**< A carta exata que foi movida durante esta jogada. */
 };
 
@@ -39,15 +39,15 @@ struct JOGADA {
  * 
  */
 typedef struct {
-    char naipes[4];     /**< Array com os caracteres dos 4 naipes possíveis. */
-    CARTAS baralho[52];     /**< O baralho principal (monte de onde se tiram cartas). */
-    int tamanho_baralho;    /**< Número de cartas que ainda restam no baralho principal. */
-    CARTAS matriz[NUM_COLUNAS][NUM_LINHAS];     /**< A matriz que representa as cartas espalhadas na mesa. */
-    int tamanho_pilha[NUM_COLUNAS];     /**< Array que guarda o número atual de cartas em cada uma das 10 pilhas. */
-    int foundations[4];                 /**< Array de flags, que indicam se as foundations já foram preenchidas */
+    char naipes[4];                         /**< Array com os caracteres dos 4 naipes possíveis. */
+    CARTAS baralho[52];                     /**< O baralho principal (monte de onde se tiram cartas). */
+    int tamanho_baralho;                    /**< Número de cartas que ainda restam no baralho principal. */
+    CARTAS matriz[NUM_COLUNAS][NUM_LINHAS]; /**< A matriz que representa as cartas espalhadas na mesa. */
+    int tamanho_pilha[NUM_COLUNAS];         /**< Array que guarda o número atual de cartas em cada uma das 10 pilhas. */
+    int foundations[4];                     /**< Array de flags, que indicam se as foundations já foram preenchidas */
     struct JOGADA jog_atual;
     struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
-    int jogadas_historial;      /**< Número atual de jogadas guardadas no histórico. */
+    int jogadas_historial;                 /**< Número atual de jogadas guardadas no histórico. */
 } JOGO;
 
 /**

@@ -17,5 +17,10 @@ void processa_rato(JOGO *game, POINTERS *p);
 void next_step (int r, int num_carta, JOGO *game, POINTERS *p);
 void define_jogAtual(int r, int num_carta,  JOGO *game);
 
+int  evalida_tamanhoSeq(JOGO *game);
+
+// Função para auxiliar debug - depois tem que ser apagada; 
+void printJogAtual (JOGO *game); 
+
 
 #endif

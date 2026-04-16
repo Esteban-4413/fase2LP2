@@ -101,6 +101,7 @@ void inicializa_jogAtual(JOGO *game){
     game->jog_atual.pilha = (-1);
     game->jog_atual.chegada = (-1);
     game->jog_atual.flag = -2; //número que não corresponde a nenhuma das condições definidas 
+    game->jog_atual.n = -1;
 }
 
 void inicializa_baralho(JOGO *game){
@@ -161,7 +162,8 @@ void processa_rato(JOGO *game, POINTERS *p){
 // Funções meio definidas da logica do jogo 
 
 
-void next_step (int r, int num_carta, JOGO *game, POINTERS *p){      
+void next_step (int r, int num_carta, JOGO *game, POINTERS *p){  
+      
     if (r >= 0 && r <= 10){
         if (game->jog_atual.flag  == 1){
             //add_historial 
@@ -179,6 +181,8 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
             } 
             updateWin(game,p);
         }
+    printJogAtual(game);
+    refresh();  
     }
     /*
     if (r == 11) {
@@ -196,25 +200,55 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
     */
 }
 
+void printJogAtual (JOGO *game){
+    mvprintw(2, 60 , "Pilha: %d ; Coluna: %d          ",game->jog_atual.pilha, game->jog_atual.coluna);
+    mvprintw(4, 60 , "Chegada: %d ; Flag: %d          ",game->jog_atual.chegada, game->jog_atual.flag);
+    mvprintw(6, 60 , "N: %d           ",game->jog_atual.n);
+
+
+}
+
 void define_jogAtual(int r, int num_carta, JOGO *game){
     if(game->jog_atual.flag == -2){
         game->jog_atual.pilha = r;
         game->jog_atual.coluna = num_carta; 
-        // game->jog_atual.n = com a função do Martim isso será desnecessário
-        if (num_carta <0 ) game->jog_atual.flag = 0;
+        //mvprintw(2, 60 , "COLUNA :  %d      .                                  ", num_carta);
+        if (num_carta >= 0 && evalida_tamanhoSeq(game)) {
+            game->jog_atual.flag = 0;
+            game->jog_atual.n = tamanho_sequencia(game->jog_atual.coluna, game->jog_atual.pilha, game);
+        } 
         else game->jog_atual.flag = -1;
         
     }
     else if (game->jog_atual.flag == 0) {
         game->jog_atual.chegada = r;
         if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
-        // preciso que no caso da chegada = saída der 1 também. 
-        //else if (valida_jogada(...)) game->jog_atual.flag = 1;
-        //else { game->jog_atual.flag = -1; }
+        // preciso que no caso da chegada = saída de 1 também. 
+        else if (valida_jogada(game->jog_atual.pilha, game->jog_atual.coluna, game)) game->jog_atual.flag = 1;
+        else { game->jog_atual.flag = -1; }
     }
     
 }
 
+/*
+  Função Auxiliar da define_jogAtual, responsável por chamar a função que calcula o tamanho da sequência (tamanho_sequencia)
+  e com isso, já verifica se existem cartas consecutivas do mesmo naipe empilhadas e quantas são, e se a carta clicada é inválida
+  i.e. é uma carta que não está no topo, logo não pode ser movida.  
+
+  Bool - True(1) se a jogada é valida ;
+  False (0) se a jogada é invalida - se a carta escolhida não é a topo da pilha e não faz parte de nenhuma sequência; 
+
+*/
+int evalida_tamanhoSeq(JOGO *game){
+    int size = tamanho_sequencia(game->jog_atual.coluna, game->jog_atual.pilha, game);
+    if(size == 1){
+        if(game->jog_atual.coluna == game->tamanho_pilha[game->jog_atual.pilha] -1 ) {
+            return 1;
+        }
+        else { return 0; }
+    }
+    return 1;  
+}
 
 /*
 

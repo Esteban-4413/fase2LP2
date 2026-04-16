@@ -32,6 +32,11 @@ int valida_jogada(int y, int x, JOGO *game){
 
 }
 
+/*
+  Função que calcula, dada uma carta em uma pilha, qual o tamanho da sequência/combo
+  que podem ser movidos com a carta. 
+
+*/
 int tamanho_sequencia(int x, int y, JOGO *game){
     if (x == game->tamanho_pilha[y] - 1){
         return 1;

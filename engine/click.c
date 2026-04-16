@@ -18,7 +18,7 @@ int verifica_click (JOGO *game, POINTERS *janelas, int *num_carta) {
     MEVENT event;
     if (getmouse(&event) == OK) {
         int r = eclickValido(event.x, event.y, janelas);
-        if(r >= 0 && r < 11) *num_carta = coords_para_carta(event.y, r, game, janelas);
+        if(r >= 0 && r < 11) *num_carta = coords_para_carta(event.y, r, game);
         return r;
     }
     return -1;
@@ -76,20 +76,33 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax) {
 
 
 int coords_para_carta(int x, int pilha, JOGO *game){
-    const int offset = 3;
+    const int offset = 14;
     const int comprimento_cabeca_carta = 2;
     const int comprimento_carta = 5;
-
-    if (x < offset) return -1; /*< Clique fora da pilha (em cima dela)*/
     
+    if (x < offset) {
+        //mvprintw(2, 60 , "COLUNA :  -1      X = %d   ", x);
+        //refresh();
+        return -1; /*< Clique fora da pilha (em cima dela)*/
+    }
     int idx = (x - offset) / comprimento_cabeca_carta;
     
     if (idx >= game->tamanho_pilha[pilha] - 1){
         int cabeca_ultima_carta = offset + comprimento_cabeca_carta*(game->tamanho_pilha[pilha]-1);
         int pes_ultima_carta = cabeca_ultima_carta + comprimento_carta;
         if (x > pes_ultima_carta){
+            //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", idx, x);
+            //refresh();
             return -1;
         }
+        else {
+            //mvprintw(6, 60 , "pes_ult :  %d      X = %d   ", pes_ultima_carta, x);
+            //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", game->tamanho_pilha[pilha] -1, x);
+            return (game->tamanho_pilha[pilha] -1);
+        }
     }
+    //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", idx, x);
+
+    //refresh();
     return idx;
 }
