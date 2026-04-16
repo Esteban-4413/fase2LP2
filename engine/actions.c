@@ -8,7 +8,7 @@
 */
 void joga(int y, int x, int y2, int x2, JOGO *game){
     /** As cartas da sequência na pilha y vão sendo adicionadas à pilha y2*/
-    for(x, x2; x < game->tamanho_pilha[y]; x++, x2++){
+    for(x, x2; x < game->tamanho_pilha[y] + game->jog_atual.n; x++, x2++){
         game->matriz[y2][x2] = game->matriz[y][x]; 
         game->tamanho_pilha[y2]++; /**< O tamanho da pilha y2 vai incrementando por 1 */
         game->tamanho_pilha[y]--;/**< O tamanho da pilha y vai decrementando por 1 */
