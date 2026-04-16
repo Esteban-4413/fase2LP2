@@ -65,7 +65,19 @@ void bisca(JOGO *game);
  * @param game Ponteiro para o estado atual do jogo.
  * @return int Retorna 1 se a jogada for válida, ou 0 se for inválida.
  */
-int valida_jogada(int r, int x, JOGO *game);
+int valida_jogada_origem(int y, int x, JOGO *game);
+/**
+ * @brief 
+ * 
+ * @param y 
+ * @param x 
+ * @param y2 
+ * @param x2 
+ * @param game 
+ * @return int 
+ */
+int valida_jogada_destino(int y, int x, int y2, int x2, JOGO *game);
+
 
 /**
  * @brief 

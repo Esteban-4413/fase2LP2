@@ -226,7 +226,7 @@ void define_jogAtual(int r, int num_carta, JOGO *game){
         game->jog_atual.chegada = r;
         if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
         // preciso que no caso da chegada = saída de 1 também. 
-        else if (valida_jogada(game->jog_atual.pilha, game->jog_atual.coluna, game)) game->jog_atual.flag = 1;
+        else if (valida_jogada_origem(game->jog_atual.pilha, game->jog_atual.coluna, game)) game->jog_atual.flag = 1;
         else { game->jog_atual.flag = -1; }
     }
     
