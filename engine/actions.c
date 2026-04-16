@@ -16,9 +16,11 @@ void joga(int y, int x, int y2, int x2, JOGO *game){
 
 }
 
-int valida_jogada(int y, int x, JOGO *game){
+int valida_jogada_origem(int y, int x, JOGO *game){
     
     /** Se a pilha está vazia, a jogada é imediatamente inválida.
+     * nota: penso que nao seja preciso esta parte, já que neste jogo
+     * os cliques sao em cartas e nao em pilhas (nunca podes clicar numa carta que nao esta la)
      */
     if (game->tamanho_pilha[y] <= 0) {
         return 0; 
@@ -27,9 +29,20 @@ int valida_jogada(int y, int x, JOGO *game){
     /** Se a carta escolhida for a última da coluna ou está numa sequência que vai até ao fim da coluna,
      * a jogada é válida
      */
-    if ((x == game->tamanho_pilha[y] - 1) || ((tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x))) return 1;
+    if ((x == game->tamanho_pilha[y] - 1)
+        || ((tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x)))
+        return 1;
     return 0;
 
+}
+
+int valida_jogada_destino(int y, int x, int y2, int x2, JOGO *game){
+    /* Verificar que a cabeca da sequencia é valida em cima da ultima carta da pilha*/
+    if (game->matriz[y2][x2].valor == game->matriz[y][x].valor - 1
+        && game->matriz[y2][x2].naipe == game->matriz[y][x].naipe
+        && game->tamanho_pilha[y] + tamanho_sequencia(x2, y2, game) <= 17)
+        return 1;
+    return 0;
 }
 
 /*
