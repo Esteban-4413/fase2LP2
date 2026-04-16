@@ -100,7 +100,7 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax);
 
 
 
-int coords_para_carta(int y_click, int pilha, JOGO *game, POINTERS *p); 
+int coords_para_carta(int y_click, int pilha, JOGO *game); 
 
 
 #endif

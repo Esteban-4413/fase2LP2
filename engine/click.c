@@ -75,39 +75,10 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax) {
 }
 
 
-// Versão do 
-/* Funciona para quando clico em alguma das cartas só que o que fica no jog_atural é o resultado disso -1 
-e depois quando clico em uma zona que não há nenhuma carta a pilha toda fica a piscar.  
-*/
-int coords_para_carta(int y_click, int pilha, JOGO *game, POINTERS *p) {
-    int y_jan, x_jan;
-    getbegyx(p->end_pilhas[pilha], y_jan, x_jan);
-
-    int y_relativo = y_click - y_jan;
-    const int offset_y = 3; // Onde começa a primeira carta
-    const int salto = 2;    // Espaço entre topos
-
-    if (y_relativo < offset_y) return -1;
-
-    int idx = (y_relativo - offset_y) / salto;
-
-    // --- CORREÇÃO AQUI ---
-    // Se o índice calculado for maior que a última carta, 
-    // significa que clicaste no fundo vazio da janela.
-    if (idx >= game->tamanho_pilha[pilha]) {
-        return -1; // Clique inválido (no vazio)
-    }
-
-    return idx;
-}
-
-
-/* VERSÃO DO MARTIM 
-
 int coords_para_carta(int x, int pilha, JOGO *game){
-    const int offset = 314;
-    const int comprimento_cabeca_carta = 314;
-    const int comprimento_carta = 314;
+    const int offset = 3;
+    const int comprimento_cabeca_carta = 2;
+    const int comprimento_carta = 5;
 
     if (x < offset) return -1; /*< Clique fora da pilha (em cima dela)*/
     
@@ -122,4 +93,3 @@ int coords_para_carta(int x, int pilha, JOGO *game){
     }
     return idx;
 }
-*/
