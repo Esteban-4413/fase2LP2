@@ -161,17 +161,22 @@ void processa_rato(JOGO *game, POINTERS *p){
 // Funções meio definidas da logica do jogo 
 
 
-void next_step (int r, int num_carta, JOGO *game, POINTERS *p){        
+void next_step (int r, int num_carta, JOGO *game, POINTERS *p){      
     if (r >= 0 && r <= 10){
-        if (game->jog_atual.flag == 1){
+        if (game->jog_atual.flag  == 1){
             //add_historial 
             inicializa_jogAtual(game);
         }
-        else if( game->jog_atual.flag == -1){
+        else if(game->jog_atual.flag  == -1){
             inicializa_jogAtual(game);
         }
         else {
             define_jogAtual(r, num_carta, game);
+            int pilha = game->jog_atual.pilha;
+            int chegada = game->jog_atual.chegada; 
+            if (game->jog_atual.flag  == 1 && pilha != chegada) {
+                joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
+            } 
             updateWin(game,p);
         }
     }
@@ -194,7 +199,7 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
 void define_jogAtual(int r, int num_carta, JOGO *game){
     if(game->jog_atual.flag == -2){
         game->jog_atual.pilha = r;
-        game->jog_atual.coluna = num_carta -1; 
+        game->jog_atual.coluna = num_carta; 
         // game->jog_atual.n = com a função do Martim isso será desnecessário
         if (num_carta <0 ) game->jog_atual.flag = 0;
         else game->jog_atual.flag = -1;
