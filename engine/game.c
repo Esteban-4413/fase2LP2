@@ -163,10 +163,9 @@ void processa_rato(JOGO *game, POINTERS *p){
 
 
 void next_step (int r, int num_carta, JOGO *game, POINTERS *p){  
-      
+    // Click em alguma das pilhas 
     if (r >= 0 && r <= 10){
         if (game->jog_atual.flag  == 1){
-            //add_historial 
             inicializa_jogAtual(game);
         }
         else if(game->jog_atual.flag  == -1){
@@ -178,25 +177,28 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
             int chegada = game->jog_atual.chegada; 
             if (game->jog_atual.flag  == 1 && pilha != chegada) {
                 joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
+                registar_jogada(game);
             } 
             updateWin(game,p);
         }
     printJogAtual(game);
     refresh();  
     }
-    /*
-    if (r == 11) {
-        hint(game);
+
+    // Click nos botões 
+     if(r == 13){
+        start_game(game);
+        init(p, game);
+
     }
     if (r == 12){
         undo(game);
         define_TodasJanelas(p, game); 
     }
-    if(r == 13){
-        novo_jogo(game);
-        init(p, game);
-
-    }
+    /*
+    if (r == 11) {
+        hint(game);
+    }   
     */
 }
 

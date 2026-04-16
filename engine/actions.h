@@ -101,13 +101,9 @@ int auxiliar_hint(JOGO *game, CARTAS carta_descarte);
 /**
  * @brief Regista uma jogada no histórico para permitir o "Desfazer" (Undo).
  * 
- * @param tipo O tipo de jogada efetuada (baralho ou mesa).
- * @param fila A fila associada à jogada.
- * @param coluna A posição da carta na fila.
- * @param carta_played A carta que foi movida.
  * @param game Ponteiro para o estado atual do jogo.
  */
-void registar_jogada(int tipo, int fila, int coluna, CARTAS carta_played, JOGO *game);
+void registar_jogada(JOGO *game);
 
 /**
  * @brief Desfaz a última jogada realizada pelo jogador.
