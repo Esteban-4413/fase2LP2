@@ -78,7 +78,12 @@ void undo(JOGO *game){
         return;
     }
     
+    // Faz o undo 
+    aux_undo(game);
+    
+}
 
+void aux_undo(JOGO *game){
     // Acede à última jogada
     (game->jogadas_historial)--;
     struct JOGADA ultimo_mov = game->historial[game->jogadas_historial];
@@ -100,5 +105,3 @@ void undo(JOGO *game){
     game->tamanho_pilha[origem] += n;
     game->tamanho_pilha[chegada] -= n;
 }
-
-

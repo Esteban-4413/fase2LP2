@@ -128,12 +128,23 @@ void registar_jogada(JOGO *game);
 
 /**
  * @brief Desfaz a última jogada realizada pelo jogador.
- * Lê a última entrada do histórico e reverte o movimento da carta,
- * devolvendo-a à sua posição original (seja no baralho ou na mesa).
+ * Verifica se é possível voltar atrás a jogada- se não retorna uma mensagem, 
+ * e se for possível chama a aux_undo que faz toda a parte de devolver as cartas
+ * de onde vieram.
  * 
  * @param game Ponteiro para o estado atual do jogo.
  */
 void undo(JOGO *game);
+
+/**
+ * @brief Auxiliar do undo
+ * Onde está a lógica do undo, para o caso de ser possível retroceder uma jogada, 
+ * Lê a última() entrada do histórico e reverte o movimento da(s) carta(s),
+ * devolvendo-a à sua posição original.
+ * 
+ * @param game 
+ */
+void aux_undo(JOGO *game);
 
 /**
  * @brief Reinicia a partida e prepara um novo jogo.
