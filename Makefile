@@ -22,8 +22,14 @@ game.o: engine/game.c
 	gcc -Wall -ggdb $^ -c -o $@ 
 
 
-# testes: actions.o prints.o click.o buttons.o game.o tests/test_main.c
-#	gcc -Wall -g $^ -o test_solitario -lncurses -I/opt/homebrew/include -L/opt/homebrew/lib -lcunit
+# TESTES
+
+TEST_FILES = tests/test_main.c tests/test_actions.c tests/test_game.c tests/test_buttons.c
+
+testes: actions.o prints.o click.o buttons.o game.o $(TEST_FILES)
+	gcc -Wall -g $^ -o test_solitario -lncurses -I/opt/homebrew/include -L/opt/homebrew/lib -lcunit
+	./testing
+
 
 clean:
-	-rm -f actions.o prints.o click.o buttons.o game.o jogo
+	-rm -f actions.o prints.o click.o buttons.o game.o jogo testing

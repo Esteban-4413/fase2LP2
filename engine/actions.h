@@ -135,7 +135,7 @@ void undo(JOGO *game);
  */
 void novo_jogo(JOGO *game);
 
-
+int tamanho_sequencia(int x, int y, JOGO *game);
 
 #endif
 
