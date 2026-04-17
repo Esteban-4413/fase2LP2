@@ -28,8 +28,8 @@ TEST_FILES = tests/test_main.c tests/test_actions.c tests/test_game.c tests/test
 
 testes: actions.o prints.o click.o buttons.o game.o $(TEST_FILES)
 	gcc -Wall -g $^ -o test_solitario -lncurses -I/opt/homebrew/include -L/opt/homebrew/lib -lcunit
-	./testing
+	./test_solitario
 
 
 clean:
-	-rm -f actions.o prints.o click.o buttons.o game.o jogo testing
+	-rm -f actions.o prints.o click.o buttons.o game.o jogo test_solitario

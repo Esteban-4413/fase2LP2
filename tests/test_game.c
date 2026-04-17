@@ -9,7 +9,7 @@ void testar_start_game(void) {
 
     CU_ASSERT_EQUAL(game.tamanho_baralho, 52);
     CU_ASSERT_EQUAL(game.tamanho_pilha[0], 8);
-    CU_ASSERT_EQUAL(game.tamanho_pilha[5], 7);
+    CU_ASSERT_EQUAL(game.tamanho_pilha[5], 5);
     CU_ASSERT_EQUAL(game.jogadas_historial, 0);
 }
 

@@ -3,7 +3,7 @@
 #include <CUnit/Basic.h>
 
 // Dizemos ao compilador que estas funções existem nos outros ficheiros
-extern void testar_valida_origem(void);
+extern void testar_valida_jogada_origem(void);
 extern void testar_tamanho_sequencia(void);
 extern void testar_start_game(void);
 extern void testar_inicializa_jogAtual(void);
@@ -16,7 +16,7 @@ int main() {
     // 1. Suite Actions
     CU_pSuite pSuiteActions = CU_add_suite("Suite_Actions", NULL, NULL);
     if (pSuiteActions != NULL) {
-        CU_add_test(pSuiteActions, "Valida Origem", testar_valida_origem);
+        CU_add_test(pSuiteActions, "Valida Origem", testar_valida_jogada_origem);
         CU_add_test(pSuiteActions, "Tam. Sequencia", testar_tamanho_sequencia);
     }
     
