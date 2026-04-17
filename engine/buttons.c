@@ -18,26 +18,28 @@ void hint(JOGO *game){
         for(int x = 0; x < game->tamanho_pilha[y] && flag; x++){ /* Por cada carta */
             /* Se há uma sequência que começa nessa mesma carta e vai
                 até ao fundo da pilha, procurar destinos para esta carta */
-            if (tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x){
-                for (int y2 = 0; y2 < 10; y2++){
-                    CARTAS carta_origem = game->matriz[y][x];
-                    CARTAS carta_destino = game->matriz[y2][game->tamanho_pilha[y2]-1];
-                    if (carta_origem.valor == carta_destino.valor - 1){ /* Se encontrar destino */
-                        /* Decide de que cor piscar */
-                        if (carta_origem.naipe == carta_destino.naipe){
-                            continue; /*< Substituir por uma cor*/
-                        }
-                        else{
-                            continue; /*< Substituir por uma OUTRA cor*/
-                        }
-                    }
-                }
-            }
+            if (tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x)
+                procura_destino(y, x, game, flag);
         }
     }
 }
 
-
+void procura_destino(int y, int x, JOGO *game, int *flag){
+    for (int y2 = 0; y2 < 10; y2++){
+        CARTAS carta_origem = game->matriz[y][x];
+        CARTAS carta_destino = game->matriz[y2][game->tamanho_pilha[y2]-1];
+        if (carta_origem.valor == carta_destino.valor - 1){ /* Se encontrar destino */
+            *flag = 0;
+            /* Decide de que cor piscar */
+            if (carta_origem.naipe == carta_destino.naipe){
+                continue; /*< Substituir por uma cor*/
+            }
+            else{
+                continue; /*< Substituir por uma OUTRA cor*/
+            }
+        }
+    }
+}
 void registar_jogada(JOGO *game){
    
     //para meter as jogadas mais recentes então empurramos as mais velhas fora do array (Se o histórico estiver cheio, apaga a jogada mais antiga)
