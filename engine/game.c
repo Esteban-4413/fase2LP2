@@ -81,7 +81,14 @@ void start_game(JOGO *game){
     // Número de jogadas realizadas começa a 0
     game->jogadas_historial = 0; 
 
-    /*
+    // Inicialização dos naipes
+    inicializa_naipes(game);
+   
+    inicializa_jogAtual(game);
+}
+
+void inicializa_naipes(JOGO *game){
+     /*
      Inicialização dos naipes
     
      C - Copas  
@@ -94,9 +101,7 @@ void start_game(JOGO *game){
     game->naipes[2] = 'O';
     game->naipes[3] = 'P';
 
-    inicializa_jogAtual(game);
 }
-
 void inicializa_jogAtual(JOGO *game){
     game->jog_atual.pilha = (-1);
     game->jog_atual.chegada = (-1);
@@ -123,9 +128,7 @@ void inicializa_matriz(JOGO *game){
     int indice_carta;
     int max_pilha = 8;
     for(int i = 0; i < 10; i++){
-        if(i<3){  // Três primeiras pilhas com 8 cartas, as outras com -1 da anterior; 
-            max_pilha = 8;
-        } else {max_pilha -= 1;}
+        define_maxdaPilha(&max_pilha,i);
         for(int j = 0; j < max_pilha; j++){
 
             // Seleciona uma carta aleatória 
@@ -141,6 +144,11 @@ void inicializa_matriz(JOGO *game){
     }
 }
 
+void define_maxdaPilha(int *max_pilha, int i){
+        if(i<3){  // Três primeiras pilhas com 8 cartas, as outras com -1 da anterior; 
+            *max_pilha = 8;
+        } else { *max_pilha -= 1;}
+}
 
 void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
@@ -165,24 +173,7 @@ void processa_rato(JOGO *game, POINTERS *p){
 void next_step (int r, int num_carta, JOGO *game, POINTERS *p){  
     // Click em alguma das pilhas 
     if (r >= 0 && r <= 10){
-        if (game->jog_atual.flag  == 1){
-            inicializa_jogAtual(game);
-        }
-        else if(game->jog_atual.flag  == -1){
-            inicializa_jogAtual(game);
-        }
-        else {
-            define_jogAtual(r, num_carta, game);
-            int pilha = game->jog_atual.pilha;
-            int chegada = game->jog_atual.chegada; 
-            if (game->jog_atual.flag  == 1 && pilha != chegada) {
-                joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
-                registar_jogada(game);
-            } 
-            updateWin(game,p);
-        }
-    printJogAtual(game);
-    refresh();  
+        naPilha(r, num_carta, game, p);
     }
 
     // Click nos botões 
@@ -200,6 +191,27 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
         hint(game);
     }   
     */
+}
+
+void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
+    if (game->jog_atual.flag  == 1){
+            inicializa_jogAtual(game);
+        }
+        else if(game->jog_atual.flag  == -1){
+            inicializa_jogAtual(game);
+        }
+        else {
+            define_jogAtual(r, num_carta, game);
+            int pilha = game->jog_atual.pilha;
+            int chegada = game->jog_atual.chegada; 
+            if (game->jog_atual.flag  == 1 && pilha != chegada) {
+                joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
+                registar_jogada(game);
+            } 
+            updateWin(game,p);
+        }
+    printJogAtual(game);
+    refresh();  
 }
 
 void printJogAtual (JOGO *game){
@@ -222,17 +234,20 @@ void define_jogAtual(int r, int num_carta, JOGO *game){
         else game->jog_atual.flag = -1;
         
     }
-    else if (game->jog_atual.flag == 0) {
-        game->jog_atual.chegada = r;
-        int v1 = valida_jogada_origem(game->jog_atual.pilha, game->jog_atual.coluna, game);
-        int v2 = valida_jogada_destino(game);
-        if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
-        // preciso que no caso da chegada = saída de 1 também. 
-        else if (v1 && v2) {
-            game->jog_atual.flag = 1;
-        } 
-        else { game->jog_atual.flag = -1; }
-    }
+    else if (game->jog_atual.flag == 0) jogAtual_segClick(r, game);
+    
+}
+
+void jogAtual_segClick(int r, JOGO *game){
+    game->jog_atual.chegada = r;
+    int v1 = valida_jogada_origem(game->jog_atual.pilha, game->jog_atual.coluna, game);
+    int v2 = valida_jogada_destino(game);
+    if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
+    // preciso que no caso da chegada = saída de 1 também. 
+    else if (v1 && v2) {
+    game->jog_atual.flag = 1;
+    } 
+    else game->jog_atual.flag = -1; 
     
 }
 
