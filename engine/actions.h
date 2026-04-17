@@ -66,17 +66,15 @@ void bisca(JOGO *game);
  * @return int Retorna 1 se a jogada for válida, ou 0 se for inválida.
  */
 int valida_jogada_origem(int y, int x, JOGO *game);
+
+
 /**
  * @brief 
  * 
- * @param y 
- * @param x 
- * @param y2 
- * @param x2 
  * @param game 
  * @return int 
  */
-int valida_jogada_destino(int y, int x, int y2, int x2, JOGO *game);
+int valida_jogada_destino(JOGO *game);
 
 
 /**
@@ -89,6 +87,17 @@ int valida_jogada_destino(int y, int x, int y2, int x2, JOGO *game);
  * @param game 
  */
 void joga(int y, int x, int y2, int x2, JOGO *game);
+
+
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param y 
+ * @param game 
+ * @return int 
+ */
+int tamanho_sequencia(int x, int y, JOGO *game);
 
 
 /**
@@ -135,7 +144,6 @@ void undo(JOGO *game);
  */
 void novo_jogo(JOGO *game);
 
-int tamanho_sequencia(int x, int y, JOGO *game);
 
 #endif
 

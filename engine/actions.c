@@ -36,11 +36,16 @@ int valida_jogada_origem(int y, int x, JOGO *game){
 
 }
 
-int valida_jogada_destino(int y, int x, int y2, int x2, JOGO *game){
+int valida_jogada_destino(JOGO *game){
     /* Verificar que a cabeca da sequencia é valida em cima da ultima carta da pilha*/
+    int y = game->jog_atual.chegada; // Representa o índice da pilha de destino.
+    int x = game->tamanho_pilha[y] -1 ; // Representa o índice da última carta na pilha de destino.
+    int y2 = game->jog_atual.pilha; // Representa o índice da pilha de origem.
+    int x2 = game->jog_atual.coluna; // Representa o índice da primeira carta da sequência.
+    int n = game->jog_atual.n; // Representa o tamanho da sequência de cartas que serão movidas.
+
     if (game->matriz[y2][x2].valor == game->matriz[y][x].valor - 1
-        && game->matriz[y2][x2].naipe == game->matriz[y][x].naipe
-        && game->tamanho_pilha[y] + tamanho_sequencia(x2, y2, game) <= 17)
+        && game->tamanho_pilha[y] + n <= 17)
         return 1;
     return 0;
 }

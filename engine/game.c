@@ -224,9 +224,13 @@ void define_jogAtual(int r, int num_carta, JOGO *game){
     }
     else if (game->jog_atual.flag == 0) {
         game->jog_atual.chegada = r;
+        int v1 = valida_jogada_origem(game->jog_atual.pilha, game->jog_atual.coluna, game);
+        int v2 = valida_jogada_destino(game);
         if (r == game->jog_atual.pilha) game->jog_atual.flag = 1;
         // preciso que no caso da chegada = saída de 1 também. 
-        else if (valida_jogada_origem(game->jog_atual.pilha, game->jog_atual.coluna, game)) game->jog_atual.flag = 1;
+        else if (v1 && v2) {
+            game->jog_atual.flag = 1;
+        } 
         else { game->jog_atual.flag = -1; }
     }
     
