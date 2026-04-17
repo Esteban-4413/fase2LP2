@@ -10,44 +10,33 @@
 #define MAX_UNDO 5 
 
 
-/*
+
 void hint(JOGO *game){
-    
-    // Pega na carta do topo do descarte
-    CARTAS carta_descarte = game->pilha_descarte[game->tamanho_pilha_descarte-1];
-    
-    // Procura uma jogada possível na mesa
-    int find = auxiliar_hint(game, carta_descarte);
-    
-    // Se não encontrar jogadas, avisa o jogador
-    if (!find) mvprintw(0, 2, "não ha jogadas na mesa                                         ");
-    refresh();
-
-}
-
-int auxiliar_hint(JOGO *game, CARTAS carta_descarte){
-
-    // Percorre as 7 pilhas
-    for (int i = 0; i < 7; i ++) 
-    {   
-        int c = game->tamanho_pilha[i] -1; 
-        if ( c > 0 ) { // Se a pilha não estiver vazia
-            int valor_carta = game->matriz[i][c].valor;
-
-            // Verifica se a diferença de valores é exatamente 1
-            if (c > 0 && valor_carta != 0 && abs(valor_carta - carta_descarte.valor) == 1){
-                mvprintw(0, 2, "HINT: Carta na pilha  %d                                        ", i + 1);
-                refresh(); 
-                return 1; // encontrou jogada jogada válida
+    int flag;
+    for(int y = 0; y < 10; y++){ /* Por cada pilha */
+        flag = 1;
+        for(int x = 0; x < game->tamanho_pilha[y] && flag; x++){ /* Por cada carta */
+            /* Se há uma sequência que começa nessa mesma carta e vai
+                até ao fundo da pilha, procurar destinos para esta carta */
+            if (tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x){
+                for (int y2 = 0; y2 < 10; y2++){
+                    CARTAS carta_origem = game->matriz[y][x];
+                    CARTAS carta_destino = game->matriz[y2][game->tamanho_pilha[y2]-1];
+                    if (carta_origem.valor == carta_destino.valor - 1){ /* Se encontrar destino */
+                        /* Decide de que cor piscar */
+                        if (carta_origem.naipe == carta_destino.naipe){
+                            continue; /*< Substituir por uma cor*/
+                        }
+                        else{
+                            continue; /*< Substituir por uma OUTRA cor*/
+                        }
+                    }
+                }
             }
         }
-
-    
     }
-    return 0; // Não encontrou nenhuma jogada válida
 }
 
-*/
 
 void registar_jogada(JOGO *game){
    
