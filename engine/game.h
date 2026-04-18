@@ -53,6 +53,7 @@ void inicializa_hint(JOGO *game);
  * @param game Ponteiro para a estrutura principal do jogo onde o baralho está guardado.
  */
 void inicializa_naipes(JOGO *game);
+
 /**
  * @brief Função Auxiliar da start_game
  * Inicializa os valores da Jogada Atual para valores predefinidos, 
@@ -77,7 +78,6 @@ void inicializa_baralho(JOGO *game);
  * 
  * Retira as cartas do baralho já baralhado e coloca-as nas respetivas
  * coordenadas da matriz para iniciar a partida visual.
- * Chama a iniciaPrimPilhas.
  * 
  * @param game Ponteiro para a estrutura principal do jogo.
  */
@@ -118,14 +118,6 @@ void loop_principal(JOGO *game, POINTERS *janelas, int jogando);
 void processa_rato(JOGO *game, POINTERS *p);
 
 /**
- * @brief 
- * 
- * @param r 
- * @param game 
- * @param janelas 
- */
-
-/**
  * @brief Lógica intermédia para processar o próximo passo do jogador.
  * 
  * Avalia o contexto da jogada após um clique numa pilha e decide o que
@@ -150,6 +142,13 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p);
  */
 void naPilha(int r, int num_carta, JOGO *game, POINTERS *p);
 
+/**
+ * @brief Função que passa a flag do hint para 1, e chama a função 
+ * redesenha_pilhasHint, para voltar as cartas para a cor padrão.
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo.
+ * @param p Ponteiro para as janelas da interface gráfica.
+ */
 void desativa_hint(JOGO *game, POINTERS *p);
 
 /**
