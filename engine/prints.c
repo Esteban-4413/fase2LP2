@@ -22,7 +22,7 @@
 void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
        if (f == (-1)) {
                 for (int i = 0; i < 10; i++){
-                        if (game->hint.p_flags[i] == 1) alteraCor_carta(i, game->matriz, game->tamanho_pilha[i], p->end_pilhas, game);
+                        if (game->hint.p_flags[i] == 1) alteraCor_pilha(i, game->tamanho_pilha[i], p->end_pilhas, game);
                 }
                
        }
@@ -31,7 +31,7 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
                      int x_local = 4;
                      int y_local = 3;
                      int ultCarta = game->tamanho_pilha[i] - 1;
-                     desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
+                     if (game->hint.p_flags[i] == 1) desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
                      
                 }
        }
@@ -40,45 +40,47 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
         
 }
 
-void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, WINDOW *janela_pilha[], JOGO *game){
+void alteraCor_pilha(int pilha, int tamanho_pilha, WINDOW *janela_pilha[], JOGO *game){
         werase(janela_pilha[pilha]);
 
         print_nomePilha(janela_pilha, pilha);
         int y_local = 3; 
         int x_local = 4;
         int ultCarta = tamanho_pilha -1;
+        alteraCor_carta(pilha, y_local, x_local, ultCarta, janela_pilha,tamanho_pilha, game);
+        
+        wrefresh(janela_pilha[pilha]);
+
+}
+
+void alteraCor_carta(int pilha, int y_local, int x_local, int ultCarta, WINDOW *janela_pilha[], int tamanho_pilha, JOGO *game){
         for (int j = 0; j < tamanho_pilha; j++){
                 if(game->hint.m_flags[pilha][j] == 1){
                         wattron(janela_pilha[pilha], COLOR_PAIR(5)); 
-                        if (j == ultCarta) 
-                                wprint_cartaInt(0, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);
-                        else 
-                                wprint_cartaTop(0, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);
-                        }
+                        aux_alteraCorCarta(0,pilha, j,  y_local, x_local, ultCarta, janela_pilha, game);
+                }
                 else if (game->hint.m_flags[pilha][j] == 2){
                         wattron(janela_pilha[pilha], COLOR_PAIR(4)); 
-                        if (j == ultCarta) 
-                                wprint_cartaInt(0, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);
-                        else 
-                                wprint_cartaTop(0, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);
-                        }
-                
-                else {
-                        if (j == ultCarta) 
-                                wprint_cartaInt(1, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);
-                        else 
-                                wprint_cartaTop(1, janela_pilha[pilha], y_local, x_local, matriz[pilha][j]);  
+                        aux_alteraCorCarta(0,pilha, j,  y_local, x_local, ultCarta, janela_pilha, game);
                 }
-                 
-
+                else {
+                        aux_alteraCorCarta(1 ,pilha, j,  y_local, x_local, ultCarta, janela_pilha, game);
+ 
+                }
                 wattroff(janela_pilha[pilha], COLOR_PAIR(5));
                 wattroff(janela_pilha[pilha], COLOR_PAIR(4));
 
                 x_local+=2; 
                 
         }
-        wrefresh(janela_pilha[pilha]);
+}
 
+void aux_alteraCorCarta(int f, int pilha, int j, int y_local, int x_local, int ultCarta, WINDOW *janela_pilha[], JOGO *game){
+        if (j == ultCarta) 
+                wprint_cartaInt(f, janela_pilha[pilha], y_local, x_local, game->matriz[pilha][j]);
+        else 
+                wprint_cartaTop(f, janela_pilha[pilha], y_local, x_local, game->matriz[pilha][j]);
+       
 }
 
 // ----- ATUALIZA PILHAS DA JOGADA  -----
@@ -117,7 +119,7 @@ void pilha_negrito(JOGO*game, POINTERS * p){
         
         int y_local = 3; 
         int x_local = 4;
-        int lim = coluna; // a coluna que a função do Martim está a atribuir está mal 
+        int lim = coluna; 
         int ultCarta = game->tamanho_pilha[pilha] - 1; 
         print_pilha(p->end_pilhas[pilha],game->matriz, x_local, y_local, pilha, lim, ultCarta); 
 
@@ -161,7 +163,6 @@ void define_TodasJanelas (POINTERS *p, JOGO *game){
  
 }
 
-
 // -- BOTÕES --
 WINDOW* defineButtonHint(){
         WINDOW *janela_hint;
@@ -201,7 +202,7 @@ WINDOW* defineButtonNgame(){
 
 }
 
-// -- BARALHO  
+// -- FOUNDATIONS --
 void defineFoundations(WINDOW *janela_foundations[]){ 
         // Define a carta que vai ser mostrada 
         CARTAS c;
@@ -226,7 +227,6 @@ void defineFoundations(WINDOW *janela_foundations[]){
 }
 
 // -- PILHAS -- 
-
 void definePilhas(CARTAS matriz[10][17], int tamanho_pilha[10], WINDOW *janela_pilha[]) {
     int i;
     int y = 10;
@@ -249,7 +249,6 @@ void definePilhas(CARTAS matriz[10][17], int tamanho_pilha[10], WINDOW *janela_p
 }
 
 // AUXILIARES (definePilhas)
-
 void print_nomePilha (WINDOW *janela_pilha[], int i){
         wattron(janela_pilha[i], COLOR_PAIR(3));
         mvwprintw(janela_pilha[i], 2, 2, "  PILHA %d  ", i+1);
@@ -269,7 +268,6 @@ void desenha_pilha (WINDOW *janela_pilha[],CARTAS matriz[10][17],  int x_local, 
 
 
 // --- PRINT CARTAS (window) --- 
-
 
 void wprint_cartaInt(int f, WINDOW *win, int x, int y, CARTAS c){ 
         const char *s = traduzsimbolo(c.naipe);
@@ -332,9 +330,6 @@ void wprint_cartaTop(int f, WINDOW *win, int x, int y,  CARTAS c){
 }
 
 // --- AUXILIARES (Prints cartas) --- 
-
-
-
 
 const char* traduzsimbolo(char naipe) {
     switch(naipe) {

@@ -46,7 +46,7 @@ void procura_destino(int y, int x, JOGO *game, int *flag){
             if (carta_origem.naipe == carta_destino.naipe){
                 game->hint.m_flags[y][x] = 1;
                 game->hint.p_flags[y] = 1;
-                 /*< Carta fica AZUL */
+                 /*< Carta fica VERDE */
             }
             else{
                 game->hint.m_flags[y][x] = 2;
