@@ -34,10 +34,10 @@ void atualizaFoundations(JOGO *game, POINTERS *p){
 
 void  defineCarta(CARTAS *c, int i){
         c->valor = 1;
-        if(i == 0) c->valor = 'C';
-        else if (i == 1) c->valor = 'E';
-        else if (i == 2) c->valor = 'O';
-        else if (i == 3) c->valor = 'P';
+        if(i == 0) c->naipe = 'C';
+        else if (i == 1) c->naipe = 'E';
+        else if (i == 2) c->naipe = 'O';
+        else if (i == 3) c->naipe = 'P';
 
 }
 
@@ -45,6 +45,7 @@ void atualizaF(WINDOW *janela_foundations[], CARTAS c, int i){
         werase(janela_foundations[i]);
         mvwprintw(janela_foundations[i], 1, 1, "Foundation %d", i+1);
         wprint_cartaInt(1, janela_foundations[i], 3,3, c);
+        wrefresh(janela_foundations[i]);
 }
 
 
@@ -70,7 +71,7 @@ void reset_pilhaHint(JOGO *game, POINTERS *p){
                      int x_local = 4;
                      int y_local = 3;
                      int ultCarta = game->tamanho_pilha[i] - 1;
-                     if (game->hint.p_flags[i] == 1) desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
+                     if (game->hint.p_flags[i] == 1 && ultCarta >=0) desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
                      
                 }
 }
@@ -139,7 +140,8 @@ void redesenha_pilha(int pilha, CARTAS matriz[10][17], WINDOW *janela_pilha[], i
         int y_local = 3; 
         int x_local = 4;
         int ultCarta = tamanho_pilha[pilha] - 1; 
-        desenha_pilha(janela_pilha, matriz, x_local, y_local, pilha, ultCarta); 
+        if(ultCarta >= 0)
+                desenha_pilha(janela_pilha, matriz, x_local, y_local, pilha, ultCarta); 
 
         wrefresh(janela_pilha[pilha]);
 }
@@ -156,7 +158,8 @@ void pilha_negrito(JOGO*game, POINTERS * p){
         int x_local = 4;
         int lim = coluna; 
         int ultCarta = game->tamanho_pilha[pilha] - 1; 
-        print_pilha(p->end_pilhas[pilha],game->matriz, x_local, y_local, pilha, lim, ultCarta); 
+        if (ultCarta >= 0)
+                print_pilha(p->end_pilhas[pilha],game->matriz, x_local, y_local, pilha, lim, ultCarta); 
 
         wrefresh(p->end_pilhas[pilha]);
 }
@@ -276,8 +279,11 @@ void definePilhas(CARTAS matriz[10][17], int tamanho_pilha[10], WINDOW *janela_p
         int y_local = 3; 
         int x_local = 4;
         int ultCarta = tamanho_pilha[i] - 1; 
-        desenha_pilha(janela_pilha,matriz, x_local, y_local, i, ultCarta); 
-        x += 20;
+        if(ultCarta >= 0){
+                desenha_pilha(janela_pilha,matriz, x_local, y_local, i, ultCarta); 
+                x += 20;
+        }
+                
 
         wrefresh(janela_pilha[i]);
     }

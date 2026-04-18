@@ -6,6 +6,8 @@
 #include "prints.h" // É de onde a estrutura POINTERS vem
 
 
+void setup_test_cases(JOGO *game); 
+
 /**
  * @brief Função mestre de inicialização do jogo e da interface.
  * 
@@ -208,11 +210,11 @@ int ganhou_jogo(JOGO *game);
 /**
  * @brief Verifica com auxílio da verifica_sequencia_inteira, se existe 
  * uma sequência de Reis a Ás do mesmo naipe, e se sim, preenche a posição 
- * do naipe específico no array foundations, nesse caso entrega 1. Se não houve
- * nenhum foundation preenchido, entrega 0. 
+ * do naipe específico no array foundations, nesse caso entrega o índice da pilha.
+ *  Se não houve nenhum foundation preenchido, entrega -1. 
  * 
  * @param game Ponteiro para a estrutura principal do jogo.
- * @return int (Bool).
+ * @return int (Bool adaptado).
  */
 int verifica_foudations(JOGO *game);
 

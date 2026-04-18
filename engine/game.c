@@ -19,11 +19,13 @@ void init(POINTERS *janelas, JOGO *game){
     // Inicializa todas o jogo (variáveis)
     start_game(game);
 
+    setup_test_cases(game); 
+
     // Inicialização do baralho com as 52 cartas regulares
     inicializa_baralho(game);
 
     // Inicialização das colunas de cartas com cartas do baralho
-    inicializa_matriz(game);
+    //inicializa_matriz(game);
 
     
     
@@ -65,9 +67,40 @@ void ativaNcurses(){
     cbreak();
 }
 
+void setup_test_cases(JOGO *game) {
+    // 1. Reset total
+    for(int i = 0; i < 10; i++) game->tamanho_pilha[i] = 0;
+    for(int i = 0; i < 4; i++) game->foundations[i] = 0;
+
+    char naipes_teste[4] = {'C', 'E', 'O', 'P'}; 
+
+    // Preencher Pilhas 1, 2, 3 e 4 (índices 0, 1, 2, 3)
+    for (int p = 0; p < 4; p++) {
+        // Colocar do REI (13) no fundo até ao ÁS (1) perto do topo
+        for (int v = 0; v < 13; v++) {
+            game->matriz[p][v].valor = 13 - v; // Começa em 13, termina em 1
+            game->matriz[p][v].naipe = naipes_teste[p];
+        }
+        
+        // 2. A carta OBSTÁCULO (índice 13)
+        // Colocamos um 7 de Paus que "tapa" a sequência
+        game->matriz[p][13].valor = 7;
+        game->matriz[p][13].naipe = 'P';
+        
+        game->tamanho_pilha[p] = 14; 
+    }
+
+    // 3. Pilha 5 (Índice 4) - O "porto seguro" para mover os 7s
+    // Colocamos um 8 de Paus na base para podermos mover o 7 para lá
+    game->matriz[4][0].valor = 8;
+    game->matriz[4][0].naipe = 'P';
+    game->tamanho_pilha[4] = 1;
+
+    // Limpar o resto (6 a 10)
+    for (int i = 5; i < 10; i++) game->tamanho_pilha[i] = 0;
+}
 
 void start_game(JOGO *game){
-    
     // Número inicial de cartas no baralho 
     game->tamanho_baralho = 52; 
 
@@ -180,6 +213,18 @@ void loop_principal(JOGO *game, POINTERS *p, int jogando){
         // Verifica se podemos preencher algum dos foundations
         if( verifica_foudations(game)) {
             atualizaFoundations(game, p);
+
+            int i = verifica_foudations(game);
+
+            werase(p->end_pilhas[i]);
+            print_nomePilha(p->end_pilhas, i); 
+
+            int x_local = 4;
+            int y_local = 3;
+            int ultCarta = game->tamanho_pilha[i] - 1;
+            if (ultCarta >= 0) 
+                desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);
+            
         }
          
         if (ganhou_jogo(game)){ mvprintw(0,60,"Vitória!"); jogando = 0;}
@@ -309,16 +354,16 @@ int evalida_tamanhoSeq(JOGO *game){
 
 
 // Se todos os foundations estão ocupados, então a pessoa ganhou o jogo; 
-int ganhou_jogo(JOGO *game){
-    if ( game->foundations[0] 
-        && game->foundations[1] 
-        && game->foundations[2]
-        && game->foundations[3]) return 1;
-    return 0;
+int ganhou_jogo(JOGO *game) {
+    for (int i = 0; i < 4; i++) {
+        if (game->foundations[i] == 0) return 0; 
+    }
+
+    return 1; 
 }
 
 /*
-Retorna bool, que indica se algum foundation passou a 1 - true
+Retorna o numero da pilha, que indica se algum foundation passou a 1 - true
 ou False se nenhum foundation passou a está ocupado. 
 */
 int verifica_foudations(JOGO *game){
@@ -328,8 +373,8 @@ int verifica_foudations(JOGO *game){
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'E') game->foundations[1] = 1;
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'O') game->foundations[2] = 1;
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'P') game->foundations[3] = 1;
-        game->tamanho_pilha[pilha] -= 13; // Tira a sequência de 13 cartas da pilha;
-        return 1;
+        game->tamanho_pilha[pilha] = 0; // Tira a sequência de 13 cartas da pilha;
+        return pilha;
     }
-    return 0;
+    return -1;
 }
