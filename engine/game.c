@@ -56,6 +56,7 @@ void ativaNcurses(){
     init_color(COLOR_CYAN, 0, 1000, 1000);
     init_pair(3, COLOR_CYAN, COLOR_BLACK);
 
+    init_pair(5, COLOR_GREEN, COLOR_WHITE);
     init_pair(4, COLOR_YELLOW, COLOR_WHITE);
 
     // Ativa o leitor de eventos do Mouse 
@@ -88,7 +89,17 @@ void start_game(JOGO *game){
    
     inicializa_jogAtual(game);
 
-    game->hint.flag = 0; 
+    inicializa_hint(game);
+
+}
+
+void inicializa_hint(JOGO *game){
+    game->hint.flag = 0; // flag inicia a 0 (indica que está vazio o Hint)
+    for(int i = 0; i < 10; i++) {
+        game->hint.p_flags[i] = 0; 
+        for(int j = 0; j < 17; j++) game->hint.m_flags[i][j] = 0;
+    }
+
 }
 
 void inicializa_naipes(JOGO *game){
@@ -173,11 +184,15 @@ void processa_rato(JOGO *game, POINTERS *p){
 
 // Funções meio definidas da logica do jogo 
 
-
 void next_step (int r, int num_carta, JOGO *game, POINTERS *p){  
     // Click em alguma das pilhas 
     if (r >= 0 && r <= 10){
+        desativa_hint(game,p);
+        inicializa_hint(game);
+        //print_hint(game->hint);
         naPilha(r, num_carta, game, p);
+        
+        
     }
 
     // Click nos botões 
@@ -187,14 +202,57 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
 
     }
     if (r == 12){
-        undo(game);
         define_TodasJanelas(p, game); 
     }
-    /*
+    
     if (r == 11) {
         hint(game);
+        //print_hint(game->hint);
+        redesenha_pilhasHint(game->hint.flag, game, p);
+        
     }   
-    */
+    
+}
+
+void desativa_hint(JOGO *game, POINTERS *p){
+    if(game->hint.flag == -1) {
+            game->hint.flag = 1;
+            redesenha_pilhasHint(1, game, p);
+        }
+}
+
+void print_hint(struct HINT hint) {
+    // Imprime a flag geral do Hint na linha 8
+    mvprintw(1, 60, "HINT FLAG: %d      ", hint.flag);
+
+    // Imprime o estado das p_flags (quais pilhas têm jogadas) na linha 10
+    mvprintw(3, 60, "P_FLAGS: ");
+    for (int i = 0; i < 10; i++) {
+        printw("%d ", hint.p_flags[i]);
+    }
+    printw("          "); // Limpa resíduos na linha
+
+    // Imprime um resumo das m_flags (apenas onde houver 1 ou 2)
+    // Vamos listar as coordenadas das cartas que devem mudar de cor
+    mvprintw(5, 60, "M_FLAGS Ativas:          ");
+    int count = 0;
+    for (int p = 0; p < 10; p++) {
+        for (int c = 0; c < 17; c++) {
+            if (hint.m_flags[p][c] != 0) {
+                // Se houver muitas flags, vamos limitar o print para não sair do ecrã
+                if (count < 4) { 
+                    mvprintw(5 + count, 60, "P:%d C:%d Cor:%d    ", p, c, hint.m_flags[p][c]);
+                    count++;
+                }
+            }
+        }
+    }
+
+    // Se não houver nenhuma flag ativa, limpamos as linhas de debug
+    if (count == 0) {
+        for (int i = 0; i < 4; i++) mvprintw(13 + i, 60, "                    ");
+        mvprintw(13, 60, "Nenhuma carta marcada.");
+    }
 }
 
 void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
@@ -211,10 +269,12 @@ void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
             if (game->jog_atual.flag  == 1 && pilha != chegada) {
                 joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
                 registar_jogada(game);
+                
             } 
-            updateWin(game,p);
+            
+            update_pilha(game,p);
         }
-    printJogAtual(game);
+    //printJogAtual(game);
     refresh();  
 }
 

@@ -68,13 +68,13 @@ void print_carta(WINDOW *win, int x, int y, const char *s, char valor[3]); // Au
  * Dada a carta, chama as funções traduz_valor e traduz_simbolo, e com as informações
  * fornecidas por essas chama a print_carta. 
  * 
- * 
- * @param win Endereço da janela onde o print será feito o print
- * @param x Coluna de onde se iniciam os prints
- * @param y Linha de onde se iniam os print
- * @param c Carta a ser mostrada no ecrã
+ * @param int f Flag que se tiver a 0 seguimos o padão de cores normal - se não podemos usar as cores do hint.
+ * @param win Endereço da janela onde o print será feito o print.
+ * @param x Coluna de onde se iniciam os prints.
+ * @param y Linha de onde se iniam os print.
+ * @param c Carta a ser mostrada no ecrã.
  */
-void wprint_cartaInt(WINDOW *win, int x, int y, CARTAS c);
+void wprint_cartaInt(int f, WINDOW *win, int x, int y, CARTAS c);
 
 /**
  * @brief Função geral que faz print de uma crta inteira numa janela 
@@ -82,12 +82,13 @@ void wprint_cartaInt(WINDOW *win, int x, int y, CARTAS c);
  * faz print da carta na janela. 
  * Usada para as cartas da pilha. 
  * 
+ * @param int f Flag que se tiver a 0 seguimos o padão de cores normal - se não podemos usar as cores do hint.
  * @param win Endereço da janela onde o print será feito o prin
  * @param x Coluna de onde se iniciam os print
  * @param y Linha de onde se iniam os prin
  * @param c Carta a ser mostrada no ecr
  */
-void wprint_cartaTop(WINDOW *win, int x, int y, CARTAS c);
+void wprint_cartaTop(int f, WINDOW *win, int x, int y, CARTAS c);
 
 /**
  * @brief Define a janela de cada uma das pilhas e já desenha as cartas
@@ -170,16 +171,13 @@ WINDOW* defineButtonNgame();
  */
 void define_TodasJanelas (POINTERS *p, JOGO *game);
 
-// FUNÇÕES QUE ATUALIZAM AS JANELAS 
-
-void updateWin(JOGO *game, POINTERS *p);
 
 
  // HINT 
 void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p);
-void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, WINDOW *end_pilha, JOGO *game);
+void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, WINDOW *janela_pilha[], JOGO *game);
 
-// Atualiza as pilhas 
+// Atualiza as pilhas JOGADA 
 void update_pilha(JOGO *game, POINTERS *p);
 
 void redesenha_pilha(int pilha, CARTAS matriz[10][17], WINDOW *janela_pilha[], int tamanho_pilha[]);

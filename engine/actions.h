@@ -124,6 +124,8 @@ void hint(JOGO *game);
 
 
 void procura_destino(int y, int x, JOGO *game, int *flag); 
+int temHint(JOGO *game);
+
 
 /**
  * @brief Regista uma jogada no histórico para permitir o "Desfazer" (Undo).

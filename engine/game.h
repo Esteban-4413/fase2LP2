@@ -35,6 +35,14 @@ void ativaNcurses();
 void start_game(JOGO *game);
 
 /**
+ * @brief Função Auxiliar da start_game.
+ * Inicializa a struct Hint. 
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo onde o baralho está guardado.
+ */
+void inicializa_hint(JOGO *game);
+
+/**
  * @brief Função Auxiliar da start_game
  * Responsável por inicializar os naipes 
  * C - Copas  
@@ -142,6 +150,8 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p);
  */
 void naPilha(int r, int num_carta, JOGO *game, POINTERS *p);
 
+void desativa_hint(JOGO *game, POINTERS *p);
+
 /**
  * @brief Preenche a Jogada Atual.
  * Onde a flag da jog_Atual indica em que estado está a jogada.
@@ -183,5 +193,6 @@ int evalida_tamanhoSeq(JOGO *game);
 // Função para auxiliar debug - depois tem que ser apagada; 
 void printJogAtual (JOGO *game); 
 
+void print_hint(struct HINT hint); 
 
 #endif
