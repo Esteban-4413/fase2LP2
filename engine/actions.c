@@ -65,3 +65,11 @@ int tamanho_sequencia(int x, int y, JOGO *game){
     }
     return 1;
 }
+
+int verifica_sequencia_inteira(int x, int y, JOGO *game){
+    for(int y = 0; y < 10; y++){
+        if (tamanho_sequencia(0, y, game) == game->tamanho_pilha[y])
+        return y;
+    }
+    return -1;
+}
