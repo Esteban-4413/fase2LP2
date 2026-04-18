@@ -221,70 +221,27 @@ void desativa_hint(JOGO *game, POINTERS *p){
         }
 }
 
-void print_hint(struct HINT hint) {
-    // Imprime a flag geral do Hint na linha 8
-    mvprintw(1, 60, "HINT FLAG: %d      ", hint.flag);
-
-    // Imprime o estado das p_flags (quais pilhas têm jogadas) na linha 10
-    mvprintw(3, 60, "P_FLAGS: ");
-    for (int i = 0; i < 10; i++) {
-        printw("%d ", hint.p_flags[i]);
-    }
-    printw("          "); // Limpa resíduos na linha
-
-    // Imprime um resumo das m_flags (apenas onde houver 1 ou 2)
-    // Vamos listar as coordenadas das cartas que devem mudar de cor
-    mvprintw(5, 60, "M_FLAGS Ativas:          ");
-    int count = 0;
-    for (int p = 0; p < 10; p++) {
-        for (int c = 0; c < 17; c++) {
-            if (hint.m_flags[p][c] != 0) {
-                // Se houver muitas flags, vamos limitar o print para não sair do ecrã
-                if (count < 4) { 
-                    mvprintw(5 + count, 60, "P:%d C:%d Cor:%d    ", p, c, hint.m_flags[p][c]);
-                    count++;
-                }
-            }
-        }
-    }
-
-    // Se não houver nenhuma flag ativa, limpamos as linhas de debug
-    if (count == 0) {
-        for (int i = 0; i < 4; i++) mvprintw(13 + i, 60, "                    ");
-        mvprintw(13, 60, "Nenhuma carta marcada.");
-    }
-}
 
 void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
-    if (game->jog_atual.flag  == 1){
+    if(game->jog_atual.flag == 1 || game->jog_atual.flag == -1){
             inicializa_jogAtual(game);
         }
-        else if(game->jog_atual.flag  == -1){
-            inicializa_jogAtual(game);
-        }
-        else {
-            define_jogAtual(r, num_carta, game);
-            int pilha = game->jog_atual.pilha;
-            int chegada = game->jog_atual.chegada; 
-            if (game->jog_atual.flag  == 1 && pilha != chegada) {
-                joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
-                registar_jogada(game);
+    define_jogAtual(r, num_carta, game);
+    int pilha = game->jog_atual.pilha;
+    int chegada = game->jog_atual.chegada; 
+    if (game->jog_atual.flag  == 1 && pilha != chegada) {
+            joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
+            registar_jogada(game);
                 
-            } 
+        } 
             
-            update_pilha(game,p);
-        }
-    //printJogAtual(game);
+    update_pilha(game,p);
+  
+    
     refresh();  
 }
 
-void printJogAtual (JOGO *game){
-    mvprintw(2, 60 , "Pilha: %d ; Coluna: %d          ",game->jog_atual.pilha, game->jog_atual.coluna);
-    mvprintw(4, 60 , "Chegada: %d ; Flag: %d          ",game->jog_atual.chegada, game->jog_atual.flag);
-    mvprintw(6, 60 , "N: %d           ",game->jog_atual.n);
 
-
-}
 
 void define_jogAtual(int r, int num_carta, JOGO *game){
     if(game->jog_atual.flag == -2){

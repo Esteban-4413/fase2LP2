@@ -190,9 +190,6 @@ void jogAtual_segClick(int r, JOGO *game);
 int evalida_tamanhoSeq(JOGO *game);
 
 
-// Função para auxiliar debug - depois tem que ser apagada; 
-void printJogAtual (JOGO *game); 
 
-void print_hint(struct HINT hint); 
 
 #endif
