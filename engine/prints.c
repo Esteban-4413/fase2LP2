@@ -30,7 +30,7 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
        struct HINT hint = game->hint; 
        if (f == (-1)) {
                 for (int i = 0; i < 10; i++){
-                        if (hint->p_flags[i] == 1) alteraCor_carta(i, hint, game->matriz, game->tamanho_pilha[i], p->end_pilhas[i]);
+                        if (hint.p_flags[i] == 1) alteraCor_carta(i, game->matriz, game->tamanho_pilha[i], p->end_pilhas[i], game);
                 }
                 game->hint.flag = 1; 
        }
@@ -38,7 +38,7 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
                 for (int i = 0; i <10; i++){
                      int x_local = 4;
                      int y_local = 3;
-                     int ult_carta = game->tamanho_pilha[i] - 1;
+                     int ultCarta = game->tamanho_pilha[i] - 1;
                      desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
                      
                 }
@@ -49,14 +49,14 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
         
 }
 
-void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, int *end_pilha, JOGO *game){
+void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, WINDOW *end_pilha, JOGO *game){
         struct HINT hint = game->hint; 
         werase(end_pilha);
 
         print_nomePilha(end_pilha, pilha);
         int y_local = 3; 
         int x_local = 4;
-        int ult_carta = tamanho_pilha -1;
+        int ultCarta = tamanho_pilha -1;
         for (int j = 0; j < tamanho_pilha; j++){
                 if(hint.m_flags[pilha][j] == 1){
                         wattron(end_pilha, COLOR_PAIR(3)); 
@@ -65,14 +65,14 @@ void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, int *e
                         wattron(end_pilha, COLOR_PAIR(4)); 
                 }
                 if (j == ultCarta) 
-                        wprint_cartaInt(janela, y_local, x_local, matriz[i][j]);
+                        wprint_cartaInt(end_pilha, y_local, x_local, matriz[pilha][j]);
                 else 
-                        wprint_cartaTop(janela, y_local, x_local, matriz[i][j]);
+                        wprint_cartaTop(end_pilha, y_local, x_local, matriz[pilha][j]);
 
                 wattroff(end_pilha, COLOR_PAIR(3));
                 wattroff(end_pilha, COLOR_PAIR(4));
 
-                x+=2; 
+                x_local+=2; 
                 
         }
 

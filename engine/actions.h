@@ -35,6 +35,16 @@ struct JOGADA {
 };
 
 /**
+ * @brief Estrutura que vai guardar as informações do Hint 
+ * 
+ */
+struct HINT{
+    int flag;                             /**< Flag que indica se (-1) é que está pronto para ser usado, (1) já foi usado, e 0 vazio. */
+    int m_flags[NUM_COLUNAS][NUM_LINHAS]; /**< Array de ints que corresponde a cada carta da matriz e tem 1 se carta fica azul e 2 se amarela, e por fim 0 se fica normal. */
+    int p_flags[NUM_COLUNAS];             /**< Array de ints que indica para cada pilha, 0 se não tem cartas jogáveis na pilha, e 1 se tem cartas jogávis na pilha. */
+} ;
+
+/**
  * @brief Estrutura principal que guarda todo o estado atual da partida.
  * 
  */
@@ -51,15 +61,7 @@ typedef struct {
     struct HINT hint;                      /**< Informações sobre o Hint.*/
 } JOGO;
 
-/**
- * @brief Estrutura que vai guardar as informações do Hint 
- * 
- */
-typedef struct{
-    int flag;                             /**< Flag que indica se (-1) é que está pronto para ser usado, (1) já foi usado, e 0 vazio. */
-    int m_flags[NUM_COLUNAS][NUM_LINHAS]; /**< Array de ints que corresponde a cada carta da matriz e tem 1 se carta fica azul e 2 se amarela, e por fim 0 se fica normal. */
-    int p_flags[NUM_COLUNAS];             /**< Array de ints que indica para cada pilha, 0 se não tem cartas jogáveis na pilha, e 1 se tem cartas jogávis na pilha. */
-} HINT;
+
 
 /**
  * @brief Tira uma carta nova do baralho principal (bisca).
