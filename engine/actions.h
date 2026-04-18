@@ -48,7 +48,18 @@ typedef struct {
     struct JOGADA jog_atual;
     struct JOGADA historial[MAX_UNDO];      /**< Array que guarda as últimas jogadas feitas para o sistema de Undo. */
     int jogadas_historial;                 /**< Número atual de jogadas guardadas no histórico. */
+    struct HINT hint;                      /**< Informações sobre o Hint.*/
 } JOGO;
+
+/**
+ * @brief Estrutura que vai guardar as informações do Hint 
+ * 
+ */
+typedef struct{
+    int flag;                             /**< Flag que indica se (-1) é que está pronto para ser usado, (1) já foi usado, e 0 vazio. */
+    int m_flags[NUM_COLUNAS][NUM_LINHAS]; /**< Array de ints que corresponde a cada carta da matriz e tem 1 se carta fica azul e 2 se amarela, e por fim 0 se fica normal. */
+    int p_flags[NUM_COLUNAS];             /**< Array de ints que indica para cada pilha, 0 se não tem cartas jogáveis na pilha, e 1 se tem cartas jogávis na pilha. */
+} HINT;
 
 /**
  * @brief Tira uma carta nova do baralho principal (bisca).
@@ -109,15 +120,8 @@ int tamanho_sequencia(int x, int y, JOGO *game);
  */
 void hint(JOGO *game);
 
-/**
- * @brief Função auxiliar para o sistema de dicas.
- * Procura na matriz se existe alguma carta compatível com a carta atual do descarte.
- * 
- * @param game Ponteiro para o estado atual do jogo.
- * @param carta_descarte A carta que se encontra atualmente no topo do descarte.
- * @return int Retorna o índice da pilha onde está a jogada possível, ou -1 se não houver jogadas.
- */
-int auxiliar_hint(JOGO *game, CARTAS carta_descarte);
+
+void procura_destino(int y, int x, JOGO *game, int *flag); 
 
 /**
  * @brief Regista uma jogada no histórico para permitir o "Desfazer" (Undo).

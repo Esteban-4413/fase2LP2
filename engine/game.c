@@ -56,6 +56,8 @@ void ativaNcurses(){
     init_color(COLOR_CYAN, 0, 1000, 1000);
     init_pair(3, COLOR_CYAN, COLOR_BLACK);
 
+    init_pair(4, COLOR_YELLOW, COLOR_WHITE);
+
     // Ativa o leitor de eventos do Mouse 
     mousemask(ALL_MOUSE_EVENTS, NULL);
 
@@ -85,6 +87,8 @@ void start_game(JOGO *game){
     inicializa_naipes(game);
    
     inicializa_jogAtual(game);
+
+    game->hint.flag = 0; 
 }
 
 void inicializa_naipes(JOGO *game){

@@ -14,14 +14,17 @@
 void hint(JOGO *game){
     int flag;
     for(int y = 0; y < 10; y++){ /* Por cada pilha */
-        flag = 1;
+        flag = 0;
         for(int x = 0; x < game->tamanho_pilha[y] && flag; x++){ /* Por cada carta */
             /* Se há uma sequência que começa nessa mesma carta e vai
                 até ao fundo da pilha, procurar destinos para esta carta */
             if (tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x)
                 procura_destino(y, x, game, flag);
         }
+        
+        game->hint.p_flags[y] = flag;
     }
+    if (flag) game->hint.flag = -1;
 }
 
 void procura_destino(int y, int x, JOGO *game, int *flag){
@@ -29,17 +32,20 @@ void procura_destino(int y, int x, JOGO *game, int *flag){
         CARTAS carta_origem = game->matriz[y][x];
         CARTAS carta_destino = game->matriz[y2][game->tamanho_pilha[y2]-1];
         if (carta_origem.valor == carta_destino.valor - 1){ /* Se encontrar destino */
-            *flag = 0;
+            *flag = 1;
             /* Decide de que cor piscar */
             if (carta_origem.naipe == carta_destino.naipe){
-                continue; /*< Substituir por uma cor*/
+                game->hint.m_flags[y][x] = 1;
+                 /*< Carta fica AZUL */
             }
             else{
-                continue; /*< Substituir por uma OUTRA cor*/
+                game->hint.m_flags[y][x] = 2;
+                 /*< Carta fica AMARELA */
             }
         }
     }
 }
+
 void registar_jogada(JOGO *game){
    
     //para meter as jogadas mais recentes então empurramos as mais velhas fora do array (Se o histórico estiver cheio, apaga a jogada mais antiga)

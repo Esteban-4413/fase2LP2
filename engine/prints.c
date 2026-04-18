@@ -21,6 +21,61 @@
 void updateWin(JOGO *game, POINTERS *p){
         // Verifica os foundations e os atualiza 
         update_pilha(game, p);
+        int f = game->hint.flag;
+        redesenha_pilhasHint(f, game, p);
+}
+
+
+void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
+       struct HINT hint = game->hint; 
+       if (f == (-1)) {
+                for (int i = 0; i < 10; i++){
+                        if (hint->p_flags[i] == 1) alteraCor_carta(i, hint, game->matriz, game->tamanho_pilha[i], p->end_pilhas[i]);
+                }
+                game->hint.flag = 1; 
+       }
+       else if (f == 1){
+                for (int i = 0; i <10; i++){
+                     int x_local = 4;
+                     int y_local = 3;
+                     int ult_carta = game->tamanho_pilha[i] - 1;
+                     desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
+                     
+                }
+                game->hint.flag = 0; 
+       }
+       
+       
+        
+}
+
+void alteraCor_carta(int pilha, CARTAS matriz[10][17], int tamanho_pilha, int *end_pilha, JOGO *game){
+        struct HINT hint = game->hint; 
+        werase(end_pilha);
+
+        print_nomePilha(end_pilha, pilha);
+        int y_local = 3; 
+        int x_local = 4;
+        int ult_carta = tamanho_pilha -1;
+        for (int j = 0; j < tamanho_pilha; j++){
+                if(hint.m_flags[pilha][j] == 1){
+                        wattron(end_pilha, COLOR_PAIR(3)); 
+                }
+                else if (hint.m_flags[pilha][j] == 2){
+                        wattron(end_pilha, COLOR_PAIR(4)); 
+                }
+                if (j == ultCarta) 
+                        wprint_cartaInt(janela, y_local, x_local, matriz[i][j]);
+                else 
+                        wprint_cartaTop(janela, y_local, x_local, matriz[i][j]);
+
+                wattroff(end_pilha, COLOR_PAIR(3));
+                wattroff(end_pilha, COLOR_PAIR(4));
+
+                x+=2; 
+                
+        }
+
 }
 
 void update_pilha(JOGO *game, POINTERS *p){
@@ -38,7 +93,7 @@ void redesenha_pilha(int pilha, CARTAS matriz[10][17], WINDOW *janela_pilha[], i
         werase(janela_pilha[pilha]);
 
         print_nomePilha(janela_pilha, pilha); 
-        
+
         int y_local = 3; 
         int x_local = 4;
         int ultCarta = tamanho_pilha[pilha] - 1; 
@@ -83,22 +138,6 @@ void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local
         x_local += 2; // EMPILHAMENTO VERTICAL 
     }
 }
-/*
-void print_pilha(WINDOW *janela_pilha[],CARTAS matriz[10][17],  int x_local, int y_local, int i, int lim, int ultCarta){
-        for(int j = 0; j <= lim; j++) {
-                wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);
-                x_local += 2; // Ajusta conforme a lógica de empilhamento
-        }
-        wattron(janela_pilha[i], A_BOLD);
-        for(int j = lim; j <= ultCarta; j++) {
-            if (j == ultCarta) wprint_cartaInt(janela_pilha[i], y_local, x_local, matriz[i][j]);
-            else wprint_cartaTop(janela_pilha[i], y_local, x_local, matriz[i][j]);
-            x_local += 2; // Ajusta conforme a lógica de empilhamento
-        }
-        wattroff(janela_pilha[i], A_BOLD);
-        
-}
-*/
 
 //  ----- PRINCIPAIS PRINTS + DEFINIÇÃO DAS JANELAS/BOTÕES -----
 
