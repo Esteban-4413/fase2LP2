@@ -81,8 +81,6 @@ int coords_para_carta(int x, int pilha, JOGO *game){
     const int comprimento_carta = 5;
     
     if (x < offset) {
-        //mvprintw(2, 60 , "COLUNA :  -1      X = %d   ", x);
-        //refresh();
         return -1; /*< Clique fora da pilha (em cima dela)*/
     }
     int idx = (x - offset) / comprimento_cabeca_carta;
@@ -91,18 +89,11 @@ int coords_para_carta(int x, int pilha, JOGO *game){
         int cabeca_ultima_carta = offset + comprimento_cabeca_carta*(game->tamanho_pilha[pilha]-1);
         int pes_ultima_carta = cabeca_ultima_carta + comprimento_carta;
         if (x > pes_ultima_carta){
-            //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", idx, x);
-            //refresh();
             return -1;
         }
         else {
-            //mvprintw(6, 60 , "pes_ult :  %d      X = %d   ", pes_ultima_carta, x);
-            //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", game->tamanho_pilha[pilha] -1, x);
             return (game->tamanho_pilha[pilha] -1);
         }
     }
-    //mvprintw(2, 60 , "COLUNA :  %d      X = %d   ", idx, x);
-
-    //refresh();
     return idx;
 }

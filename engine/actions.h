@@ -124,6 +124,16 @@ void hint(JOGO *game);
 
 
 void procura_destino(int y, int x, JOGO *game, int *flag); 
+
+/**
+ * @brief Função que verifica se existe alguma jogada possível 
+ * para ser mostrada no hint, ao percorrer o array p_flags e verificar 
+ * se em alguma posição está um 1, que indica que existe carta para
+ * para ser movida na pilha. 
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @return int Bool
+ */
 int temHint(JOGO *game);
 
 

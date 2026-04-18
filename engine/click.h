@@ -23,7 +23,7 @@
  *
  * Depois de identificar o evento do rato, chama a função eclickValido,
  * para classificar se o click foi em algum lugar válido para o jogo.
- * @param game 
+ * @param game Ponteiro para a estrutura principal do jogo.
  * @param janelas Ponteiro para a estrutura que guarda todas as janelas (POINTERS).
  * @param num_carta Ponteiro de onde, caso preciso, deve guarda o número da carta na pilha que foi clicada.
  * @return int 
@@ -99,7 +99,15 @@ void tamanhojanela(WINDOW *win, int *xmin, int *xmax, int *ymin, int *ymax);
 
 
 
-
+/**
+ * @brief A partir da linha e da pilha onde foi feito o click, é
+ * calculado qual o índice da carta, na matriz, que foi clicada. 
+ * 
+ * @param y_click Linha na qual foi detectado o click.
+ * @param pilha Pilha na qual foi detectado o click.
+ * @param game Ponteiro para a estrutura principal do jogo.
+ * @return int Índice da carta que foi clicada, ou -1 em caso do click não ser em nenhuma carta da pilha. 
+ */
 int coords_para_carta(int y_click, int pilha, JOGO *game); 
 
 

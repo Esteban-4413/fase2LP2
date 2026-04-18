@@ -16,6 +16,37 @@
 #include "prints.h"
 #include "actions.h"
 
+// ----- ATUALIZA Foundations -----
+/*
+Foundations vão ser, nesta ordem:
+ 0 - Copas  
+ 1 - Espadas  
+ 2 - Ouros  
+ 3 - Paus
+*/
+void atualizaFoundations(JOGO *game, POINTERS *p){
+        CARTAS c; 
+        for(int i =0 ; i < 4; i++){
+                defineCarta(&c, i);
+                if (game->foundations[i]) atualizaF(p->end_foundations, c, i);
+        }
+} 
+
+void  defineCarta(CARTAS *c, int i){
+        c->valor = 1;
+        if(i == 0) c->valor = 'C';
+        else if (i == 1) c->valor = 'E';
+        else if (i == 2) c->valor = 'O';
+        else if (i == 3) c->valor = 'P';
+
+}
+
+void atualizaF(WINDOW *janela_foundations[], CARTAS c, int i){
+        werase(janela_foundations[i]);
+        mvwprintw(janela_foundations[i], 1, 1, "Foundation %d", i+1);
+        wprint_cartaInt(1, janela_foundations[i], 3,3, c);
+}
+
 
 // ----- ATUALIZA PILHAS DO HINT  -----
 

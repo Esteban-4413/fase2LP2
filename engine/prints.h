@@ -285,4 +285,9 @@ void pilha_negrito(JOGO*game, POINTERS * p);
  */
 void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local, int i, int lim, int ultCarta);
 
+// ----------------- Atualiza FOUNDATIONS -----------------
+void atualizaFoundations(JOGO *game, POINTERS *p);
+void  defineCarta(CARTAS *c, int i);
+void atualizaF(WINDOW *janela_foundations[], CARTAS c, int i);
+
 #endif
