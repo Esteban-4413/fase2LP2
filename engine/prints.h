@@ -177,14 +177,23 @@ void define_TodasJanelas (POINTERS *p, JOGO *game);
 
 /**
  * @brief  Verifica a flag do struct hint, e verifica se temos lá um hint para ser mostrado
- * e chama a função que o vai mostar (alteraCor_pilha), ou se já foi mostrado, 
- * chama a função que vai por as pilhas de volta a cor normal (desenha_pilha).
+ * e chama a função que o vai mostar (alteraCor_pilha), ou se já foi mostrado, chama a 
+ * função reset_pilhaHint. 
  * 
  * @param f Flag do hint que indica se o hint vai ser usado, ou já foi usado.
  * @param game Ponteiro para o estado atual do jogo.
  * @param p Pointer onde estão guadados os endereços das janelas. 
  */
 void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p);
+
+/**
+ * @brief Função auxiliar da redesenha_pilhasHint.
+ * Chama a função que vai por as pilhas de volta a cor normal (desenha_pilha). 
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @param p Pointer onde estão guadados os endereços das janelas.
+ */
+void reset_pilhaHint(JOGO *game, POINTERS *p);
 
 /**
  * @brief Função auxiliar da redesenha_pilhasHint. 

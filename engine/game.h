@@ -35,6 +35,13 @@ void ativaNcurses();
 void start_game(JOGO *game);
 
 /**
+ * @brief Inicializa o array dos foundations a zero em todas as posições. 
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo onde o baralho está guardado.
+ */
+void inicilaiza_foundations(JOGO *game);
+
+/**
  * @brief Função Auxiliar da start_game.
  * Inicializa a struct Hint. 
  * 
@@ -188,7 +195,25 @@ void jogAtual_segClick(int r, JOGO *game);
  */
 int evalida_tamanhoSeq(JOGO *game);
 
+/**
+ * @brief Função que percorre o array dos foundations, 
+ * e retorna 1 se todas as posições do array têm 1(true), caso 
+ * contrário, retorna 0 (false).
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo.
+ * @return int (Bool).
+ */
+int ganhou_jogo(JOGO *game);
 
-
+/**
+ * @brief Verifica com auxílio da verifica_sequencia_inteira, se existe 
+ * uma sequência de Reis a Ás do mesmo naipe, e se sim, preenche a posição 
+ * do naipe específico no array foundations, nesse caso entrega 1. Se não houve
+ * nenhum foundation preenchido, entrega 0. 
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo.
+ * @return int (Bool).
+ */
+int verifica_foudations(JOGO *game);
 
 #endif

@@ -86,11 +86,20 @@ void start_game(JOGO *game){
 
     // Inicialização dos naipes
     inicializa_naipes(game);
-   
+   // Inicializa a Jogada Atual
     inicializa_jogAtual(game);
-
+    // Inicializa o Hint
     inicializa_hint(game);
+    // Inicializa os foundations
+    inicilaiza_foundations(game);
 
+
+}
+
+void inicilaiza_foundations(JOGO *game){
+    for (int i = 0; i < 4; i++){
+        game->foundations[i] = 0;
+    }
 }
 
 void inicializa_hint(JOGO *game){
@@ -167,8 +176,13 @@ void define_maxdaPilha(int *max_pilha, int i){
 
 void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
-        int ch = getch();  
-        // if (ganhou_jogo(game)){ mvprintw(0,2,"Vitória!"); jogando = 0;}
+        int ch = getch(); 
+        // Verifica se podemos preencher algum dos foundations
+        if( verifica_foudations(game)) {
+            atualizaFoundations(game, p);
+        }
+         
+        if (ganhou_jogo(game)){ mvprintw(0,60,"Vitória!"); jogando = 0;}
         if (ch == 'q') jogando = 0; // Condição de saida do jogo, clicar no "q"
         else if (ch == KEY_MOUSE) processa_rato(game, p);
     }
@@ -202,6 +216,7 @@ void next_step (int r, int num_carta, JOGO *game, POINTERS *p){
 
     }
     if (r == 12){
+        undo(game);
         define_TodasJanelas(p, game); 
     }
     
@@ -292,11 +307,29 @@ int evalida_tamanhoSeq(JOGO *game){
     return 1;  
 }
 
+
+// Se todos os foundations estão ocupados, então a pessoa ganhou o jogo; 
+int ganhou_jogo(JOGO *game){
+    if ( game->foundations[0] 
+        && game->foundations[1] 
+        && game->foundations[2]
+        && game->foundations[3]) return 1;
+    return 0;
+}
+
 /*
-
-int ganhou_jogo(JOGO *game){}
-
-for(int y = 0; y < sizeof(game->tamanho_pilha)/4; y++){
-        if (tamanho_sequencia(0, y, game) == 13) return 1;
+Retorna bool, que indica se algum foundation passou a 1 - true
+ou False se nenhum foundation passou a está ocupado. 
+*/
+int verifica_foudations(JOGO *game){
+    int pilha = verifica_sequencia_inteira(game); 
+    if (pilha != -1){
+        if(game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'C') game->foundations[0] = 1;
+        else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'E') game->foundations[1] = 1;
+        else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'O') game->foundations[2] = 1;
+        else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'P') game->foundations[3] = 1;
+        game->tamanho_pilha[pilha] -= 13; // Tira a sequência de 13 cartas da pilha;
+        return 1;
     }
-    return 0;*/
+    return 0;
+}

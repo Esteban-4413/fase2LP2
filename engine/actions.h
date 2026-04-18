@@ -112,6 +112,7 @@ void joga(int y, int x, int y2, int x2, JOGO *game);
  */
 int tamanho_sequencia(int x, int y, JOGO *game);
 
+int verifica_sequencia_inteira(JOGO *game); 
 
 /**
  * @brief Fornece uma dica (hint) ao jogador.

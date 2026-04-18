@@ -26,7 +26,7 @@ Foundations vão ser, nesta ordem:
 */
 void atualizaFoundations(JOGO *game, POINTERS *p){
         CARTAS c; 
-        for(int i =0 ; i < 4; i++){
+        for(int i = 0 ; i < 4; i++){
                 defineCarta(&c, i);
                 if (game->foundations[i]) atualizaF(p->end_foundations, c, i);
         }
@@ -58,17 +58,21 @@ void redesenha_pilhasHint(int f, JOGO *game, POINTERS *p){
                
        }
        else if (f == 1){
-                for (int i = 0; i <10; i++){
+             reset_pilhaHint(game, p);   
+       }
+       
+       
+        
+}
+
+void reset_pilhaHint(JOGO *game, POINTERS *p){
+        for (int i = 0; i <10; i++){
                      int x_local = 4;
                      int y_local = 3;
                      int ultCarta = game->tamanho_pilha[i] - 1;
                      if (game->hint.p_flags[i] == 1) desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);   
                      
                 }
-       }
-       
-       
-        
 }
 
 void alteraCor_pilha(int pilha, int tamanho_pilha, WINDOW *janela_pilha[], JOGO *game){
