@@ -221,11 +221,9 @@ void loop_principal(JOGO *game, POINTERS *p, int jogando){
 // Verifica se podemos preencher algum dos foundations
 void foundations(JOGO *game, POINTERS *p){
     int i = verifica_foudations(game);
-    print_foundations(game);
     if( i != (-1)) {
 
         atualizaFoundations(game, p);
-        print_foundations(game);
 
         werase(p->end_pilhas[i]);
         print_nomePilha(p->end_pilhas, i); 
@@ -298,7 +296,6 @@ void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
     if (game->jog_atual.flag  == 1 && pilha != chegada) {
             joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
             foundations(game, p);
-            print_foundationss(game);
             registar_jogada(game);
                 
         } 
