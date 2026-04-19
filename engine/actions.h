@@ -62,19 +62,10 @@ typedef struct {
 } JOGO;
 
 
-
 /**
- * @brief Tira uma carta nova do baralho principal (bisca).
- * Move a carta do topo do baralho para o monte de descarte.
+ * @brief Verifica se a carta selecionada é possível de ser movida
  * 
- * @param game Ponteiro para o estado atual do jogo.
- */
-void bisca(JOGO *game);
-
-/**
- * @brief Valida se o movimento selecionado pelo jogador é legal.
- * 
- * @param r O identificador numérico da zona clicada (0-6 para as pilhas, 7 para o baralho, 8 Hint, 9 Undo, 10 Novo Jogo, 11 Descarte).
+ * @param r O identificador numérico da zona clicada (0-10 para as pilhas).
  * @param game Ponteiro para o estado atual do jogo.
  * @return int Retorna 1 se a jogada for válida, ou 0 se for inválida.
  */
@@ -82,36 +73,50 @@ int valida_jogada_origem(int y, int x, JOGO *game);
 
 
 /**
- * @brief 
+ * @brief Valida se o movimento selecionado pelo jogador é possível.
+ * Verificando se a carta no topo da pilha para o qual queremos mover é
+ * um valor acima da que vamos por na pilha. 
  * 
- * @param game 
- * @return int 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @return int (Bool).
  */
 int valida_jogada_destino(JOGO *game);
 
 
 /**
- * @brief 
+ * @brief Retira a(s) cartas da pilha de origem para 
+ * o fim da pilha de chegada, na matriz. 
  * 
- * @param y 
- * @param x 
- * @param y2 
- * @param x2 
- * @param game 
+ * @param y Índice da pilha de origem. 
+ * @param x Posição da carta /ou da primeira carta na pilha de origem.
+ * @param y2 Índice da pilha de chegada. 
+ * @param x2 Primeira posição vazia nap pilha de chegada. 
+ * @param game Ponteiro para o estado atual do jogo.
  */
 void joga(int y, int x, int y2, int x2, JOGO *game);
 
 
 /**
- * @brief 
+ * @brief Função que a partir de um y(pilha) e um x (cposição de uma carta
+ * específica na pilha) verifica o tamanho da sequência de cartas abaixo dela
+ * que podem ser movidas como um combo, ou seja, quantas cartas abaixo dessa tem 
+ * o mesmo naipe e o seu valor decresce um da anterio. 
  * 
- * @param x 
- * @param y 
- * @param game 
- * @return int 
+ * @param x Posição da carta /ou da primeira carta na pilha de origem.
+ * @param y Índice da pilha de origem. 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @return int Tamanho da sequência (retorna 1 quando não há sequência). 
  */
 int tamanho_sequencia(int x, int y, JOGO *game);
 
+/**
+ * @brief Verifica se existe em alguma das pilhas uma sequencia completa
+ * (Uma sequancia de Rei a Ás do mesmo naipe), e também se essa sequência 
+ * chega ao fim da pilha. 
+ * 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @return int Pilha onde existe a sequência ou (-1) se não existir nenhuma pilha com uma sequência completa.  
+ */
 int verifica_sequencia_inteira(JOGO *game); 
 
 /**
@@ -123,7 +128,19 @@ int verifica_sequencia_inteira(JOGO *game);
  */
 void hint(JOGO *game);
 
-
+/**
+ * @brief Auxiliar da hint. 
+ * Percorre para cada carta a procura, nas outra pilhas se existe uma carta no topo,
+ * um valor acima desta. No caso de ser do mesmo naipe coloca a flag, na carta para 1 
+ * que indica que a carta será mostrada a verde. E se a carta de destino encontrada 
+ * for de um naipe diferente, coloca a flag da carta de origem a 2, que indica que 
+ * ficará amarela. 
+ * 
+ * @param y Índice da pilha a ser verificada.
+ * @param x Índice da carta na pilha y. 
+ * @param game Ponteiro para o estado atual do jogo.
+ * @param flag Indica se existe alguma jogada possível na pilha. 
+ */
 void procura_destino(int y, int x, JOGO *game, int *flag); 
 
 /**

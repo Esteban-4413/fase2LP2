@@ -19,13 +19,12 @@ void init(POINTERS *janelas, JOGO *game){
     // Inicializa todas o jogo (variáveis)
     start_game(game);
 
-    setup_test_cases(game); 
 
     // Inicialização do baralho com as 52 cartas regulares
     inicializa_baralho(game);
 
     // Inicialização das colunas de cartas com cartas do baralho
-    //inicializa_matriz(game);
+    inicializa_matriz(game);
 
     
     
@@ -67,38 +66,7 @@ void ativaNcurses(){
     cbreak();
 }
 
-void setup_test_cases(JOGO *game) {
-    // 1. Reset total
-    for(int i = 0; i < 10; i++) game->tamanho_pilha[i] = 0;
-    for(int i = 0; i < 4; i++) game->foundations[i] = 0;
 
-    char naipes_teste[4] = {'C', 'E', 'O', 'P'}; 
-
-    // Preencher Pilhas 1, 2, 3 e 4 (índices 0, 1, 2, 3)
-    for (int p = 0; p < 4; p++) {
-        // Colocar do REI (13) no fundo até ao ÁS (1) perto do topo
-        for (int v = 0; v < 13; v++) {
-            game->matriz[p][v].valor = 13 - v; // Começa em 13, termina em 1
-            game->matriz[p][v].naipe = naipes_teste[p];
-        }
-        
-        // 2. A carta OBSTÁCULO (índice 13)
-        // Colocamos um 7 de Paus que "tapa" a sequência
-        game->matriz[p][13].valor = 7;
-        game->matriz[p][13].naipe = 'P';
-        
-        game->tamanho_pilha[p] = 14; 
-    }
-
-    // 3. Pilha 5 (Índice 4) - O "porto seguro" para mover os 7s
-    // Colocamos um 8 de Paus na base para podermos mover o 7 para lá
-    game->matriz[4][0].valor = 8;
-    game->matriz[4][0].naipe = 'P';
-    game->tamanho_pilha[4] = 1;
-
-    // Limpar o resto (6 a 10)
-    for (int i = 5; i < 10; i++) game->tamanho_pilha[i] = 0;
-}
 
 void start_game(JOGO *game){
     // Número inicial de cartas no baralho 

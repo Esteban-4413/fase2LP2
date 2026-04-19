@@ -295,8 +295,33 @@ void pilha_negrito(JOGO*game, POINTERS * p);
 void print_pilha(WINDOW *janela, CARTAS matriz[10][17], int x_local, int y_local, int i, int lim, int ultCarta);
 
 // ----------------- Atualiza FOUNDATIONS -----------------
+/**
+ * @brief Verifica se um foudation específica está a 1 no array, 
+ * e se está chama a (defineCarta) e com essa carta, chama a 
+ * (atualizaF) que faz print no foundation do Ás do naipe. 
+ * 
+ * @param game Ponteiro para a estrutura principal do jogo. 
+ * @param p Ponteiro para as janelas da interface gráfica.
+ */
 void atualizaFoundations(JOGO *game, POINTERS *p);
+
+/**
+ * @brief Com o índice do foundation no array, define a carta 
+ * para um Ás do naipe que corresponde aquele foundation. 
+ * 
+ * @param c Endereço onde guardaremos a carta que será mostrada no foundation.  
+ * @param i Índice do foundation no array de foundations. 
+ */
 void  defineCarta(CARTAS *c, int i);
+
+/**
+ * @brief Função que vai pegar na janela do foundation específico
+ * vai fazer werase e depois faz print da carta c no foundation. 
+ * 
+ * @param janela_foundations Array dos endereços das janelas dos foundations.
+ * @param c Carta que será feito o print.
+ * @param i Índice do foundation no array. 
+ */
 void atualizaF(WINDOW *janela_foundations[], CARTAS c, int i);
 
 
