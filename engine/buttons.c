@@ -15,8 +15,8 @@ void hint(JOGO *game){
 
     int flag;
     for(int y = 0; y < 10; y++){ /* Por cada pilha */
-        flag = 0;
-        for(int x = 0; x < game->tamanho_pilha[y] && !flag; x++){ /* Por cada carta */
+        flag = 1;
+        for(int x = 0; x < game->tamanho_pilha[y] && flag; x++){ /* Por cada carta */
             /* Se há uma sequência que começa nessa mesma carta e vai
                 até ao fundo da pilha, procurar destinos para esta carta */
             if (tamanho_sequencia(x, y, game) == game->tamanho_pilha[y] - x)
@@ -37,11 +37,11 @@ int temHint(JOGO *game){
 }
 
 void procura_destino(int y, int x, JOGO *game, int *flag){
-    for (int y2 = 0; y2 < 10; y2++){
+    for (int y2 = 0; y2 < 10 && flag; y2++){
         CARTAS carta_origem = game->matriz[y][x];
         CARTAS carta_destino = game->matriz[y2][game->tamanho_pilha[y2]-1];
         if (carta_origem.valor == carta_destino.valor - 1){ /* Se encontrar destino */
-            *flag = 1;
+            *flag = 0;
             /* Decide de que cor piscar */
             if (carta_origem.naipe == carta_destino.naipe){
                 game->hint.m_flags[y][x] = 1;
