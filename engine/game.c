@@ -211,12 +211,12 @@ void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
         int ch = getch(); 
         // Verifica se podemos preencher algum dos foundations
-        if( verifica_foudations(game) != (-1)) {
+        int i = verifica_foudations(game);
+        print_foundations(game);
+        if( i != (-1)) {
 
-            print_foundations(game);
             atualizaFoundations(game, p);
-
-            int i = verifica_foudations(game);
+            print_foundations(game);
 
             werase(p->end_pilhas[i]);
             print_nomePilha(p->end_pilhas, i); 
@@ -375,7 +375,7 @@ int verifica_foudations(JOGO *game){
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'E') game->foundations[1] = 1;
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'O') game->foundations[2] = 1;
         else if (game->matriz[pilha][game->tamanho_pilha[pilha]-1].naipe == 'P') game->foundations[3] = 1;
-        game->tamanho_pilha[pilha] = 0; // Tira a sequência de 13 cartas da pilha;
+        game->tamanho_pilha[pilha] -= 13; // Tira a sequência de 13 cartas da pilha;
         return pilha;
     }
     return -1;
