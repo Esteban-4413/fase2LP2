@@ -211,7 +211,9 @@ void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
         int ch = getch(); 
         // Verifica se podemos preencher algum dos foundations
-        if( verifica_foudations(game)) {
+        if( verifica_foudations(game) != (-1)) {
+
+            print_foundations(game);
             atualizaFoundations(game, p);
 
             int i = verifica_foudations(game);

@@ -16,6 +16,12 @@
 #include "prints.h"
 #include "actions.h"
 
+
+void print_foundations(JOGO *game){
+        mvprintw(0, 2, "FOUDATIONS : %d, %d, %d, %d ..", game->foundations[0], game->foundations[1], game->foundations[2], game->foundations[3]);
+        
+}
+
 // ----- ATUALIZA Foundations -----
 /*
 Foundations vão ser, nesta ordem:

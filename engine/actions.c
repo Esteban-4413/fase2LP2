@@ -71,7 +71,7 @@ int verifica_sequencia_inteira(JOGO *game){
     for(int y = 0; y < 10; y++){
         if(game->tamanho_pilha[y] >= 13){
             for (int x = 0; x < 5; x++){ // Se a pilha tem no máximo 17, é impossível ter 13 cartas a partir da a coluna 5.
-                if (tamanho_sequencia(x, y, game) == 13 && x+13 == game->tamanho_pilha[y] -1)
+                if (tamanho_sequencia(x, y, game) == 13 && x+12 == game->tamanho_pilha[y] -1)
                 return y;
             }
         }
