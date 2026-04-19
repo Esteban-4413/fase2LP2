@@ -299,6 +299,5 @@ void atualizaFoundations(JOGO *game, POINTERS *p);
 void  defineCarta(CARTAS *c, int i);
 void atualizaF(WINDOW *janela_foundations[], CARTAS c, int i);
 
-void print_foundations(JOGO *game);
 
 #endif

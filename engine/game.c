@@ -210,28 +210,32 @@ void define_maxdaPilha(int *max_pilha, int i){
 void loop_principal(JOGO *game, POINTERS *p, int jogando){
     while (jogando) {
         int ch = getch(); 
-        // Verifica se podemos preencher algum dos foundations
-        int i = verifica_foudations(game);
-        print_foundations(game);
-        if( i != (-1)) {
-
-            atualizaFoundations(game, p);
-            print_foundations(game);
-
-            werase(p->end_pilhas[i]);
-            print_nomePilha(p->end_pilhas, i); 
-
-            int x_local = 4;
-            int y_local = 3;
-            int ultCarta = game->tamanho_pilha[i] - 1;
-            if (ultCarta >= 0) 
-                desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);
-            
-        }
-         
         if (ganhou_jogo(game)){ mvprintw(0,60,"Vitória!"); jogando = 0;}
         if (ch == 'q') jogando = 0; // Condição de saida do jogo, clicar no "q"
-        else if (ch == KEY_MOUSE) processa_rato(game, p);
+        else if (ch == KEY_MOUSE) {
+            processa_rato(game, p);
+        }
+    }
+}
+
+// Verifica se podemos preencher algum dos foundations
+void foundations(JOGO *game, POINTERS *p){
+    int i = verifica_foudations(game);
+    print_foundations(game);
+    if( i != (-1)) {
+
+        atualizaFoundations(game, p);
+        print_foundations(game);
+
+        werase(p->end_pilhas[i]);
+        print_nomePilha(p->end_pilhas, i); 
+
+        int x_local = 4;
+        int y_local = 3;
+        int ultCarta = game->tamanho_pilha[i] - 1;
+        if (ultCarta >= 0) 
+            desenha_pilha(p->end_pilhas, game->matriz, x_local, y_local, i, ultCarta);
+            
     }
 }
 
@@ -293,6 +297,8 @@ void naPilha(int r, int num_carta, JOGO *game, POINTERS *p){
     int chegada = game->jog_atual.chegada; 
     if (game->jog_atual.flag  == 1 && pilha != chegada) {
             joga(pilha, game->jog_atual.coluna, chegada, game->tamanho_pilha[chegada], game);
+            foundations(game, p);
+            print_foundationss(game);
             registar_jogada(game);
                 
         } 

@@ -218,4 +218,6 @@ int ganhou_jogo(JOGO *game);
  */
 int verifica_foudations(JOGO *game);
 
+void foundations(JOGO *game, POINTERS *p);
+
 #endif
