@@ -1,0 +1,315 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+click.c File Reference}
+\hypertarget{click_8c}{}\label{click_8c}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/click.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/click.c}}
+
+
+Ficheiro onde estão definidas todas as funções relacionadas com o reconhecimento do click no ecrã.  
+
+
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \+\#include "{}click.\+h"{}}\newline
+{\ttfamily \+\#include "{}prints.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304}{verifica\+\_\+click}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}janelas, int \texorpdfstring{$\ast$}{*}num\+\_\+carta)
+\begin{DoxyCompactList}\small\item\em Identifica o evento do rato e o classifica. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{click_8c_a6d8783947f3cabde18947a6051afab66}{eclick\+Valido}} (int x, int y, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}janelas)
+\begin{DoxyCompactList}\small\item\em Atribui um int para cada tipo específico de click. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{click_8c_a1bebe819b692eb5cf732fd5685d6af54}{eclickna\+Pilha}} (int x, int y, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Função específica para verificar se o click foi em alguma das pilhas. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{e\+Janela}} (WINDOW \texorpdfstring{$\ast$}{*}win, int x, int y)
+\begin{DoxyCompactList}\small\item\em Verifica se coordenadas estão dentro de uma janela. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{click_8c_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}} (WINDOW \texorpdfstring{$\ast$}{*}win, int \texorpdfstring{$\ast$}{*}xmin, int \texorpdfstring{$\ast$}{*}xmax, int \texorpdfstring{$\ast$}{*}ymin, int \texorpdfstring{$\ast$}{*}ymax)
+\begin{DoxyCompactList}\small\item\em Calcula limites das coordenadas de uma janela específica. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{click_8c_a6fa6537e62d6292d21713b5698bfd570}{coords\+\_\+para\+\_\+carta}} (int x, int pilha, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em A partir da linha e da pilha onde foi feito o click, é calculado qual o índice da carta, na matriz, que foi clicada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Ficheiro onde estão definidas todas as funções relacionadas com o reconhecimento do click no ecrã. 
+
+\begin{DoxyAuthor}{Author}
+Esteban Yepez (a116272), Fernanda Cidrim (a116274), Martim Sousa (a113572) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/03-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{click_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{click_8c_a6fa6537e62d6292d21713b5698bfd570}\index{click.c@{click.c}!coords\_para\_carta@{coords\_para\_carta}}
+\index{coords\_para\_carta@{coords\_para\_carta}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{coords\_para\_carta()}{coords\_para\_carta()}}
+{\footnotesize\ttfamily \label{click_8c_a6fa6537e62d6292d21713b5698bfd570} 
+int coords\+\_\+para\+\_\+carta (\begin{DoxyParamCaption}\item[{int}]{y\+\_\+click}{, }\item[{int}]{pilha}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+A partir da linha e da pilha onde foi feito o click, é calculado qual o índice da carta, na matriz, que foi clicada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+\_\+click} & Linha na qual foi detectado o click. \\
+\hline
+{\em pilha} & Pilha na qual foi detectado o click. \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Índice da carta que foi clicada, ou -\/1 em caso do click não ser em nenhuma carta da pilha. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00078}{78}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ 14;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ comprimento\_cabeca\_carta\ =\ 2;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ comprimento\_carta\ =\ 5;}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ offset)\ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;\ \textcolor{comment}{/*<\ Clique\ fora\ da\ pilha\ (em\ cima\ dela)*/}}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ (x\ -\/\ offset)\ /\ comprimento\_cabeca\_carta;}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/\ 1)\{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cabeca\_ultima\_carta\ =\ offset\ +\ comprimento\_cabeca\_carta*(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pes\_ultima\_carta\ =\ cabeca\_ultima\_carta\ +\ comprimento\_carta;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ pes\_ultima\_carta)\{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/1);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{return}\ idx;}
+\DoxyCodeLine{00099\ \}}
+
+\end{DoxyCode}
+\Hypertarget{click_8c_a1bebe819b692eb5cf732fd5685d6af54}\index{click.c@{click.c}!eclicknaPilha@{eclicknaPilha}}
+\index{eclicknaPilha@{eclicknaPilha}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{eclicknaPilha()}{eclicknaPilha()}}
+{\footnotesize\ttfamily \label{click_8c_a1bebe819b692eb5cf732fd5685d6af54} 
+int eclickna\+Pilha (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Função específica para verificar se o click foi em alguma das pilhas. 
+
+Verifica pilha a pilha se o click pertence a aquela pilha, chamando a função e\+Janela com o endereço de cada uma das pilhas. Se estiver em alguma das pilhas, vai retornar exatamente o int que corresponde ao índice dessa pilha no array "{}janela\+\_\+pilha"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coluna onde ocorreu o click \\
+\hline
+{\em y} & Linha onde ocorreu o click \\
+\hline
+{\em janela\+\_\+pilha} & Array onde estão guardados os endereços das janelas das pilhas \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Retorna o indice da pilha, ou -\/1 caso o click não se enquandre em nenhuma das pilhas 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janela\_pilha[i],\ x,\ y))\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00051\ \}}
+
+\end{DoxyCode}
+\Hypertarget{click_8c_a6d8783947f3cabde18947a6051afab66}\index{click.c@{click.c}!eclickValido@{eclickValido}}
+\index{eclickValido@{eclickValido}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{eclickValido()}{eclickValido()}}
+{\footnotesize\ttfamily \label{click_8c_a6d8783947f3cabde18947a6051afab66} 
+int eclick\+Valido (\begin{DoxyParamCaption}\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{janelas}{}\end{DoxyParamCaption})}
+
+
+
+Atribui um int para cada tipo específico de click. 
+
+A lógica é:\+ Para as pilhas, se o click for na pilha vai retornar o próprio número da pilha ( Ou seja, um número de 0 a 10) Se for:\+ Botão Hint -\/\texorpdfstring{$>$}{>} 11 Botão Undo -\/\texorpdfstring{$>$}{>} 12 Botão New\+Game -\/\texorpdfstring{$>$}{>} 13
+
+Definindo se o click se enquadra, ou não, em alguma destas janelas com o auxilio da função eclickna\+Pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coluna onde ocorreu o click \\
+\hline
+{\em y} & Linha onde ocorreu o click \\
+\hline
+{\em janelas} & Ponteiro para a estrutura que guarda todas as janelas (\doxylink{struct_p_o_i_n_t_e_r_s}{POINTERS}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Indentifica onde foi feito o click 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00028}{28}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{end\_hint}},\ x,\ y))\ \textcolor{keywordflow}{return}\ 11;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (12);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{end\_ngame}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (13);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{click_8c_a1bebe819b692eb5cf732fd5685d6af54}{eclicknaPilha}}(x,\ y,\ janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}});\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verifica\ as\ pilhas\ }}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{00035\ \textcolor{comment}{\ \ \ \ \ \ \ \ Vai\ passar\ a\ dar\ de\ 0\ a\ 10\ correpondendo\ ao\ número\ da\ pilha\ }}
+\DoxyCodeLine{00036\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\Hypertarget{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}\index{click.c@{click.c}!eJanela@{eJanela}}
+\index{eJanela@{eJanela}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{eJanela()}{eJanela()}}
+{\footnotesize\ttfamily \label{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7} 
+int e\+Janela (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{int}]{x}{, }\item[{int}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se coordenadas estão dentro de uma janela. 
+
+Recebe o endereço da janela, que queremos testar para com ele usar a função tamanho\+\_\+janela. E com essa função obtemos nas variáveis "{}xmin, xmax, ymin, ymax"{} , os limites para enquadra as coordenadas do click, e verificar se está contido no intervalo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & Endereço da janela que queremos testar \\
+\hline
+{\em x} & Coluna onde ocorreu o click \\
+\hline
+{\em y} & Linha onde ocorreu o click \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ xmin,\ xmax,\ ymin,\ ymax;}
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{click_8c_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}}(win,\ \&xmin,\ \&xmax,\ \&ymin,\ \&ymax);}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ x\ tem\ de\ estar\ ENTRE\ o\ min\ e\ o\ max}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ >=\ xmin)\ \&\&\ (x\ <=\ xmax)\ \&\&\ (y\ >=\ ymin)\ \&\&\ (y\ <=\ ymax))\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+\Hypertarget{click_8c_adb962a066bc9f2db379ce6268470620f}\index{click.c@{click.c}!tamanhojanela@{tamanhojanela}}
+\index{tamanhojanela@{tamanhojanela}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{tamanhojanela()}{tamanhojanela()}}
+{\footnotesize\ttfamily \label{click_8c_adb962a066bc9f2db379ce6268470620f} 
+void tamanhojanela (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{xmin}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{xmax}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ymin}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ymax}{}\end{DoxyParamCaption})}
+
+
+
+Calcula limites das coordenadas de uma janela específica. 
+
+Recebe da e\+Janela os endereços das variáveis, e nelas guarda, com o auxilio das funções do ncurses -\/\texorpdfstring{$>$}{>} getbegyx, que gaurada em ymin, e xmin, respectivamente, a linha e a coluna onde se encontra o ponto superior esquerdo da janela -\/\texorpdfstring{$>$}{>} getmaxyx, que dá a altura e largura da janela E com os valores da altura e largura, calculamos o ymax (linha máxima) e o xmax (coluna máxima);
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & \\
+\hline
+{\em xmin} & Endereço recebido da e\+Janela para guardar o valor mínimo da coluna \\
+\hline
+{\em xmax} & Endereço recebido da e\+Janela para guardar o valor máximo da coluna \\
+\hline
+{\em ymin} & Endereço recebido da e\+Janela para guardar o valor mínimo da linha \\
+\hline
+{\em ymax} & Endereço recebido da e\+Janela para guardar o valor máximo da linha \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00064}{64}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ altura,\ largura;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ guarda\ no\ x\ e\ no\ y\ as\ coordenadas\ onde\ se\ encontra\ o\ ponto\ superior\ esquerdo\ da\ janela}}
+\DoxyCodeLine{00068\ \ \ \ \ getbegyx(win,\ *ymin,\ *xmin);\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//guarda\ no\ x\ e\ no\ y\ as\ dimensões\ da\ janela}}
+\DoxyCodeLine{00071\ \ \ \ \ getmaxyx(win,\ altura,\ largura);\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ *ymax\ =\ *ymin\ +\ altura\ -\/\ 1;\ \textcolor{comment}{//\ -\/1\ porque\ as\ coordenadas\ são\ inclusivas}}
+\DoxyCodeLine{00074\ \ \ \ \ *xmax\ =\ *xmin\ +\ largura\ -\/\ 1;\ }
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+\Hypertarget{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304}\index{click.c@{click.c}!verifica\_click@{verifica\_click}}
+\index{verifica\_click@{verifica\_click}!click.c@{click.c}}
+\doxysubsubsection{\texorpdfstring{verifica\_click()}{verifica\_click()}}
+{\footnotesize\ttfamily \label{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304} 
+int verifica\+\_\+click (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{janelas}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+carta}{}\end{DoxyParamCaption})}
+
+
+
+Identifica o evento do rato e o classifica. 
+
+Depois de identificar o evento do rato, chama a função eclick\+Valido, para classificar se o click foi em algum lugar válido para o jogo. 
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em janelas} & Ponteiro para a estrutura que guarda todas as janelas (\doxylink{struct_p_o_i_n_t_e_r_s}{POINTERS}). \\
+\hline
+{\em num\+\_\+carta} & Ponteiro de onde, caso preciso, deve guarda o número da carta na pilha que foi clicada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{click_8c_source_l00017}{17}} of file \doxymbox{\hyperlink{click_8c_source}{click.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ MEVENT\ event;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (getmouse(\&event)\ ==\ OK)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \doxymbox{\hyperlink{click_8c_a6d8783947f3cabde18947a6051afab66}{eclickValido}}(event.x,\ event.y,\ janelas);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r\ >=\ 0\ \&\&\ r\ <\ 11)\ *num\_carta\ =\ \doxymbox{\hyperlink{click_8c_a6fa6537e62d6292d21713b5698bfd570}{coords\_para\_carta}}(event.y,\ r,\ game);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00025\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,86 @@
+\doxysection{prints.\+h}
+\hypertarget{prints_8h_source}{}\label{prints_8h_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.h@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.h}}
+\doxymbox{\hyperlink{prints_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{actions_8h}{actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00013}00013\ \textcolor{preprocessor}{\#ifndef\ PRINTS\_H}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00014}00014\ \textcolor{preprocessor}{\#define\ PRINTS\_H}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <ncurses.h>}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00018}00018\ \textcolor{comment}{//\ Typedef\ que\ guardará\ todos\ os\ endereços\ das\ janelas\ }}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00025}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{00025}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00026}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{00026}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[10];\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00027}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{00027}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{end\_foundations}}[4];\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00028}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{00028}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{end\_hint}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00029}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{00029}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00030}\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{00030}}\ \ \ \ \ WINDOW\ *\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{end\_ngame}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00032}00032\ \}\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ ;\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00042}00042\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{prints_8h_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(\textcolor{keywordtype}{char}\ naipe);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00052}00052\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(\textcolor{keywordtype}{char}\ *valor,\ \textcolor{keywordtype}{char}\ v);\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00064}00064\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a892c3b2458c9e7a053626391921727c3}{print\_carta}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s,\ \textcolor{keywordtype}{char}\ valor[3]);\ \textcolor{comment}{//\ Auxiliar\ só\ da\ wprint\_cartaInt}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00077}00077\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(\textcolor{keywordtype}{int}\ f,\ WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00091}00091\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(\textcolor{keywordtype}{int}\ f,\ WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00103}00103\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a3b81ebf4200b2923946013ceac3dccd7}{definePilhas}}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \textcolor{keywordtype}{int}\ tamanho\_pilha[10],\ WINDOW\ *janela\_pilha[]);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00112}00112\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}\ (WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00126}00126\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_aef2f993cd976a9ffe6c0f6ad6b57b979}{desenha\_pilha}}\ (WINDOW\ *janela\_pilha[],\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ ult\_carta);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00135}00135\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a09aa428fdf642b060c938a5bbf8682d7}{defineFoundations}}(WINDOW\ *janela\_foundations[}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00136}00136\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00137}00137\ ]);\ \textcolor{comment}{//\ a\ funcao\ na\ linha\ 82\ de\ prints.c\ recebe\ como\ argumento\ o\ tamanho\ do\ baralho}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00145}00145\ WINDOW*\ \doxymbox{\hyperlink{prints_8h_a9faf09d9187a172514a8f95bfa64a61e}{defineButtonHint}}();}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00153}00153\ WINDOW*\ \doxymbox{\hyperlink{prints_8h_a5e459375cc71242bd0edaf48ac42ce25}{defineButtonUndo}}();}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00161}00161\ WINDOW*\ \doxymbox{\hyperlink{prints_8h_a690b188121da1b8a5d875f9d94493aaf}{defineButtonNgame}}();}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00173}00173\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a51af124fd06bfc7f2e2004aedefb9729}{define\_TodasJanelas}}\ (\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00176}00176\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ HINT\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00187}00187\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a4a0ff4a5413f60d307c9983fe1e66d5e}{redesenha\_pilhasHint}}(\textcolor{keywordtype}{int}\ f,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00196}00196\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_ab171a3c1d96278ab1b58e168bd7250c7}{reset\_pilhaHint}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00209}00209\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_aab880ef78b9a96c9a54dd00dbaa189cd}{alteraCor\_pilha}}(\textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ WINDOW\ *janela\_pilha[],\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00229}00229\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a81c8b190f670db39ce848d31fe41a876}{alteraCor\_carta}}(\textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ ultCarta,\ WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00246}00246\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(\textcolor{keywordtype}{int}\ f,\ \textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ ultCarta,\ WINDOW\ *janela\_pilha[],\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00248}00248\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Atualiza\ as\ pilhas\ JOGADA\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00258}00258\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_af2192e94d6f6bf119e51612e66dec9ea}{update\_pilha}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00270}00270\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(\textcolor{keywordtype}{int}\ pilha,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ tamanho\_pilha[]);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00280}00280\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_a8229094269183e875350b84c2f4d193c}{pilha\_negrito}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}*game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *\ p);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00295}00295\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_ac9804c7b093f450ebb71030121d6c65f}{print\_pilha}}(WINDOW\ *janela,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ lim,\ \textcolor{keywordtype}{int}\ ultCarta);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00297}00297\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Atualiza\ FOUNDATIONS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00306}00306\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_ab05f9c3e9d4ede8fd77eb32d18815275}{atualizaFoundations}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00315}00315\ \textcolor{keywordtype}{void}\ \ \doxymbox{\hyperlink{prints_8h_a146d3f63e4de3aa27265db317e32a3b6}{defineCarta}}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *c,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00325}00325\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8h_aed1674ee65fa8faf9280486e59313087}{atualizaF}}(WINDOW\ *janela\_foundations[],\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c,\ \textcolor{keywordtype}{int}\ i);}
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{prints_8h_source_l00328}00328\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

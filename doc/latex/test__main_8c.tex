@@ -1,0 +1,163 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+tests/\+test\+\_\+main.c File Reference}
+\hypertarget{test__main_8c}{}\label{test__main_8c}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_main.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_main.c}}
+
+
+Orquestrador principal dos testes unitários do jogo Solitário.  
+
+
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$CUnit/\+\+CUnit.\+h$>$}\newline
+{\ttfamily \+\#include $<$CUnit/\+\+Basic.\+h$>$}\newline
+{\ttfamily \+\#include "{}tests.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{test__main_8c_a0d92495e3f0756affdd86977c465e56f}{setup\+\_\+suite\+\_\+actions}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa e agrupa os testes referentes à mecânica do jogo (\doxylink{actions_8c}{actions.\+c}). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__main_8c_a45c8869b53793c099e6260d5655cad4b}{setup\+\_\+suite\+\_\+game}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa e agrupa os testes referentes ao estado geral da partida (\doxylink{game_8c_source}{game.\+c}). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__main_8c_ae511a58ce36aae24ea68a12259c7e9d2}{setup\+\_\+suite\+\_\+buttons}} (void)
+\begin{DoxyCompactList}\small\item\em Inicializa e agrupa os testes referentes às funcionalidades extra (\doxylink{buttons_8c}{buttons.\+c}). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{test__main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Função principal que executa a bateria de testes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Orquestrador principal dos testes unitários do jogo Solitário. 
+
+\begin{DoxyAuthor}{Author}
+Esteban Yepez (a116272), Fernanda Cidrim (a116274), Martim Sousa (a113572)
+\end{DoxyAuthor}
+Este ficheiro inicializa o motor do CUnit e delega a criação das suites para funções auxiliares, garantindo uma baixa complexidade ciclomática. \begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/04-\/19 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{test__main_8c_source}{test\+\_\+main.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{test__main_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{test\_main.c@{test\_main.c}!main@{main}}
+\index{main@{main}!test\_main.c@{test\_main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{test__main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal que executa a bateria de testes. 
+
+\begin{DoxyReturn}{Returns}
+int Retorna 0 se os testes correram sem erros de sistema. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{test__main_8c_source_l00056}{56}} of file \doxymbox{\hyperlink{test__main_8c_source}{test\+\_\+main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ 1.\ Inicia\ o\ motor\ do\ CUnit}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (CUE\_SUCCESS\ !=\ CU\_initialize\_registry())\ \textcolor{keywordflow}{return}\ CU\_get\_error();}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ 2.\ Define\ o\ nível\ de\ detalhe\ no\ terminal}}
+\DoxyCodeLine{00061\ \ \ \ \ CU\_basic\_set\_mode(CU\_BRM\_VERBOSE);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ 3.\ Monta\ as\ Suites\ usando\ as\ funções\ auxiliares}}
+\DoxyCodeLine{00064\ \ \ \ \ \doxymbox{\hyperlink{test__main_8c_a0d92495e3f0756affdd86977c465e56f}{setup\_suite\_actions}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \doxymbox{\hyperlink{test__main_8c_a45c8869b53793c099e6260d5655cad4b}{setup\_suite\_game}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \doxymbox{\hyperlink{test__main_8c_ae511a58ce36aae24ea68a12259c7e9d2}{setup\_suite\_buttons}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ 4.\ Executa\ os\ testes\ e\ limpa\ a\ memória}}
+\DoxyCodeLine{00069\ \ \ \ \ CU\_basic\_run\_tests();}
+\DoxyCodeLine{00070\ \ \ \ \ CU\_cleanup\_registry();}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{return}\ CU\_get\_error();}
+\DoxyCodeLine{00072\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__main_8c_a0d92495e3f0756affdd86977c465e56f}\index{test\_main.c@{test\_main.c}!setup\_suite\_actions@{setup\_suite\_actions}}
+\index{setup\_suite\_actions@{setup\_suite\_actions}!test\_main.c@{test\_main.c}}
+\doxysubsubsection{\texorpdfstring{setup\_suite\_actions()}{setup\_suite\_actions()}}
+{\footnotesize\ttfamily \label{test__main_8c_a0d92495e3f0756affdd86977c465e56f} 
+void setup\+\_\+suite\+\_\+actions (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa e agrupa os testes referentes à mecânica do jogo (\doxylink{actions_8c}{actions.\+c}). 
+
+
+
+Definition at line \doxymbox{\hyperlink{test__main_8c_source_l00020}{20}} of file \doxymbox{\hyperlink{test__main_8c_source}{test\+\_\+main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ CU\_pSuite\ pSuite\ =\ CU\_add\_suite(\textcolor{stringliteral}{"{}Suite\_Actions"{}},\ NULL,\ NULL);}
+\DoxyCodeLine{00022\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Movimento"{}},\ \doxymbox{\hyperlink{test__actions_8c_ad7208a6e4a78fda23ba3f01468748002}{testar\_joga}});}
+\DoxyCodeLine{00023\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Valida\ Origem"{}},\ \doxymbox{\hyperlink{test__actions_8c_aed2dff57e09feff5e9460c08dc500385}{testar\_valida\_origem}});}
+\DoxyCodeLine{00024\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Valida\ Destino"{}},\ \doxymbox{\hyperlink{test__actions_8c_a9350b91f0b1184adc4e4e2ffb4358aec}{testar\_valida\_destino}});}
+\DoxyCodeLine{00025\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Tam.\ Sequencia"{}},\ \doxymbox{\hyperlink{test__actions_8c_a6a64632c62cc2d65e26431621646ecaf}{testar\_tamanho\_sequencia}});}
+\DoxyCodeLine{00026\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Sem\ Seq\ Inteira"{}},\ \doxymbox{\hyperlink{test__actions_8c_ae41857c754f586cb20df5d56bbde121f}{testar\_verifica\_sem\_sequencia}});\ }
+\DoxyCodeLine{00027\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Com\ Seq\ Inteira"{}},\ \doxymbox{\hyperlink{test__actions_8c_a3babb4851a27502129541b17c14de8da}{testar\_verifica\_com\_sequencia}});\ }
+\DoxyCodeLine{00028\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__main_8c_ae511a58ce36aae24ea68a12259c7e9d2}\index{test\_main.c@{test\_main.c}!setup\_suite\_buttons@{setup\_suite\_buttons}}
+\index{setup\_suite\_buttons@{setup\_suite\_buttons}!test\_main.c@{test\_main.c}}
+\doxysubsubsection{\texorpdfstring{setup\_suite\_buttons()}{setup\_suite\_buttons()}}
+{\footnotesize\ttfamily \label{test__main_8c_ae511a58ce36aae24ea68a12259c7e9d2} 
+void setup\+\_\+suite\+\_\+buttons (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa e agrupa os testes referentes às funcionalidades extra (\doxylink{buttons_8c}{buttons.\+c}). 
+
+
+
+Definition at line \doxymbox{\hyperlink{test__main_8c_source_l00046}{46}} of file \doxymbox{\hyperlink{test__main_8c_source}{test\+\_\+main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ CU\_pSuite\ pSuite\ =\ CU\_add\_suite(\textcolor{stringliteral}{"{}Suite\_Buttons"{}},\ NULL,\ NULL);}
+\DoxyCodeLine{00048\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Registo"{}},\ \doxymbox{\hyperlink{test__buttons_8c_af30f7aa28f98c68de8ceed9fe86a3339}{testar\_registar\_jogada}});}
+\DoxyCodeLine{00049\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Undo"{}},\ \doxymbox{\hyperlink{test__buttons_8c_ad623670a772ecc11f593c694b65a30f2}{testar\_undo}});}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__main_8c_a45c8869b53793c099e6260d5655cad4b}\index{test\_main.c@{test\_main.c}!setup\_suite\_game@{setup\_suite\_game}}
+\index{setup\_suite\_game@{setup\_suite\_game}!test\_main.c@{test\_main.c}}
+\doxysubsubsection{\texorpdfstring{setup\_suite\_game()}{setup\_suite\_game()}}
+{\footnotesize\ttfamily \label{test__main_8c_a45c8869b53793c099e6260d5655cad4b} 
+void setup\+\_\+suite\+\_\+game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa e agrupa os testes referentes ao estado geral da partida (\doxylink{game_8c_source}{game.\+c}). 
+
+
+
+Definition at line \doxymbox{\hyperlink{test__main_8c_source_l00033}{33}} of file \doxymbox{\hyperlink{test__main_8c_source}{test\+\_\+main.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ CU\_pSuite\ pSuite\ =\ CU\_add\_suite(\textcolor{stringliteral}{"{}Suite\_Game"{}},\ NULL,\ NULL);}
+\DoxyCodeLine{00035\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Start"{}},\ \doxymbox{\hyperlink{test__game_8c_a2b7183cf6a7edd81bb8ce7b72d84594d}{testar\_start\_game}});}
+\DoxyCodeLine{00036\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Reset"{}},\ \doxymbox{\hyperlink{test__game_8c_a6e13ea02ed438d031737dfcebaeac3a0}{testar\_inicializa\_jogAtual}});}
+\DoxyCodeLine{00037\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Baralho"{}},\ \doxymbox{\hyperlink{test__game_8c_a9d788bc7eb4b8822a88b87a46fa00537}{testar\_inicializa\_baralho}});}
+\DoxyCodeLine{00038\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Matriz"{}},\ \doxymbox{\hyperlink{test__game_8c_ac88bba48bd762f81a6d66d501686c93b}{testar\_inicializa\_matriz}});}
+\DoxyCodeLine{00039\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Status"{}},\ testar\_define\_jog\_atual);}
+\DoxyCodeLine{00040\ \ \ \ \ CU\_add\_test(pSuite,\ \textcolor{stringliteral}{"{}Topo"{}},\ testar\_evalida\_tamanho\_seq);}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}

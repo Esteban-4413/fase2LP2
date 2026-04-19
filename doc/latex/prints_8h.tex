@@ -1,0 +1,1123 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+prints.h File Reference}
+\hypertarget{prints_8h}{}\label{prints_8h}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.h@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.h}}
+
+
+Declarações das funções e estruturas que tratam da parte gráfica do jogo (ncurses).  
+
+
+{\ttfamily \+\#include "{}actions.\+h"{}}\newline
+{\ttfamily \+\#include $<$ncurses.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}
+\begin{DoxyCompactList}\small\item\em Struct construida para guardar os endereços de todas as janelas e tornar mais fácil o seu manuseio ao ultilizar o bloco como argumento das funções, no lugar de cada um dos pointers individualmente. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{prints_8h_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}} (char naipe)
+\begin{DoxyCompactList}\small\item\em Recebe da definição da carta, o seu naipe, ou seja um char e atribui o devido simbólo a esse char. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}} (char \texorpdfstring{$\ast$}{*}valor, char v)
+\begin{DoxyCompactList}\small\item\em "{}\+Traduz"{} o valor da carta Para os casos mais éspecíficos, onde as cartas acima de 10 passam para J, Q e K e as cartas de valor 1, passam para A. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a892c3b2458c9e7a053626391921727c3}{print\+\_\+carta}} (WINDOW \texorpdfstring{$\ast$}{*}win, int x, int y, const char \texorpdfstring{$\ast$}{*}s, char valor\+[3]\+)
+\begin{DoxyCompactList}\small\item\em Faz print na tela de uma carta inteira Auxiliar da wprint\+\_\+carta\+Int. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\+\_\+carta\+Int}} (int f, WINDOW \texorpdfstring{$\ast$}{*}win, int x, int y, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} c)
+\begin{DoxyCompactList}\small\item\em Função geral que faz print de uma crta inteira numa janela Dada a carta, chama as funções traduz\+\_\+valor e traduz\+\_\+simbolo, e com as informações fornecidas por essas chama a print\+\_\+carta. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_ae001fe870398817ed79cab266f0ce247}{wprint\+\_\+carta\+Top}} (int f, WINDOW \texorpdfstring{$\ast$}{*}win, int x, int y, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} c)
+\begin{DoxyCompactList}\small\item\em Função geral que faz print de uma crta inteira numa janela Dada a carta, chama as funções traduz\+\_\+valor e com a informação fornacida por essa faz print da carta na janela. Usada para as cartas da pilha. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a3b81ebf4200b2923946013ceac3dccd7}{define\+Pilhas}} (\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} matriz\+[10]\+\+[17]\+, int tamanho\+\_\+pilha\+[10]\+, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Define a janela de cada uma das pilhas e já desenha as cartas. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_aa621cac158e4ad59ce0cb8d1872d2ace}{print\+\_\+nome\+Pilha}} (WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, int i)
+\begin{DoxyCompactList}\small\item\em Faz print do nome da pilha !!\+Lembrando que quando faz print temos i+1, pois no jogo não é muito usual ter uma pilha 0!! \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_aef2f993cd976a9ffe6c0f6ad6b57b979}{desenha\+\_\+pilha}} (WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} matriz\+[10]\+\+[17]\+, int x\+\_\+local, int y\+\_\+local, int i, int ult\+\_\+carta)
+\begin{DoxyCompactList}\small\item\em Print das cartas de uma pilha verifica o tamanho da pilha, e sempre faz wprint\+\_\+carta\+Top para todas execeto a que está no topo da pilha, a esta é feito wprint\+\_\+carta\+Int. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a09aa428fdf642b060c938a5bbf8682d7}{define\+Foundations}} (WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+foundations\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Função que cria a janela dos foundations e faz print de uma carta sem valor para representar que ainda não foi ocupado. \end{DoxyCompactList}\item 
+WINDOW \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{prints_8h_a9faf09d9187a172514a8f95bfa64a61e}{define\+Button\+Hint}} ()
+\begin{DoxyCompactList}\small\item\em Define a janela do botão hint É criada a janela,e depois feito print do nome do botão. \end{DoxyCompactList}\item 
+WINDOW \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{prints_8h_a5e459375cc71242bd0edaf48ac42ce25}{define\+Button\+Undo}} ()
+\begin{DoxyCompactList}\small\item\em Define a janela do botão undo É criada a janela,e depois feito print do nome do botão. \end{DoxyCompactList}\item 
+WINDOW \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{prints_8h_a690b188121da1b8a5d875f9d94493aaf}{define\+Button\+Ngame}} ()
+\begin{DoxyCompactList}\small\item\em Define a janela do botão new game É criada a janela,e depois feito print do nome do botão. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a51af124fd06bfc7f2e2004aedefb9729}{define\+\_\+\+Todas\+Janelas}} (\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função que define todas as janelas para inicialização do jogo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a4a0ff4a5413f60d307c9983fe1e66d5e}{redesenha\+\_\+pilhas\+Hint}} (int f, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Verifica a flag do struct hint, e verifica se temos lá um hint para ser mostrado e chama a função que o vai mostar (altera\+Cor\+\_\+pilha), ou se já foi mostrado, chama a função reset\+\_\+pilha\+Hint. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_ab171a3c1d96278ab1b58e168bd7250c7}{reset\+\_\+pilha\+Hint}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função auxiliar da redesenha\+\_\+pilhas\+Hint. Chama a função que vai por as pilhas de volta a cor normal (desenha\+\_\+pilha). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_aab880ef78b9a96c9a54dd00dbaa189cd}{altera\+Cor\+\_\+pilha}} (int pilha, int tamanho\+\_\+pilha, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função auxiliar da redesenha\+\_\+pilhas\+Hint. Limpa o print que já havia na janela, e volta a escrever o nome da pilha, e depois chama a altera\+Cor\+\_\+carta para fazer o print das cartas daquela pilha. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a81c8b190f670db39ce848d31fe41a876}{altera\+Cor\+\_\+carta}} (int pilha, int y\+\_\+local, int x\+\_\+local, int ult\+Carta, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, int tamanho\+\_\+pilha, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da altera\+Cor\+\_\+pilha. Vai verificar com auxilio do m\+\_\+flags (array/\+matriz que está guradado no hint, dentro do game) as cartas que devem ser destacadas de uma cor diferente, sendo o valor nessa linha e coluna o indicativo da cor que a carta deve ter. Se a m\+\_\+flag, na posição correspondente a carta tiver com o valor 1, a carta fica verde, que indica que a carta pode ser movida para se unir a uma carta do seu mesmo naipe, se o valor for 2, ela fica amarela e significa que a carta pode ser movida, mas a carta de "{}destino"{} não tem o mesmo naipe, e se estiver a zero, permanece com as cores padrão. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\+\_\+altera\+Cor\+Carta}} (int f, int pilha, int j, int y\+\_\+local, int x\+\_\+local, int ult\+Carta, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da altera\+Cor\+\_\+carta. Responsável por chamar a wprint\+\_\+carta\+Int ou a wprint\+\_\+carta\+Top, com a flag que indica para essas funções se deve seguir o padrão de cores ou seguirá um padrão de cores já definido(nesse caso está definido na altera\+Cor\+\_\+carta). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_af2192e94d6f6bf119e51612e66dec9ea}{update\+\_\+pilha}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função chamada após ser definida uma nova jogada reponsável por chamar as funções, que vai por a piscar a selecionada a piscar ou fazer com que a mesma deixe de piscar. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_ae1a6cfd90592374fe9147a11412d0656}{redesenha\+\_\+pilha}} (int pilha, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} matriz\+[10]\+\+[17]\+, WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+pilha\+[$\,$]\+, int tamanho\+\_\+pilha\+[$\,$]\+)
+\begin{DoxyCompactList}\small\item\em Função auxiliar da update\+\_\+pilha. Responsável por chamar a desenha\+\_\+pilha para cada uma das pilhas para fazer com que a(s) carta(s) deixem de piscar. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a8229094269183e875350b84c2f4d193c}{pilha\+\_\+negrito}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função auxiliar da update\+\_\+pilha. Determina o lim que é o índice até onde as cartas vão ser mostradas sem piscar, para depois na função print\+\_\+pilha, ser usado esse valor. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_ac9804c7b093f450ebb71030121d6c65f}{print\+\_\+pilha}} (WINDOW \texorpdfstring{$\ast$}{*}janela, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} matriz\+[10]\+\+[17]\+, int x\+\_\+local, int y\+\_\+local, int i, int lim, int ult\+Carta)
+\begin{DoxyCompactList}\small\item\em Função auxiliar da pilha\+\_\+negrito. Usando o lim, faz o print das cartas da pilha, das que ficam a piscar e as que não ficam também. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_ab05f9c3e9d4ede8fd77eb32d18815275}{atualiza\+Foundations}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Verifica se um foudation específica está a 1 no array, e se está chama a (define\+Carta) e com essa carta, chama a (atualizaF) que faz print no foundation do Ás do naipe. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_a146d3f63e4de3aa27265db317e32a3b6}{define\+Carta}} (\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \texorpdfstring{$\ast$}{*}c, int i)
+\begin{DoxyCompactList}\small\item\em Com o índice do foundation no array, define a carta para um Ás do naipe que corresponde aquele foundation. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{prints_8h_aed1674ee65fa8faf9280486e59313087}{atualizaF}} (WINDOW \texorpdfstring{$\ast$}{*}janela\+\_\+foundations\+[$\,$]\+, \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} c, int i)
+\begin{DoxyCompactList}\small\item\em Função que vai pegar na janela do foundation específico vai fazer werase e depois faz print da carta c no foundation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declarações das funções e estruturas que tratam da parte gráfica do jogo (ncurses). 
+
+\begin{DoxyAuthor}{Author}
+Esteban Yepez (a116272), Fernanda Cidrim (a116274), Martim Sousa (a113572) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/03-\/22
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{prints_8h_source}{prints.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{prints_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{prints_8h_a81c8b190f670db39ce848d31fe41a876}\index{prints.h@{prints.h}!alteraCor\_carta@{alteraCor\_carta}}
+\index{alteraCor\_carta@{alteraCor\_carta}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{alteraCor\_carta()}{alteraCor\_carta()}}
+{\footnotesize\ttfamily \label{prints_8h_a81c8b190f670db39ce848d31fe41a876} 
+void altera\+Cor\+\_\+carta (\begin{DoxyParamCaption}\item[{int}]{pilha}{, }\item[{int}]{y\+\_\+local}{, }\item[{int}]{x\+\_\+local}{, }\item[{int}]{ult\+Carta}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{int}]{tamanho\+\_\+pilha}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da altera\+Cor\+\_\+pilha. Vai verificar com auxilio do m\+\_\+flags (array/\+matriz que está guradado no hint, dentro do game) as cartas que devem ser destacadas de uma cor diferente, sendo o valor nessa linha e coluna o indicativo da cor que a carta deve ter. Se a m\+\_\+flag, na posição correspondente a carta tiver com o valor 1, a carta fica verde, que indica que a carta pode ser movida para se unir a uma carta do seu mesmo naipe, se o valor for 2, ela fica amarela e significa que a carta pode ser movida, mas a carta de "{}destino"{} não tem o mesmo naipe, e se estiver a zero, permanece com as cores padrão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pilha} & Pilha identificada através do p\+\_\+flags, de que há um hint nesta pilha. \\
+\hline
+{\em y\+\_\+local} & Indica a linha dentro da janela para o print ser feito. \\
+\hline
+{\em x\+\_\+local} & Indica a coluna dentro da janela para o print ser feito. \\
+\hline
+{\em ult\+Carta} & Índice da última carta da pilha. \\
+\hline
+{\em janela\+\_\+pilha} & Array onde estão guardados os endereços das janelas das pilhas. \\
+\hline
+{\em tamanho\+\_\+pilha} & Tamanho da pilha que queremos mudar a cor. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00093}{93}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ tamanho\_pilha;\ j++)\{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[pilha][j]\ ==\ 1)\{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela\_pilha[pilha],\ COLOR\_PAIR(5));\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(0,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[pilha][j]\ ==\ 2)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela\_pilha[pilha],\ COLOR\_PAIR(4));\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(0,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(1\ ,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{00105\ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[pilha],\ COLOR\_PAIR(5));}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[pilha],\ COLOR\_PAIR(4));}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\_local+=2;\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_aab880ef78b9a96c9a54dd00dbaa189cd}\index{prints.h@{prints.h}!alteraCor\_pilha@{alteraCor\_pilha}}
+\index{alteraCor\_pilha@{alteraCor\_pilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{alteraCor\_pilha()}{alteraCor\_pilha()}}
+{\footnotesize\ttfamily \label{prints_8h_aab880ef78b9a96c9a54dd00dbaa189cd} 
+void altera\+Cor\+\_\+pilha (\begin{DoxyParamCaption}\item[{int}]{pilha}{, }\item[{int}]{tamanho\+\_\+pilha}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar da redesenha\+\_\+pilhas\+Hint. Limpa o print que já havia na janela, e volta a escrever o nome da pilha, e depois chama a altera\+Cor\+\_\+carta para fazer o print das cartas daquela pilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pilha} & Pilha indeficada através do p\+\_\+flags, de que há um hint nesta pilha. \\
+\hline
+{\em tamanho\+\_\+pilha} & Tamanho da pilha que queremos mudar a cor. \\
+\hline
+{\em janela\+\_\+pilha} & Array onde estão guardados os endereços das janelas das pilhas. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00080}{80}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ werase(janela\_pilha[pilha]);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ pilha);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha\ -\/1;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a81c8b190f670db39ce848d31fe41a876}{alteraCor\_carta}}(pilha,\ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,tamanho\_pilha,\ game);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[pilha]);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_aed1674ee65fa8faf9280486e59313087}\index{prints.h@{prints.h}!atualizaF@{atualizaF}}
+\index{atualizaF@{atualizaF}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{atualizaF()}{atualizaF()}}
+{\footnotesize\ttfamily \label{prints_8h_aed1674ee65fa8faf9280486e59313087} 
+void atualizaF (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+foundations}{\+[$\,$]\+, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{c}{, }\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Função que vai pegar na janela do foundation específico vai fazer werase e depois faz print da carta c no foundation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em janela\+\_\+foundations} & Array dos endereços das janelas dos foundations. \\
+\hline
+{\em c} & Carta que será feito o print. \\
+\hline
+{\em i} & Índice do foundation no array. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ werase(janela\_foundations[i]);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ mvwprintw(janela\_foundations[i],\ 1,\ 1,\ \textcolor{stringliteral}{"{}Foundation\ \%d"{}},\ i+1);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_foundations[i],\ 3,3,\ c);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ wrefresh(janela\_foundations[i]);}
+\DoxyCodeLine{00050\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_ab05f9c3e9d4ede8fd77eb32d18815275}\index{prints.h@{prints.h}!atualizaFoundations@{atualizaFoundations}}
+\index{atualizaFoundations@{atualizaFoundations}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{atualizaFoundations()}{atualizaFoundations()}}
+{\footnotesize\ttfamily \label{prints_8h_ab05f9c3e9d4ede8fd77eb32d18815275} 
+void atualiza\+Foundations (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Verifica se um foudation específica está a 1 no array, e se está chama a (define\+Carta) e com essa carta, chama a (atualizaF) que faz print no foundation do Ás do naipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00028}{28}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a146d3f63e4de3aa27265db317e32a3b6}{defineCarta}}(\&c,\ i);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[i])\ \doxymbox{\hyperlink{prints_8c_aed1674ee65fa8faf9280486e59313087}{atualizaF}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{end\_foundations}},\ c,\ i);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \}\ }
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_acf36b7a3a11426b8553b432c2c9dc8e8}\index{prints.h@{prints.h}!aux\_alteraCorCarta@{aux\_alteraCorCarta}}
+\index{aux\_alteraCorCarta@{aux\_alteraCorCarta}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{aux\_alteraCorCarta()}{aux\_alteraCorCarta()}}
+{\footnotesize\ttfamily \label{prints_8h_acf36b7a3a11426b8553b432c2c9dc8e8} 
+void aux\+\_\+altera\+Cor\+Carta (\begin{DoxyParamCaption}\item[{int}]{f}{, }\item[{int}]{pilha}{, }\item[{int}]{j}{, }\item[{int}]{y\+\_\+local}{, }\item[{int}]{x\+\_\+local}{, }\item[{int}]{ult\+Carta}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da altera\+Cor\+\_\+carta. Responsável por chamar a wprint\+\_\+carta\+Int ou a wprint\+\_\+carta\+Top, com a flag que indica para essas funções se deve seguir o padrão de cores ou seguirá um padrão de cores já definido(nesse caso está definido na altera\+Cor\+\_\+carta). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flag que indica o padrão de cor que será seguido. \\
+\hline
+{\em pilha} & Pilha identificada através do p\+\_\+flags, de que há um hint nesta pilha. \\
+\hline
+{\em j} & ìndice da carta na pilha. \\
+\hline
+{\em y\+\_\+local} & Indica a linha dentro da janela para o print ser feito. \\
+\hline
+{\em x\+\_\+local} & Indica a coluna dentro da janela para o print ser feito. \\
+\hline
+{\em ult\+Carta} & Índice da última carta da pilha. \\
+\hline
+{\em janela\+\_\+pilha} & Array onde estão guardados os endereços das janelas das pilhas. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00115}{115}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(f,\ janela\_pilha[pilha],\ y\_local,\ x\_local,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][j]);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(f,\ janela\_pilha[pilha],\ y\_local,\ x\_local,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][j]);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00121\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a51af124fd06bfc7f2e2004aedefb9729}\index{prints.h@{prints.h}!define\_TodasJanelas@{define\_TodasJanelas}}
+\index{define\_TodasJanelas@{define\_TodasJanelas}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{define\_TodasJanelas()}{define\_TodasJanelas()}}
+{\footnotesize\ttfamily \label{prints_8h_a51af124fd06bfc7f2e2004aedefb9729} 
+void define\+\_\+\+Todas\+Janelas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função que define todas as janelas para inicialização do jogo. 
+
+atribui a cada um dos parâmetros do struct p, criado no main, o endereço que lá ficará guardado, chamando as funções:\+ define\+Pilhas, define\+Foundations, define\+Button\+Undo, define\+Button\+Hint e define\+Button\+Ngame.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Pointer onde estão guadados os endereços das janelas. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00190}{190}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00191\ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ PILHAS\ }}
+\DoxyCodeLine{00193\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a3b81ebf4200b2923946013ceac3dccd7}{definePilhas}}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}});}
+\DoxyCodeLine{00194\ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ BARALHO\ \&\ DESCARTE}}
+\DoxyCodeLine{00196\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a09aa428fdf642b060c938a5bbf8682d7}{defineFoundations}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{end\_foundations}});\ }
+\DoxyCodeLine{00197\ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{comment}{//\ BOTÕES\ }}
+\DoxyCodeLine{00199\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}}\ =\ \doxymbox{\hyperlink{prints_8c_a5e459375cc71242bd0edaf48ac42ce25}{defineButtonUndo}}();}
+\DoxyCodeLine{00200\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{end\_hint}}\ =\ \doxymbox{\hyperlink{prints_8c_a9faf09d9187a172514a8f95bfa64a61e}{defineButtonHint}}();}
+\DoxyCodeLine{00201\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{end\_ngame}}\ =\ \doxymbox{\hyperlink{prints_8c_a690b188121da1b8a5d875f9d94493aaf}{defineButtonNgame}}();}
+\DoxyCodeLine{00202\ \ }
+\DoxyCodeLine{00203\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a9faf09d9187a172514a8f95bfa64a61e}\index{prints.h@{prints.h}!defineButtonHint@{defineButtonHint}}
+\index{defineButtonHint@{defineButtonHint}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{defineButtonHint()}{defineButtonHint()}}
+{\footnotesize\ttfamily \label{prints_8h_a9faf09d9187a172514a8f95bfa64a61e} 
+WINDOW \texorpdfstring{$\ast$}{*} define\+Button\+Hint (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Define a janela do botão hint É criada a janela,e depois feito print do nome do botão. 
+
+\begin{DoxyReturn}{Returns}
+WINDOW\texorpdfstring{$\ast$}{*} Endereço da janela do botão hint 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00206}{206}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_hint;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ janela\_hint\ =\ newwin(3,\ 10,\ 2,\ 20);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ box(janela\_hint,\ 0,\ 0);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ wattron(janela\_hint,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ mvwprintw(janela\_hint,\ 1,\ 1,\ \textcolor{stringliteral}{"{}\ \ HINT"{}});}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ wrefresh(janela\_hint);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ wattroff(janela\_hint,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_hint;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a690b188121da1b8a5d875f9d94493aaf}\index{prints.h@{prints.h}!defineButtonNgame@{defineButtonNgame}}
+\index{defineButtonNgame@{defineButtonNgame}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{defineButtonNgame()}{defineButtonNgame()}}
+{\footnotesize\ttfamily \label{prints_8h_a690b188121da1b8a5d875f9d94493aaf} 
+WINDOW \texorpdfstring{$\ast$}{*} define\+Button\+Ngame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Define a janela do botão new game É criada a janela,e depois feito print do nome do botão. 
+
+\begin{DoxyReturn}{Returns}
+WINDOW\texorpdfstring{$\ast$}{*} Endereço da janela do botão. 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00232}{232}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_ngame;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ janela\_ngame\ =\ newwin(3,\ 10,\ 2,\ 40);}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ box(janela\_ngame,\ 0,\ 0);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ wattron(janela\_ngame,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ mvwprintw(janela\_ngame,\ 1,\ 1,\ \textcolor{stringliteral}{"{}NEW\ GAME"{}});}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ wrefresh(janela\_ngame);}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ wattroff(janela\_ngame,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_ngame;}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00242\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a5e459375cc71242bd0edaf48ac42ce25}\index{prints.h@{prints.h}!defineButtonUndo@{defineButtonUndo}}
+\index{defineButtonUndo@{defineButtonUndo}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{defineButtonUndo()}{defineButtonUndo()}}
+{\footnotesize\ttfamily \label{prints_8h_a5e459375cc71242bd0edaf48ac42ce25} 
+WINDOW \texorpdfstring{$\ast$}{*} define\+Button\+Undo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Define a janela do botão undo É criada a janela,e depois feito print do nome do botão. 
+
+\begin{DoxyReturn}{Returns}
+WINDOW\texorpdfstring{$\ast$}{*} Endereço da janela do botão 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00219}{219}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_undo;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ janela\_undo\ =\ newwin(3,\ 10,\ 2,\ 30);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ box(janela\_undo,\ 0,\ 0);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ wattron(janela\_undo,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ mvwprintw(janela\_undo,\ 1,\ 1,\ \textcolor{stringliteral}{"{}\ \ UNDO"{}});}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ wrefresh(janela\_undo);}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ wattroff(janela\_undo,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_undo;\ }
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a146d3f63e4de3aa27265db317e32a3b6}\index{prints.h@{prints.h}!defineCarta@{defineCarta}}
+\index{defineCarta@{defineCarta}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{defineCarta()}{defineCarta()}}
+{\footnotesize\ttfamily \label{prints_8h_a146d3f63e4de3aa27265db317e32a3b6} 
+void define\+Carta (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \texorpdfstring{$\ast$}{*}}]{c}{, }\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Com o índice do foundation no array, define a carta para um Ás do naipe que corresponde aquele foundation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & Endereço onde guardaremos a carta que será mostrada no foundation. ~\newline
+ \\
+\hline
+{\em i} & Índice do foundation no array de foundations. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00036}{36}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 1;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ 0)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 1)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'E'};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 2)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'O'};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 3)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'P'};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a09aa428fdf642b060c938a5bbf8682d7}\index{prints.h@{prints.h}!defineFoundations@{defineFoundations}}
+\index{defineFoundations@{defineFoundations}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{defineFoundations()}{defineFoundations()}}
+{\footnotesize\ttfamily \label{prints_8h_a09aa428fdf642b060c938a5bbf8682d7} 
+void define\+Foundations (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+foundations}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Função que cria a janela dos foundations e faz print de uma carta sem valor para representar que ainda não foi ocupado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em janela\+\_\+foundations} & Array onde estão guardados os endereços das foundations. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00245}{245}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ carta\ que\ vai\ ser\ mostrada\ }}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'?'};}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 0;}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 1;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ 120;\ }
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cria\ as\ 4\ janelas\ das\ foundations\ }}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ janela\_foundations[i]\ =\ newwin(10,\ 15,\ x,\ y);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mvwprintw(janela\_foundations[i],\ 1,\ 1,\ \textcolor{stringliteral}{"{}Foundation\ \%d"{}},\ i+1);}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_foundations[i],\ 3,3,\ c);}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ 18;\ }
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wrefresh(janela\_foundations[i]);\ }
+\DoxyCodeLine{00263\ }
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a3b81ebf4200b2923946013ceac3dccd7}\index{prints.h@{prints.h}!definePilhas@{definePilhas}}
+\index{definePilhas@{definePilhas}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{definePilhas()}{definePilhas()}}
+{\footnotesize\ttfamily \label{prints_8h_a3b81ebf4200b2923946013ceac3dccd7} 
+void define\+Pilhas (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{matriz}{\+[10]\+\+[17]\+, }\item[{int}]{tamanho\+\_\+pilha}{\+[10]\+, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Define a janela de cada uma das pilhas e já desenha as cartas. 
+
+Cria a janela de cada uma das pilhas, e logo a seguir chama a print\+\_\+nome\+Pilha e a desenha\+\_\+pilha.
+
+
+\begin{DoxyParams}{Parameters}
+{\em matriz} & matriz onde estão organizadas as cartas \\
+\hline
+{\em tamanho\+\_\+pilha} & array onde é guardado o tamanho de cada uma das 10 pilhas \\
+\hline
+{\em janela\+\_\+pilha} & array onde estão guadados os endereços de cada uma das 10 pilhas \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00269}{269}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ 10;}
+\DoxyCodeLine{00272\ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 10;}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ 10;\ i++)\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ janela\_pilha[i]\ =\ newwin(42,\ 15,\ y,\ x);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ i);\ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha[i]\ -\/\ 1;\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ultCarta\ >=\ 0)\{}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(janela\_pilha,matriz,\ x\_local,\ y\_local,\ i,\ ultCarta);\ }
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ 20;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00288\ }
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[i]);}
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_aef2f993cd976a9ffe6c0f6ad6b57b979}\index{prints.h@{prints.h}!desenha\_pilha@{desenha\_pilha}}
+\index{desenha\_pilha@{desenha\_pilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{desenha\_pilha()}{desenha\_pilha()}}
+{\footnotesize\ttfamily \label{prints_8h_aef2f993cd976a9ffe6c0f6ad6b57b979} 
+void desenha\+\_\+pilha (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{matriz}{\+[10]\+\+[17]\+, }\item[{int}]{x\+\_\+local}{, }\item[{int}]{y\+\_\+local}{, }\item[{int}]{i}{, }\item[{int}]{ult\+\_\+carta}{}\end{DoxyParamCaption})}
+
+
+
+Print das cartas de uma pilha verifica o tamanho da pilha, e sempre faz wprint\+\_\+carta\+Top para todas execeto a que está no topo da pilha, a esta é feito wprint\+\_\+carta\+Int. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em janela\+\_\+pilha} & array onde estão guadados os endereços de cada um adas 10 pilha \\
+\hline
+{\em matriz} & matriz onde estão organizadas as cartas \\
+\hline
+{\em x\+\_\+local} & coluna definida da Define\+Pilhas \\
+\hline
+{\em y\+\_\+local} & linha definida da Define\+Pilhas \\
+\hline
+{\em i} & indice da pilha no array \\
+\hline
+{\em ult\+\_\+carta} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00302}{302}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ ultCarta;\ j++)\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_pilha[i],\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(1,\ janela\_pilha[i],\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ x\_local\ +=\ 2;\ \textcolor{comment}{//\ Ajusta\ conforme\ a\ lógica\ de\ empilhamento}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[i]);}
+\DoxyCodeLine{00309\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a8229094269183e875350b84c2f4d193c}\index{prints.h@{prints.h}!pilha\_negrito@{pilha\_negrito}}
+\index{pilha\_negrito@{pilha\_negrito}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{pilha\_negrito()}{pilha\_negrito()}}
+{\footnotesize\ttfamily \label{prints_8h_a8229094269183e875350b84c2f4d193c} 
+void pilha\+\_\+negrito (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar da update\+\_\+pilha. Determina o lim que é o índice até onde as cartas vão ser mostradas sem piscar, para depois na função print\+\_\+pilha, ser usado esse valor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+{\em p} & Pointer onde estão guadados os endereços das janelas. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00151}{151}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pilha\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ ;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coluna\ =\ game\ -\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ werase(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha]);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ pilha);\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lim\ =\ coluna;\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/\ 1;\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ultCarta\ >=\ 0)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ac9804c7b093f450ebb71030121d6c65f}{print\_pilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha],game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ x\_local,\ y\_local,\ pilha,\ lim,\ ultCarta);\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ wrefresh(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha]);}
+\DoxyCodeLine{00166\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a892c3b2458c9e7a053626391921727c3}\index{prints.h@{prints.h}!print\_carta@{print\_carta}}
+\index{print\_carta@{print\_carta}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{print\_carta()}{print\_carta()}}
+{\footnotesize\ttfamily \label{prints_8h_a892c3b2458c9e7a053626391921727c3} 
+void print\+\_\+carta (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{s}{, }\item[{char}]{valor}{\+[3]\+}\end{DoxyParamCaption})}
+
+
+
+Faz print na tela de uma carta inteira Auxiliar da wprint\+\_\+carta\+Int. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & Endereço da janela onde o print será feito o print \\
+\hline
+{\em x} & Coluna de onde se iniciam os prints \\
+\hline
+{\em y} & Linha de onde se iniam os prints \\
+\hline
+{\em s} & Simbolo da carta (já traduzido) \\
+\hline
+{\em valor} & Valor da carta (já traduzido) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00408}{408}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y,\ \ \ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+1,\ x,\ \textcolor{stringliteral}{"{}|\ \%-\/2s\ \ \ \ |"{}},\ valor);}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+2,\ x,\ \textcolor{stringliteral}{"{}|\ \ \ \%s\ \ \ |"{}},\ s);}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+3,\ x,\ \textcolor{stringliteral}{"{}|\ \ \ \ \ \%2s|"{}},\ valor);}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+4,\ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{00414\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_aa621cac158e4ad59ce0cb8d1872d2ace}\index{prints.h@{prints.h}!print\_nomePilha@{print\_nomePilha}}
+\index{print\_nomePilha@{print\_nomePilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{print\_nomePilha()}{print\_nomePilha()}}
+{\footnotesize\ttfamily \label{prints_8h_aa621cac158e4ad59ce0cb8d1872d2ace} 
+void print\+\_\+nome\+Pilha (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Faz print do nome da pilha !!\+Lembrando que quando faz print temos i+1, pois no jogo não é muito usual ter uma pilha 0!! 
+
+
+\begin{DoxyParams}{Parameters}
+{\em janela\+\_\+pilha} & array onde estão guadados os endereços de cada uma das 10 pilhas \\
+\hline
+{\em i} & indice da pilha no array \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00294}{294}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ wattron(janela\_pilha[i],\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ mvwprintw(janela\_pilha[i],\ 2,\ 2,\ \textcolor{stringliteral}{"{}\ \ PILHA\ \%d\ \ "{}},\ i+1);}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[i],\ COLOR\_PAIR(3));}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_ac9804c7b093f450ebb71030121d6c65f}\index{prints.h@{prints.h}!print\_pilha@{print\_pilha}}
+\index{print\_pilha@{print\_pilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{print\_pilha()}{print\_pilha()}}
+{\footnotesize\ttfamily \label{prints_8h_ac9804c7b093f450ebb71030121d6c65f} 
+void print\+\_\+pilha (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela}{, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{matriz}{\+[10]\+\+[17]\+, }\item[{int}]{x\+\_\+local}{, }\item[{int}]{y\+\_\+local}{, }\item[{int}]{i}{, }\item[{int}]{lim}{, }\item[{int}]{ult\+Carta}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar da pilha\+\_\+negrito. Usando o lim, faz o print das cartas da pilha, das que ficam a piscar e as que não ficam também. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em janela} & Endereço da janela onde está a pilha que vamos refazer o print. \\
+\hline
+{\em matriz} & Matriz onde estão organizadas as cartas-\/ corresponde as pilhas. \\
+\hline
+{\em x\+\_\+local} & Indica a coluna dentro da janela para o print ser feito. \\
+\hline
+{\em y\+\_\+local} & Indica a linha dentro da janela para o print ser feito. \\
+\hline
+{\em i} & Pilha que vamos redesenhar. \\
+\hline
+{\em lim} & Limite determinado pela pilha\+\_\+negrito, de apartir desta carta todas ficam a piscar. \\
+\hline
+{\em ult\+Carta} & Índice da última carta da pilha. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00169}{169}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ ultCarta;\ j++)\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ a\ carta\ atual\ (j)\ for\ igual\ ou\ maior\ que\ o\ limite\ clicado,\ ativa\ o\ destaque}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ >=\ lim)\ \{\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela,\ A\_BOLD\ |\ A\_BLINK);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,janela,\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(1,\ janela,\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desliga\ IMEDIATAMENTE\ após\ imprimir\ a\ carta\ para\ não\ pintar\ o\ fundo\ da\ janela}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ wattroff(janela,\ A\_BOLD\ |\ A\_BLINK);}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ x\_local\ +=\ 2;\ \textcolor{comment}{//\ EMPILHAMENTO\ VERTICAL\ }}
+\DoxyCodeLine{00185\ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_ae1a6cfd90592374fe9147a11412d0656}\index{prints.h@{prints.h}!redesenha\_pilha@{redesenha\_pilha}}
+\index{redesenha\_pilha@{redesenha\_pilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{redesenha\_pilha()}{redesenha\_pilha()}}
+{\footnotesize\ttfamily \label{prints_8h_ae1a6cfd90592374fe9147a11412d0656} 
+void redesenha\+\_\+pilha (\begin{DoxyParamCaption}\item[{int}]{pilha}{, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{matriz}{\+[10]\+\+[17]\+, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{janela\+\_\+pilha}{\+[$\,$]\+, }\item[{int}]{tamanho\+\_\+pilha}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar da update\+\_\+pilha. Responsável por chamar a desenha\+\_\+pilha para cada uma das pilhas para fazer com que a(s) carta(s) deixem de piscar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pilha} & Pilha que vamos redesenhar. \\
+\hline
+{\em matriz} & Matriz onde estão organizadas as cartas-\/ corresponde as pilhas. \\
+\hline
+{\em janela\+\_\+pilha} & Array onde estão guardados os endereços das janelas das pilhas. \\
+\hline
+{\em tamanho\+\_\+pilha} & Tamanho da pilha que queremos mudar a cor. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00136}{136}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ werase(janela\_pilha[pilha]);}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ pilha);\ }
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha[pilha]\ -\/\ 1;\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ultCarta\ >=\ 0)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(janela\_pilha,\ matriz,\ x\_local,\ y\_local,\ pilha,\ ultCarta);\ }
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[pilha]);}
+\DoxyCodeLine{00148\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a4a0ff4a5413f60d307c9983fe1e66d5e}\index{prints.h@{prints.h}!redesenha\_pilhasHint@{redesenha\_pilhasHint}}
+\index{redesenha\_pilhasHint@{redesenha\_pilhasHint}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{redesenha\_pilhasHint()}{redesenha\_pilhasHint()}}
+{\footnotesize\ttfamily \label{prints_8h_a4a0ff4a5413f60d307c9983fe1e66d5e} 
+void redesenha\+\_\+pilhas\+Hint (\begin{DoxyParamCaption}\item[{int}]{f}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Verifica a flag do struct hint, e verifica se temos lá um hint para ser mostrado e chama a função que o vai mostar (altera\+Cor\+\_\+pilha), ou se já foi mostrado, chama a função reset\+\_\+pilha\+Hint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Flag do hint que indica se o hint vai ser usado, ou já foi usado. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+{\em p} & Pointer onde estão guadados os endereços das janelas. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00055}{55}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f\ ==\ (-\/1))\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1)\ \doxymbox{\hyperlink{prints_8c_aab880ef78b9a96c9a54dd00dbaa189cd}{alteraCor\_pilha}}(i,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i],\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (f\ ==\ 1)\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ab171a3c1d96278ab1b58e168bd7250c7}{reset\_pilhaHint}}(game,\ p);\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00068\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_ab171a3c1d96278ab1b58e168bd7250c7}\index{prints.h@{prints.h}!reset\_pilhaHint@{reset\_pilhaHint}}
+\index{reset\_pilhaHint@{reset\_pilhaHint}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{reset\_pilhaHint()}{reset\_pilhaHint()}}
+{\footnotesize\ttfamily \label{prints_8h_ab171a3c1d96278ab1b58e168bd7250c7} 
+void reset\+\_\+pilha\+Hint (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função auxiliar da redesenha\+\_\+pilhas\+Hint. Chama a função que vai por as pilhas de volta a cor normal (desenha\+\_\+pilha). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+{\em p} & Pointer onde estão guadados os endereços das janelas. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00070}{70}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <10;\ i++)\{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i]\ -\/\ 1;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1\ \&\&\ ultCarta\ >=0)\ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ x\_local,\ y\_local,\ i,\ ultCarta);\ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a1b7430fb7d33aeca746fec8daef5ca42}\index{prints.h@{prints.h}!traduzsimbolo@{traduzsimbolo}}
+\index{traduzsimbolo@{traduzsimbolo}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{traduzsimbolo()}{traduzsimbolo()}}
+{\footnotesize\ttfamily \label{prints_8h_a1b7430fb7d33aeca746fec8daef5ca42} 
+const char \texorpdfstring{$\ast$}{*} traduzsimbolo (\begin{DoxyParamCaption}\item[{char}]{naipe}{}\end{DoxyParamCaption})}
+
+
+
+Recebe da definição da carta, o seu naipe, ou seja um char e atribui o devido simbólo a esse char. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em naipe} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} endereço da memória onde fica guadado , apenas para leitura, o símbolo 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00376}{376}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordflow}{switch}(naipe)\ \{}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'C'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA5"{}};\ \textcolor{comment}{//\ Copas\ (Retorna\ o\ endereco\ na\ memoria)}}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'O'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA6"{}};\ \textcolor{comment}{//\ Ouros}}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'P'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA3"{}};\ \textcolor{comment}{//\ Paus}}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'E'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA0"{}};\ \textcolor{comment}{//\ Espadas}}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}?"{}};}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00385\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'C':\ return\ "{}"{};\ //\ Retorna\ o\ endereço\ da\ string\ na\ memória}}
+\DoxyCodeLine{00386\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'O':\ return\ "{}"{};}}
+\DoxyCodeLine{00387\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'P':\ return\ "{}"{};}}
+\DoxyCodeLine{00388\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'E':\ return\ "{}"{};}}
+\DoxyCodeLine{00389\ \textcolor{comment}{\ \ \ \ \ \ \ \ default:\ \ return\ "{}"{};}}
+\DoxyCodeLine{00390\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{00391\ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_a89f100a551d60e5a4c77484940f8987f}\index{prints.h@{prints.h}!traduzvalor@{traduzvalor}}
+\index{traduzvalor@{traduzvalor}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{traduzvalor()}{traduzvalor()}}
+{\footnotesize\ttfamily \label{prints_8h_a89f100a551d60e5a4c77484940f8987f} 
+void traduzvalor (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{valor}{, }\item[{char}]{v}{}\end{DoxyParamCaption})}
+
+
+
+"{}\+Traduz"{} o valor da carta Para os casos mais éspecíficos, onde as cartas acima de 10 passam para J, Q e K e as cartas de valor 1, passam para A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em valor} & endereço onde fica guardado o novo valor -\/ um char \\
+\hline
+{\em v} & valor int que vem da definição das cartas \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00395}{395}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(v)\{}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \ strcpy(valor,\ \textcolor{stringliteral}{"{}A"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:\ strcpy(valor,\ \textcolor{stringliteral}{"{}J"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ strcpy(valor,\ \textcolor{stringliteral}{"{}Q"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ strcpy(valor,\ \textcolor{stringliteral}{"{}K"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0\ :\ strcpy(valor,\ \textcolor{stringliteral}{"{}?"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(valor,\ \textcolor{stringliteral}{"{}\%d"{}},\ v);\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00406\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_af2192e94d6f6bf119e51612e66dec9ea}\index{prints.h@{prints.h}!update\_pilha@{update\_pilha}}
+\index{update\_pilha@{update\_pilha}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{update\_pilha()}{update\_pilha()}}
+{\footnotesize\ttfamily \label{prints_8h_af2192e94d6f6bf119e51612e66dec9ea} 
+void update\+\_\+pilha (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função chamada após ser definida uma nova jogada reponsável por chamar as funções, que vai por a piscar a selecionada a piscar ou fazer com que a mesma deixe de piscar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+{\em p} & Pointer onde estão guadados os endereços das janelas. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00125}{125}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 0\ \&\&\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ !=\ (-\/1))\ \doxymbox{\hyperlink{prints_8c_a8229094269183e875350b84c2f4d193c}{pilha\_negrito}}(game,\ p);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 1\ \&\&\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ !=\ (-\/1))\{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ SAIDA}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ CHEGADA}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ TIRA\ O\ QUE\ TAVA\ EM\ NEGRITO\ -\/\ jogada\ inválida}}
+\DoxyCodeLine{00133\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}\index{prints.h@{prints.h}!wprint\_cartaInt@{wprint\_cartaInt}}
+\index{wprint\_cartaInt@{wprint\_cartaInt}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{wprint\_cartaInt()}{wprint\_cartaInt()}}
+{\footnotesize\ttfamily \label{prints_8h_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a} 
+void wprint\+\_\+carta\+Int (\begin{DoxyParamCaption}\item[{int}]{f}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Função geral que faz print de uma crta inteira numa janela Dada a carta, chama as funções traduz\+\_\+valor e traduz\+\_\+simbolo, e com as informações fornecidas por essas chama a print\+\_\+carta. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & f Flag que se tiver a 0 seguimos o padão de cores normal -\/ se não podemos usar as cores do hint. \\
+\hline
+{\em win} & Endereço da janela onde o print será feito o print. \\
+\hline
+{\em x} & Coluna de onde se iniciam os prints. \\
+\hline
+{\em y} & Linha de onde se iniam os print. \\
+\hline
+{\em c} & Carta a ser mostrada no ecrã. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00314}{314}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\ =\ \doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ guarda\ o\ valor\ da\ carta\ }}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ valor[3];\ }
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(valor,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});\ \textcolor{comment}{//\ arrays\ ja\ sao\ pointers\ por\ natureza\ portanto\ fazer\ '\&valor'\ da\ o\ ponteiro\ de\ outro\ ponteiro\ }}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ativa\ as\ cores\ específicas\ de\ cada\ carta}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f)\{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'C'}\ ||\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'O'})}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Faz\ o\ print\ da\ carta\ na\ janela}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a892c3b2458c9e7a053626391921727c3}{print\_carta}}(win,\ x,\ y,\ s,\ valor);}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ refresh();}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desativa\ o\ atributo\ das\ cores}}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \}}
+
+\end{DoxyCode}
+\Hypertarget{prints_8h_ae001fe870398817ed79cab266f0ce247}\index{prints.h@{prints.h}!wprint\_cartaTop@{wprint\_cartaTop}}
+\index{wprint\_cartaTop@{wprint\_cartaTop}!prints.h@{prints.h}}
+\doxysubsubsection{\texorpdfstring{wprint\_cartaTop()}{wprint\_cartaTop()}}
+{\footnotesize\ttfamily \label{prints_8h_ae001fe870398817ed79cab266f0ce247} 
+void wprint\+\_\+carta\+Top (\begin{DoxyParamCaption}\item[{int}]{f}{, }\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{int}]{x}{, }\item[{int}]{y}{, }\item[{\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Função geral que faz print de uma crta inteira numa janela Dada a carta, chama as funções traduz\+\_\+valor e com a informação fornacida por essa faz print da carta na janela. Usada para as cartas da pilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & f Flag que se tiver a 0 seguimos o padão de cores normal -\/ se não podemos usar as cores do hint. \\
+\hline
+{\em win} & Endereço da janela onde o print será feito o prin \\
+\hline
+{\em x} & Coluna de onde se iniciam os print \\
+\hline
+{\em y} & Linha de onde se iniam os prin \\
+\hline
+{\em c} & Carta a ser mostrada no ecr \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{prints_8c_source_l00345}{345}} of file \doxymbox{\hyperlink{prints_8c_source}{prints.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ valor[3];\ \textcolor{comment}{//\ guarda\ o\ valor\ da\ carta\ }}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(valor,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\ =\ \doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ativa\ as\ cores\ específicas\ de\ cada\ carta}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f)\{}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'C'}\ ||\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'O'})}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ }
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y,\ \ \ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+1,\ x,\ \textcolor{stringliteral}{"{}|\ \%-\/2s\%s\ \ \ |"{}},\ valor,\ s);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ refresh();}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desativa\ o\ atributo\ das\ cores}}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00372\ \}}
+
+\end{DoxyCode}

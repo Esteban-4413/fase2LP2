@@ -1,0 +1,923 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+game.h File Reference}
+\hypertarget{game_8h}{}\label{game_8h}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/game.h@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/game.h}}
+
+
+Declarações das funções e estruturas que tratam do jogo.  
+
+
+{\ttfamily \+\#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \+\#include "{}actions.\+h"{}}\newline
+{\ttfamily \+\#include "{}prints.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{game_8h_a164deb5f6c5ff07074b02a9b339bcd06}{init}} (\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}janelas, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função mestre de inicialização do jogo e da interface. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a898a19b23e6f24ad630671b91a1b7959}{ativa\+Ncurses}} ()
+\begin{DoxyCompactList}\small\item\em Inicializa e configura a biblioteca ncurses. Prepara o terminal para o jogo:\+ ativa a leitura do rato, TO-\/\+DO desativa o eco das teclas (noecho) e inicializa as cores (start\+\_\+color). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a094821e96bdd2f7694bc33e276655205}{start\+\_\+game}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Configura o estado inicial da partida. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a66e305bf1c296c7575419366fa4f3458}{inicilaiza\+\_\+foundations}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Inicializa o array dos foundations a zero em todas as posições. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a4e724359f732b410598ed68387440c9e}{inicializa\+\_\+hint}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da start\+\_\+game. Inicializa a struct Hint. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a444a9b9c8206dec2c969d7e9b102f822}{inicializa\+\_\+naipes}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da start\+\_\+game Responsável por inicializar os naipes C -\/ Copas ~\newline
+ E -\/ Espadas ~\newline
+ O -\/ Ouros ~\newline
+ P -\/ Paus. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a4c3b555974e561fa717509691561b55b}{inicializa\+\_\+jog\+Atual}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da start\+\_\+game Inicializa os valores da Jogada Atual para valores predefinidos, de modo a não causar conflito posteriormente quando esses valores forem alterados. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a34036e4230ab74a8981474cf619ed87b}{inicializa\+\_\+baralho}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Cria e baralha as cartas no baralho principal. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_ac7d4f253235d855c49d666f964a556fd}{inicializa\+\_\+matriz}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Distribui as cartas do baralho para as pilhas na mesa (matriz). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_ac0e33a7118f3713acd2087aa2eae2e7c}{define\+\_\+maxda\+Pilha}} (int \texorpdfstring{$\ast$}{*}max\+\_\+pilha, int i)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da inicializa\+\_\+matriz. Calcula o máximo de cartas que cada pilha vai ter quando o jogo começa. Sendo as 3 primeiras com 8 cartas, cada, e as restantes descresce de 7 a 1. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_af82f5158b2279ee84428c140d5074223}{loop\+\_\+principal}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}janelas, int jogando)
+\begin{DoxyCompactList}\small\item\em O ciclo principal (loop) de execução do jogo. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a26419aa82f96a05d50fdfff38ae3d611}{processa\+\_\+rato}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Processa os cliques do rato feitos pelo utilizador. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a466ccaf866257f1b588ab88a2a2a846c}{next\+\_\+step}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Lógica intermédia para processar o próximo passo do jogador. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_ae4f0cf4104511d1ae49c864d43813b4a}{na\+Pilha}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da next\+\_\+step A partir da informação que o click foi em uma das pilhas, inicia o processo de construir e preencher a Jogada Atual com as informações. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a4b6b0ba8865ec45cc38926a28cf52753}{desativa\+\_\+hint}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Função que passa a flag do hint para 1, e chama a função redesenha\+\_\+pilhas\+Hint, para voltar as cartas para a cor padrão. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_aafc8a90b7a6c2b023c169925ed0c3372}{define\+\_\+jog\+Atual}} (int r, int num\+\_\+carta, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Preenche a Jogada Atual. Onde a flag da jog\+\_\+\+Atual indica em que estado está a jogada. (Se a flag for -\/2, a jogada acabou de ser inicializada, se for 0, já recebeu o primeiro click e está a espera do segundo, se for 1, já recebeu o segundo click e a jogada é válida e, por fim, se for -\/1, a jogada é inválida). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_a00a505a467b438d3ca6c8ba6682737ad}{jog\+Atual\+\_\+seg\+Click}} (int r, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da define\+\_\+jog\+Atual. Define no caso da jog\+\_\+atual está com a flag= 0, ou seja acabou de receber o 2º click Preenche o parâmetro da jog\+\_\+atual chamado chegada, com a pilha que foi detetado o click e depois busca verificar se a jogada é possível, passando a atribuir a devida flag a jogada. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_ad70dc846fa9d16bf89d09a3c4478d6d0}{evalida\+\_\+tamanho\+Seq}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função Auxiliar da define\+\_\+jog\+Atual, responsável por chamar a função que calcula o tamanho da sequência (tamanho\+\_\+sequencia) e com isso, já verifica se existem cartas consecutivas do mesmo naipe empilhadas e quantas são, e se a carta clicada é inválida i.\+e. é uma carta que não está no topo, logo não pode ser movida. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_a0e93eaf398677cb9fe79bf60b5b112f7}{ganhou\+\_\+jogo}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função que percorre o array dos foundations, e retorna 1 se todas as posições do array têm 1(true), caso contrário, retorna 0 (false). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{game_8h_a772468d5c16f2645883c2ef0458dc211}{verifica\+\_\+foudations}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Verifica com auxílio da verifica\+\_\+sequencia\+\_\+inteira, se existe uma sequência de Reis a Ás do mesmo naipe, e se sim, preenche a posição do naipe específico no array foundations, nesse caso entrega o índice da pilha. Se não houve nenhum foundation preenchido, entrega -\/1. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{game_8h_afab1f516437170d846feb2562a0c4a91}{foundations}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Trata de verificar se em alguma das pilhas existe uma sequência de Rei a Ás do mesmo naipe, se sim, chama a função responsável por colocar a posição do foundation a 1 e a atualiziza o print do foundation e da pilha. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declarações das funções e estruturas que tratam do jogo. 
+
+\begin{DoxyAuthor}{Author}
+Esteban Yepez (a116272), Fernanda Cidrim (a116274), Martim Sousa (a113572) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/03-\/22
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{game_8h_source}{game.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{game_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8h_a898a19b23e6f24ad630671b91a1b7959}\index{game.h@{game.h}!ativaNcurses@{ativaNcurses}}
+\index{ativaNcurses@{ativaNcurses}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{ativaNcurses()}{ativaNcurses()}}
+{\footnotesize\ttfamily \label{game_8h_a898a19b23e6f24ad630671b91a1b7959} 
+void ativa\+Ncurses (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa e configura a biblioteca ncurses. Prepara o terminal para o jogo:\+ ativa a leitura do rato, TO-\/\+DO desativa o eco das teclas (noecho) e inicializa as cores (start\+\_\+color). 
+
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ Inicia\ ncurses}}
+\DoxyCodeLine{00040\ \ \ \ \ initscr();\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ o\ que\ o\ ultilizador\ digita\ não\ aparece\ no\ ecrã}}
+\DoxyCodeLine{00043\ \ \ \ \ noecho();\ \ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Ativa\ a\ leitura\ de\ teclas\ especiais}}
+\DoxyCodeLine{00046\ \ \ \ \ keypad(stdscr,\ TRUE);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Ativa\ as\ cores\ }}
+\DoxyCodeLine{00050\ \ \ \ \ start\_color();\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Definindo\ os\ pares\ de\ cores\ }}
+\DoxyCodeLine{00053\ \ \ \ \ init\_pair(1,\ COLOR\_RED,\ COLOR\_WHITE);}
+\DoxyCodeLine{00054\ \ \ \ \ init\_pair(2,\ COLOR\_BLACK,\ COLOR\_WHITE);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Alterei\ a\ cor\ do\ Cyan\ predefinida}}
+\DoxyCodeLine{00057\ \ \ \ \ init\_color(COLOR\_CYAN,\ 0,\ 1000,\ 1000);}
+\DoxyCodeLine{00058\ \ \ \ \ init\_pair(3,\ COLOR\_CYAN,\ COLOR\_BLACK);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ init\_pair(5,\ COLOR\_GREEN,\ COLOR\_WHITE);}
+\DoxyCodeLine{00061\ \ \ \ \ init\_pair(4,\ COLOR\_YELLOW,\ COLOR\_WHITE);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ Ativa\ o\ leitor\ de\ eventos\ do\ Mouse\ }}
+\DoxyCodeLine{00064\ \ \ \ \ mousemask(ALL\_MOUSE\_EVENTS,\ NULL);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ cbreak();}
+\DoxyCodeLine{00067\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_aafc8a90b7a6c2b023c169925ed0c3372}\index{game.h@{game.h}!define\_jogAtual@{define\_jogAtual}}
+\index{define\_jogAtual@{define\_jogAtual}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{define\_jogAtual()}{define\_jogAtual()}}
+{\footnotesize\ttfamily \label{game_8h_aafc8a90b7a6c2b023c169925ed0c3372} 
+void define\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Preenche a Jogada Atual. Onde a flag da jog\+\_\+\+Atual indica em que estado está a jogada. (Se a flag for -\/2, a jogada acabou de ser inicializada, se for 0, já recebeu o primeiro click e está a espera do segundo, se for 1, já recebeu o segundo click e a jogada é válida e, por fim, se for -\/1, a jogada é inválida). 
+
+
+\begin{DoxyItemize}
+\item Primeiro click corresponde ao click de onde queremos remover a(s) carta(s) enquanto o segundo click corresponde a pilha para onde queremos mover essa(s) carta(s).
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New Game). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00279}{279}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00280\ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ -\/2)\{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ r;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ num\_carta;\ }
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{comment}{//mvprintw(2,\ 60\ ,\ "{}COLUNA\ :\ \ \%d\ \ \ \ \ \ .\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{},\ num\_carta);}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_carta\ >=\ 0\ \&\&\ evalida\_tamanhoSeq(game))\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 0;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ \doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game);}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/1;}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00290\ \ \ \ \ \}}
+\DoxyCodeLine{00291\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 0)\ jogAtual\_segClick(r,\ game);}
+\DoxyCodeLine{00292\ \ \ \ \ }
+\DoxyCodeLine{00293\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ac0e33a7118f3713acd2087aa2eae2e7c}\index{game.h@{game.h}!define\_maxdaPilha@{define\_maxdaPilha}}
+\index{define\_maxdaPilha@{define\_maxdaPilha}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{define\_maxdaPilha()}{define\_maxdaPilha()}}
+{\footnotesize\ttfamily \label{game_8h_ac0e33a7118f3713acd2087aa2eae2e7c} 
+void define\+\_\+maxda\+Pilha (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{max\+\_\+pilha}{, }\item[{int}]{i}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da inicializa\+\_\+matriz. Calcula o máximo de cartas que cada pilha vai ter quando o jogo começa. Sendo as 3 primeiras com 8 cartas, cada, e as restantes descresce de 7 a 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+pilha} & Pointer da variável, onde deve ser guardado o valor do máximo. \\
+\hline
+{\em i} & Índice da pilha que queremos descobrir o seu máximo de cartas. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00172}{172}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i<3)\{\ \ \textcolor{comment}{//\ Três\ primeiras\ pilhas\ com\ 8\ cartas,\ as\ outras\ com\ -\/1\ da\ anterior;\ }}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ *max\_pilha\ =\ 8;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ *max\_pilha\ -\/=\ 1;\}}
+\DoxyCodeLine{00176\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a4b6b0ba8865ec45cc38926a28cf52753}\index{game.h@{game.h}!desativa\_hint@{desativa\_hint}}
+\index{desativa\_hint@{desativa\_hint}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{desativa\_hint()}{desativa\_hint()}}
+{\footnotesize\ttfamily \label{game_8h_a4b6b0ba8865ec45cc38926a28cf52753} 
+void desativa\+\_\+hint (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função que passa a flag do hint para 1, e chama a função redesenha\+\_\+pilhas\+Hint, para voltar as cartas para a cor padrão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00249}{249}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}}\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}}\ =\ 1;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a4a0ff4a5413f60d307c9983fe1e66d5e}{redesenha\_pilhasHint}}(1,\ game,\ p);}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ad70dc846fa9d16bf89d09a3c4478d6d0}\index{game.h@{game.h}!evalida\_tamanhoSeq@{evalida\_tamanhoSeq}}
+\index{evalida\_tamanhoSeq@{evalida\_tamanhoSeq}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{evalida\_tamanhoSeq()}{evalida\_tamanhoSeq()}}
+{\footnotesize\ttfamily \label{game_8h_ad70dc846fa9d16bf89d09a3c4478d6d0} 
+int evalida\+\_\+tamanho\+Seq (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da define\+\_\+jog\+Atual, responsável por chamar a função que calcula o tamanho da sequência (tamanho\+\_\+sequencia) e com isso, já verifica se existem cartas consecutivas do mesmo naipe empilhadas e quantas são, e se a carta clicada é inválida i.\+e. é uma carta que não está no topo, logo não pode ser movida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00317}{317}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keywordtype}{int}\ size\ =\ \doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game);}
+\DoxyCodeLine{00319\ \ \ \ \ \textcolor{keywordflow}{if}(size\ ==\ 1)\{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}]\ -\/1\ )\ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \textcolor{keywordflow}{return}\ 0;\ \}}
+\DoxyCodeLine{00324\ \ \ \ \ \}}
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ }
+\DoxyCodeLine{00326\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_afab1f516437170d846feb2562a0c4a91}\index{game.h@{game.h}!foundations@{foundations}}
+\index{foundations@{foundations}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{foundations()}{foundations()}}
+{\footnotesize\ttfamily \label{game_8h_afab1f516437170d846feb2562a0c4a91} 
+void foundations (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Trata de verificar se em alguma das pilhas existe uma sequência de Rei a Ás do mesmo naipe, se sim, chama a função responsável por colocar a posição do foundation a 1 e a atualiziza o print do foundation e da pilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00190}{190}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ verifica\_foudations(game);}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordflow}{if}(\ i\ !=\ (-\/1))\ \{}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ab05f9c3e9d4ede8fd77eb32d18815275}{atualizaFoundations}}(game,\ p);}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ werase(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[i]);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ i);\ }
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i]\ -\/\ 1;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ultCarta\ >=\ 0)\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ x\_local,\ y\_local,\ i,\ ultCarta);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a0e93eaf398677cb9fe79bf60b5b112f7}\index{game.h@{game.h}!ganhou\_jogo@{ganhou\_jogo}}
+\index{ganhou\_jogo@{ganhou\_jogo}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{ganhou\_jogo()}{ganhou\_jogo()}}
+{\footnotesize\ttfamily \label{game_8h_a0e93eaf398677cb9fe79bf60b5b112f7} 
+int ganhou\+\_\+jogo (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função que percorre o array dos foundations, e retorna 1 se todas as posições do array têm 1(true), caso contrário, retorna 0 (false). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int (Bool). 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00330}{330}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00331\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[i]\ ==\ 0)\ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ }
+\DoxyCodeLine{00336\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a34036e4230ab74a8981474cf619ed87b}\index{game.h@{game.h}!inicializa\_baralho@{inicializa\_baralho}}
+\index{inicializa\_baralho@{inicializa\_baralho}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_baralho()}{inicializa\_baralho()}}
+{\footnotesize\ttfamily \label{game_8h_a34036e4230ab74a8981474cf619ed87b} 
+void inicializa\+\_\+baralho (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Cria e baralha as cartas no baralho principal. 
+
+Preenche o array do baralho com as 52 cartas (13 valores x 4 naipes) e realiza o processo de baralhar aleatoriamente as posições.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00137}{137}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\ =\ 0;}
+\DoxyCodeLine{00139\ \ \ \ \ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{comment}{//Para\ cada\ naipe,\ percorre\ as\ cartas\ com\ valores\ de\ 1\ a\ 13.}}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <=\ 13;\ j++)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ j;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[indice].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}}[i];}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ indice++;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a4e724359f732b410598ed68387440c9e}\index{game.h@{game.h}!inicializa\_hint@{inicializa\_hint}}
+\index{inicializa\_hint@{inicializa\_hint}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_hint()}{inicializa\_hint()}}
+{\footnotesize\ttfamily \label{game_8h_a4e724359f732b410598ed68387440c9e} 
+void inicializa\+\_\+hint (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da start\+\_\+game. Inicializa a struct Hint. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00106}{106}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}}\ =\ 0;\ \textcolor{comment}{//\ flag\ inicia\ a\ 0\ (indica\ que\ está\ vazio\ o\ Hint)}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ =\ 0;\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 17;\ j++)\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[i][j]\ =\ 0;}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a4c3b555974e561fa717509691561b55b}\index{game.h@{game.h}!inicializa\_jogAtual@{inicializa\_jogAtual}}
+\index{inicializa\_jogAtual@{inicializa\_jogAtual}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_jogAtual()}{inicializa\_jogAtual()}}
+{\footnotesize\ttfamily \label{game_8h_a4c3b555974e561fa717509691561b55b} 
+void inicializa\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da start\+\_\+game Inicializa os valores da Jogada Atual para valores predefinidos, de modo a não causar conflito posteriormente quando esses valores forem alterados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00130}{130}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ (-\/1);}
+\DoxyCodeLine{00132\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ (-\/1);}
+\DoxyCodeLine{00133\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/2;\ \textcolor{comment}{//número\ que\ não\ corresponde\ a\ nenhuma\ das\ condições\ definidas\ }}
+\DoxyCodeLine{00134\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ -\/1;}
+\DoxyCodeLine{00135\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ac7d4f253235d855c49d666f964a556fd}\index{game.h@{game.h}!inicializa\_matriz@{inicializa\_matriz}}
+\index{inicializa\_matriz@{inicializa\_matriz}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_matriz()}{inicializa\_matriz()}}
+{\footnotesize\ttfamily \label{game_8h_ac7d4f253235d855c49d666f964a556fd} 
+void inicializa\+\_\+matriz (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Distribui as cartas do baralho para as pilhas na mesa (matriz). 
+
+Retira as cartas do baralho já baralhado e coloca-\/as nas respetivas coordenadas da matriz para iniciar a partida visual.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00151}{151}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ srand(time(NULL));}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{int}\ indice\_carta;}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_pilha\ =\ 8;}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ define\_maxdaPilha(\&max\_pilha,i);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ max\_pilha;\ j++)\{}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Seleciona\ uma\ carta\ aleatória\ }}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ indice\_carta\ =\ rand()\ \%\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}};\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Atribui\ a\ carta\ à\ matriz\ }}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[i][j]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[indice\_carta];\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ a\ carta\ do\ baralho,\ trocando-\/a\ com\ a\ última\ e\ diminuindo\ o\ tamanho}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[indice\_carta]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}}\ -\/\ 1];}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}})-\/-\/;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a444a9b9c8206dec2c969d7e9b102f822}\index{game.h@{game.h}!inicializa\_naipes@{inicializa\_naipes}}
+\index{inicializa\_naipes@{inicializa\_naipes}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicializa\_naipes()}{inicializa\_naipes()}}
+{\footnotesize\ttfamily \label{game_8h_a444a9b9c8206dec2c969d7e9b102f822} 
+void inicializa\+\_\+naipes (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da start\+\_\+game Responsável por inicializar os naipes C -\/ Copas ~\newline
+ E -\/ Espadas ~\newline
+ O -\/ Ouros ~\newline
+ P -\/ Paus. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00115}{115}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00117\ \textcolor{comment}{\ \ \ \ \ Inicialização\ dos\ naipes}}
+\DoxyCodeLine{00118\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ \ \ \ \ C\ -\/\ Copas\ \ }}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ \ \ \ \ E\ -\/\ Espadas\ \ }}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ \ \ \ \ O\ -\/\ Ouros\ \ }}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ \ \ \ \ P\ -\/\ Paus}}
+\DoxyCodeLine{00123\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00124\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}}[0]\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00125\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}}[1]\ =\ \textcolor{charliteral}{'E'};}
+\DoxyCodeLine{00126\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}}[2]\ =\ \textcolor{charliteral}{'O'};}
+\DoxyCodeLine{00127\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}}[3]\ =\ \textcolor{charliteral}{'P'};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a66e305bf1c296c7575419366fa4f3458}\index{game.h@{game.h}!inicilaiza\_foundations@{inicilaiza\_foundations}}
+\index{inicilaiza\_foundations@{inicilaiza\_foundations}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{inicilaiza\_foundations()}{inicilaiza\_foundations()}}
+{\footnotesize\ttfamily \label{game_8h_a66e305bf1c296c7575419366fa4f3458} 
+void inicilaiza\+\_\+foundations (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Inicializa o array dos foundations a zero em todas as posições. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00100}{100}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[i]\ =\ 0;}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a164deb5f6c5ff07074b02a9b339bcd06}\index{game.h@{game.h}!init@{init}}
+\index{init@{init}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily \label{game_8h_a164deb5f6c5ff07074b02a9b339bcd06} 
+void init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{janelas}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função mestre de inicialização do jogo e da interface. 
+
+Chama as funções de inicialização de dados (baralho, matriz) e cria as janelas visuais do ncurses, desenhando o estado inicial no ecrã.
+
+
+\begin{DoxyParams}{Parameters}
+{\em janelas} & Ponteiro para a estrutura que armazena os endereços das janelas. \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00011}{11}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ codificação\ de\ caracteres}}
+\DoxyCodeLine{00014\ \ \ \ \ setlocale(LC\_ALL,\ \textcolor{stringliteral}{"{}"{}});\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Função\ do\ aux\_main\ -\/\ ativa\ as\ configurações\ gerais\ do\ Ncurses\ }}
+\DoxyCodeLine{00017\ \ \ \ \ \doxymbox{\hyperlink{game_8h_a898a19b23e6f24ad630671b91a1b7959}{ativaNcurses}}();\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ todas\ o\ jogo\ (variáveis)}}
+\DoxyCodeLine{00020\ \ \ \ \ start\_game(game);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Inicialização\ do\ baralho\ com\ as\ 52\ cartas\ regulares}}
+\DoxyCodeLine{00024\ \ \ \ \ inicializa\_baralho(game);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Inicialização\ das\ colunas\ de\ cartas\ com\ cartas\ do\ baralho}}
+\DoxyCodeLine{00027\ \ \ \ \ inicializa\_matriz(game);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ PRINTS\ DO\ JOGO\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a51af124fd06bfc7f2e2004aedefb9729}{define\_TodasJanelas}}(janelas,\ game);}
+\DoxyCodeLine{00034\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a00a505a467b438d3ca6c8ba6682737ad}\index{game.h@{game.h}!jogAtual\_segClick@{jogAtual\_segClick}}
+\index{jogAtual\_segClick@{jogAtual\_segClick}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{jogAtual\_segClick()}{jogAtual\_segClick()}}
+{\footnotesize\ttfamily \label{game_8h_a00a505a467b438d3ca6c8ba6682737ad} 
+void jog\+Atual\+\_\+seg\+Click (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da define\+\_\+jog\+Atual. Define no caso da jog\+\_\+atual está com a flag= 0, ou seja acabou de receber o 2º click Preenche o parâmetro da jog\+\_\+atual chamado chegada, com a pilha que foi detetado o click e depois busca verificar se a jogada é possível, passando a atribuir a devida flag a jogada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New Game). \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00295}{295}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ r;}
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{int}\ v1\ =\ \doxymbox{\hyperlink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{valida\_jogada\_origem}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ game);}
+\DoxyCodeLine{00298\ \ \ \ \ \textcolor{keywordtype}{int}\ v2\ =\ \doxymbox{\hyperlink{actions_8c_a0b0a044dd21f55e4a542021a0c1f9b93}{valida\_jogada\_destino}}(game);}
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}})\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 1;}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{comment}{//\ preciso\ que\ no\ caso\ da\ chegada\ =\ saída\ de\ 1\ também.\ }}
+\DoxyCodeLine{00301\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (v1\ \&\&\ v2)\ \{}
+\DoxyCodeLine{00302\ \ \ \ \ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ 1;}
+\DoxyCodeLine{00303\ \ \ \ \ \}\ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordflow}{else}\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/1;\ }
+\DoxyCodeLine{00305\ \ \ \ \ }
+\DoxyCodeLine{00306\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_af82f5158b2279ee84428c140d5074223}\index{game.h@{game.h}!loop\_principal@{loop\_principal}}
+\index{loop\_principal@{loop\_principal}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{loop\_principal()}{loop\_principal()}}
+{\footnotesize\ttfamily \label{game_8h_af82f5158b2279ee84428c140d5074223} 
+void loop\+\_\+principal (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{janelas}{, }\item[{int}]{jogando}{}\end{DoxyParamCaption})}
+
+
+
+O ciclo principal (loop) de execução do jogo. 
+
+Mantém o jogo a correr de forma contínua, à espera de input do utilizador (cliques ou teclas), atualizando o ecrã sempre que uma ação é validada.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em janelas} & Ponteiro para a estrutura que contém as janelas ncurses. \\
+\hline
+{\em jogando} & Variável de controlo (flag) que mantém o loop ativo (ex:\+ 1 para jogar, 0 para sair). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00178}{178}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{while}\ (jogando)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ch\ =\ getch();\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ganhou\_jogo(game))\{\ mvprintw(0,60,\textcolor{stringliteral}{"{}Vitória!"{}});\ jogando\ =\ 0;\}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ch\ ==\ \textcolor{charliteral}{'q'})\ jogando\ =\ 0;\ \textcolor{comment}{//\ Condição\ de\ saida\ do\ jogo,\ clicar\ no\ "{}q"{}}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ch\ ==\ KEY\_MOUSE)\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ processa\_rato(game,\ p);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_ae4f0cf4104511d1ae49c864d43813b4a}\index{game.h@{game.h}!naPilha@{naPilha}}
+\index{naPilha@{naPilha}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{naPilha()}{naPilha()}}
+{\footnotesize\ttfamily \label{game_8h_ae4f0cf4104511d1ae49c864d43813b4a} 
+void na\+Pilha (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Função Auxiliar da next\+\_\+step A partir da informação que o click foi em uma das pilhas, inicia o processo de construir e preencher a Jogada Atual com as informações. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New Game). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00257}{257}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 1\ ||\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ -\/1)\{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ inicializa\_jogAtual(game);}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ define\_jogAtual(r,\ num\_carta,\ game);}
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{int}\ pilha\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keywordtype}{int}\ chegada\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ \ ==\ 1\ \&\&\ pilha\ !=\ chegada)\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{actions_8c_a4e0710b9541e8646dc11f8a259bee6cf}{joga}}(pilha,\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}},\ chegada,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[chegada],\ game);}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ foundations(game,\ p);}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{actions_8h_a801078c29699b3a8584cc60f26db2ef0}{registar\_jogada}}(game);}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00271\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_af2192e94d6f6bf119e51612e66dec9ea}{update\_pilha}}(game,p);}
+\DoxyCodeLine{00272\ \ \ }
+\DoxyCodeLine{00273\ \ \ \ \ }
+\DoxyCodeLine{00274\ \ \ \ \ refresh();\ \ }
+\DoxyCodeLine{00275\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a466ccaf866257f1b588ab88a2a2a846c}\index{game.h@{game.h}!next\_step@{next\_step}}
+\index{next\_step@{next\_step}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{next\_step()}{next\_step()}}
+{\footnotesize\ttfamily \label{game_8h_a466ccaf866257f1b588ab88a2a2a846c} 
+void next\+\_\+step (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{num\+\_\+carta}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Lógica intermédia para processar o próximo passo do jogador. 
+
+Avalia o contexto da jogada após um clique numa pilha e decide o que deve acontecer a seguir (ex:\+ se o movimento avança para validação).
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & O identificador numérico da zona clicada (0-\/10 para as pilhas, 11 -\/ Hint, 12 -\/ Undo e 13 -\/ New Game). \\
+\hline
+{\em num\+\_\+carta} & Linha onde foi feito o click (posição, no caso de ser uma carta, da carta na matriz). \\
+\hline
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para as janelas da interface gráfica. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00218}{218}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{comment}{//\ Click\ em\ alguma\ das\ pilhas\ }}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ >=\ 0\ \&\&\ r\ <=\ 10)\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ desativa\_hint(game,p);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ inicializa\_hint(game);}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//print\_hint(game-\/>hint);}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ naPilha(r,\ num\_carta,\ game,\ p);}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//\ Click\ nos\ botões\ }}
+\DoxyCodeLine{00230\ \ \ \ \ \ \textcolor{keywordflow}{if}(r\ ==\ 13)\{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ start\_game(game);}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ init(p,\ game);}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ 12)\{}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{actions_8h_a086905bb6eb9dfdbaa736fe6962d7d6c}{undo}}(game);}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a51af124fd06bfc7f2e2004aedefb9729}{define\_TodasJanelas}}(p,\ game);\ }
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+\DoxyCodeLine{00239\ \ \ \ \ }
+\DoxyCodeLine{00240\ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ 11)\ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{actions_8h_acd4a2441df598a4d0e0f9205e88d9aa0}{hint}}(game);}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{comment}{//print\_hint(game-\/>hint);}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a4a0ff4a5413f60d307c9983fe1e66d5e}{redesenha\_pilhasHint}}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}},\ game,\ p);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00245\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00246\ \ \ \ \ }
+\DoxyCodeLine{00247\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a26419aa82f96a05d50fdfff38ae3d611}\index{game.h@{game.h}!processa\_rato@{processa\_rato}}
+\index{processa\_rato@{processa\_rato}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{processa\_rato()}{processa\_rato()}}
+{\footnotesize\ttfamily \label{game_8h_a26419aa82f96a05d50fdfff38ae3d611} 
+void processa\+\_\+rato (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}} \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Processa os cliques do rato feitos pelo utilizador. 
+
+Analisa as coordenadas de onde o utilizador clicou, determina se foi numa pilha, no baralho ou num botão, e invoca a ação correspondente.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+{\em p} & Ponteiro para a estrutura que guarda todas as janelas (\doxylink{struct_p_o_i_n_t_e_r_s}{POINTERS}). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00208}{208}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_carta;}
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{comment}{//\ Verifica\ a\ existencia\ de\ um\ click}}
+\DoxyCodeLine{00211\ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \doxymbox{\hyperlink{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304}{verifica\_click}}(game,\ p,\ \&num\_carta);}
+\DoxyCodeLine{00212\ \ \ \ \ next\_step(r,\ num\_carta,\ game,\ p);}
+\DoxyCodeLine{00213\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a094821e96bdd2f7694bc33e276655205}\index{game.h@{game.h}!start\_game@{start\_game}}
+\index{start\_game@{start\_game}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{start\_game()}{start\_game()}}
+{\footnotesize\ttfamily \label{game_8h_a094821e96bdd2f7694bc33e276655205} 
+void start\+\_\+game (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Configura o estado inicial da partida. 
+
+Prepara a estrutura \doxylink{struct_j_o_g_o}{JOGO} para uma nova partida, repondo pontuações, limpando o histórico de jogadas e preparando as variáveis base.
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo onde o baralho está guardado. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00071}{71}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ Número\ inicial\ de\ cartas\ no\ baralho\ }}
+\DoxyCodeLine{00073\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}}\ =\ 52;\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_pilha\ =\ 8;\ \textcolor{comment}{//numero\ de\ cartas\ por\ pilha\ }}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ cada\ pilha\ da\ mesa\ com\ o\ seu\ devido\ num\ de\ cartas\ }}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ <\ 3)\ max\_pilha\ =\ 8;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ max\_pilha\ -\/=\ 1;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Número\ de\ cartas\ na\ pilha\ i\ }}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i]\ =\ max\_pilha;\ }
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ Número\ de\ jogadas\ realizadas\ começa\ a\ 0}}
+\DoxyCodeLine{00086\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ =\ 0;\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ Inicialização\ dos\ naipes}}
+\DoxyCodeLine{00089\ \ \ \ \ inicializa\_naipes(game);}
+\DoxyCodeLine{00090\ \ \ \ \textcolor{comment}{//\ Inicializa\ a\ Jogada\ Atual}}
+\DoxyCodeLine{00091\ \ \ \ \ inicializa\_jogAtual(game);}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ o\ Hint}}
+\DoxyCodeLine{00093\ \ \ \ \ inicializa\_hint(game);}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ os\ foundations}}
+\DoxyCodeLine{00095\ \ \ \ \ inicilaiza\_foundations(game);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \}}
+
+\end{DoxyCode}
+\Hypertarget{game_8h_a772468d5c16f2645883c2ef0458dc211}\index{game.h@{game.h}!verifica\_foudations@{verifica\_foudations}}
+\index{verifica\_foudations@{verifica\_foudations}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{verifica\_foudations()}{verifica\_foudations()}}
+{\footnotesize\ttfamily \label{game_8h_a772468d5c16f2645883c2ef0458dc211} 
+int verifica\+\_\+foudations (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Verifica com auxílio da verifica\+\_\+sequencia\+\_\+inteira, se existe uma sequência de Reis a Ás do mesmo naipe, e se sim, preenche a posição do naipe específico no array foundations, nesse caso entrega o índice da pilha. Se não houve nenhum foundation preenchido, entrega -\/1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para a estrutura principal do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int (Bool adaptado). 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{game_8c_source_l00342}{342}} of file \doxymbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keywordtype}{int}\ pilha\ =\ \doxymbox{\hyperlink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\_sequencia\_inteira}}(game);\ }
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keywordflow}{if}\ (pilha\ !=\ -\/1)\{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'C'})\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[0]\ =\ 1;}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'E'})\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[1]\ =\ 1;}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'O'})\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[2]\ =\ 1;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'P'})\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[3]\ =\ 1;}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/=\ 13;\ \textcolor{comment}{//\ Tira\ a\ sequência\ de\ 13\ cartas\ da\ pilha;}}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pilha;}
+\DoxyCodeLine{00351\ \ \ \ \ \}}
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00353\ \}}
+
+\end{DoxyCode}

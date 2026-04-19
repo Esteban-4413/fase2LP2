@@ -1,0 +1,28 @@
+var prints_8c =
+[
+    [ "alteraCor_carta", "prints_8c.html#a81c8b190f670db39ce848d31fe41a876", null ],
+    [ "alteraCor_pilha", "prints_8c.html#aab880ef78b9a96c9a54dd00dbaa189cd", null ],
+    [ "atualizaF", "prints_8c.html#aed1674ee65fa8faf9280486e59313087", null ],
+    [ "atualizaFoundations", "prints_8c.html#ab05f9c3e9d4ede8fd77eb32d18815275", null ],
+    [ "aux_alteraCorCarta", "prints_8c.html#acf36b7a3a11426b8553b432c2c9dc8e8", null ],
+    [ "define_TodasJanelas", "prints_8c.html#a51af124fd06bfc7f2e2004aedefb9729", null ],
+    [ "defineButtonHint", "prints_8c.html#a9faf09d9187a172514a8f95bfa64a61e", null ],
+    [ "defineButtonNgame", "prints_8c.html#a690b188121da1b8a5d875f9d94493aaf", null ],
+    [ "defineButtonUndo", "prints_8c.html#a5e459375cc71242bd0edaf48ac42ce25", null ],
+    [ "defineCarta", "prints_8c.html#a146d3f63e4de3aa27265db317e32a3b6", null ],
+    [ "defineFoundations", "prints_8c.html#a09aa428fdf642b060c938a5bbf8682d7", null ],
+    [ "definePilhas", "prints_8c.html#a3b81ebf4200b2923946013ceac3dccd7", null ],
+    [ "desenha_pilha", "prints_8c.html#a5cc38d541394015b2d0157cb48a72baa", null ],
+    [ "pilha_negrito", "prints_8c.html#a8229094269183e875350b84c2f4d193c", null ],
+    [ "print_carta", "prints_8c.html#a892c3b2458c9e7a053626391921727c3", null ],
+    [ "print_nomePilha", "prints_8c.html#aa621cac158e4ad59ce0cb8d1872d2ace", null ],
+    [ "print_pilha", "prints_8c.html#ac9804c7b093f450ebb71030121d6c65f", null ],
+    [ "redesenha_pilha", "prints_8c.html#ae1a6cfd90592374fe9147a11412d0656", null ],
+    [ "redesenha_pilhasHint", "prints_8c.html#a4a0ff4a5413f60d307c9983fe1e66d5e", null ],
+    [ "reset_pilhaHint", "prints_8c.html#ab171a3c1d96278ab1b58e168bd7250c7", null ],
+    [ "traduzsimbolo", "prints_8c.html#a1b7430fb7d33aeca746fec8daef5ca42", null ],
+    [ "traduzvalor", "prints_8c.html#a89f100a551d60e5a4c77484940f8987f", null ],
+    [ "update_pilha", "prints_8c.html#af2192e94d6f6bf119e51612e66dec9ea", null ],
+    [ "wprint_cartaInt", "prints_8c.html#aaa3f8c8a3cde0ac6cf1f6ba50499ab9a", null ],
+    [ "wprint_cartaTop", "prints_8c.html#ae001fe870398817ed79cab266f0ce247", null ]
+];

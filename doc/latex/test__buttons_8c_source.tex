@@ -1,0 +1,44 @@
+\doxysection{test\+\_\+buttons.\+c}
+\hypertarget{test__buttons_8c_source}{}\label{test__buttons_8c_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_buttons.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_buttons.c}}
+\doxymbox{\hyperlink{test__buttons_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <CUnit/CUnit.h>}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{actions_8h}{../engine/actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{game_8h}{../engine/game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00015}\doxymbox{\hyperlink{test__buttons_8c_af30f7aa28f98c68de8ceed9fe86a3339}{00015}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{test__buttons_8c_af30f7aa28f98c68de8ceed9fe86a3339}{testar\_registar\_jogada}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00016}00016\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00017}00017\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00018}00018\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00019}00019\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00020}00020\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00021}00021\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00022}00022\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{actions_8h_a801078c29699b3a8584cc60f26db2ef0}{registar\_jogada}}(\&game);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00026}00026\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}},\ 1);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00027}00027\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ 1);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00036}\doxymbox{\hyperlink{test__buttons_8c_ad623670a772ecc11f593c694b65a30f2}{00036}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{test__buttons_8c_ad623670a772ecc11f593c694b65a30f2}{testar\_undo}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00037}00037\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00038}00038\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ Falsifica\ a\ última\ jogada:\ Da\ pilha\ 1\ para\ a\ 2}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00041}00041\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00042}00042\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00043}00043\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00044}00044\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[0].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00045}00045\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1]\ =\ 0;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[2]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00047}00047\ \ \ \ \ \doxymbox{\hyperlink{actions_8h_a086905bb6eb9dfdbaa736fe6962d7d6c}{undo}}(\&game);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00049}00049\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}},\ 0);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ A\ carta\ regressou\ à\ origem}}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00051}00051\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1],\ 1);\ }
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00052}00052\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[2],\ 0);}
+\DoxyCodeLine{\Hypertarget{test__buttons_8c_source_l00053}00053\ \}}
+
+\end{DoxyCode}

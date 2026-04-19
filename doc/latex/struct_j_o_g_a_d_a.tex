@@ -1,0 +1,103 @@
+\doxysection{JOGADA Struct Reference}
+\hypertarget{struct_j_o_g_a_d_a}{}\label{struct_j_o_g_a_d_a}\index{JOGADA@{JOGADA}}
+
+
+Estrutura que regista os detalhes de uma jogada efetuada. Utilizada para o sistema de histórico e "{}\+Desfazer"{} (Undo).  
+
+
+
+
+{\ttfamily \+\#include $<$actions.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}
+\item 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a6a2c886c0c2e6ee0de4d4973b707f5e2}{carta}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estrutura que regista os detalhes de uma jogada efetuada. Utilizada para o sistema de histórico e "{}\+Desfazer"{} (Undo). 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_j_o_g_a_d_a_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_j_o_g_a_d_a_a6a2c886c0c2e6ee0de4d4973b707f5e2}\index{JOGADA@{JOGADA}!carta@{carta}}
+\index{carta@{carta}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{carta}{carta}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_a6a2c886c0c2e6ee0de4d4973b707f5e2} 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} JOGADA::\+carta}
+
+A carta exata que foi movida durante esta jogada. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}\index{JOGADA@{JOGADA}!chegada@{chegada}}
+\index{chegada@{chegada}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{chegada}{chegada}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c} 
+int JOGADA::\+chegada}
+
+O índice da pilha de onde a carta vai passar. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}\index{JOGADA@{JOGADA}!coluna@{coluna}}
+\index{coluna@{coluna}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{coluna}{coluna}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6} 
+int JOGADA::\+coluna}
+
+O índice da posição da carta dentro da pilha de saida. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}\index{JOGADA@{JOGADA}!flag@{flag}}
+\index{flag@{flag}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{flag}{flag}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719} 
+int JOGADA::\+flag}
+
+Inicializada a 0; -\/1 se a jogada não for possível 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00043}{43}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}\index{JOGADA@{JOGADA}!n@{n}}
+\index{n@{n}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473} 
+int JOGADA::\+n}
+
+Número de cartas na sequência que vão ser movidas. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}\index{JOGADA@{JOGADA}!pilha@{pilha}}
+\index{pilha@{pilha}!JOGADA@{JOGADA}}
+\doxysubsubsection{\texorpdfstring{pilha}{pilha}}
+{\footnotesize\ttfamily \label{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe} 
+int JOGADA::\+pilha}
+
+Indice da pilha de onde a carta saiu. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00039}{39}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+\doxymbox{\hyperlink{actions_8h}{actions.\+h}}\end{DoxyCompactItemize}

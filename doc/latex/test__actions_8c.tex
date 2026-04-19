@@ -1,0 +1,227 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+tests/\+test\+\_\+actions.c File Reference}
+\hypertarget{test__actions_8c}{}\label{test__actions_8c}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_actions.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_actions.c}}
+
+
+Testes unitários para as funções de mecânica de cartas (\doxylink{actions_8c}{actions.\+c}).  
+
+
+{\ttfamily \+\#include $<$CUnit/\+\+CUnit.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+engine/\+actions.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+engine/\+game.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{test__actions_8c_ad7208a6e4a78fda23ba3f01468748002}{testar\+\_\+joga}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a movimentação física de cartas. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__actions_8c_aed2dff57e09feff5e9460c08dc500385}{testar\+\_\+valida\+\_\+origem}} (void)
+\begin{DoxyCompactList}\small\item\em Testa as regras de seleção de uma carta na origem. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__actions_8c_a9350b91f0b1184adc4e4e2ffb4358aec}{testar\+\_\+valida\+\_\+destino}} (void)
+\begin{DoxyCompactList}\small\item\em Testa as regras de colocação de uma carta no destino. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__actions_8c_a6a64632c62cc2d65e26431621646ecaf}{testar\+\_\+tamanho\+\_\+sequencia}} (void)
+\begin{DoxyCompactList}\small\item\em Testa o cálculo do tamanho de uma sequência de cartas. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__actions_8c_ae41857c754f586cb20df5d56bbde121f}{testar\+\_\+verifica\+\_\+sem\+\_\+sequencia}} (void)
+\begin{DoxyCompactList}\small\item\em Testa se o jogo não deteta uma sequência quando ela não existe. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__actions_8c_a3babb4851a27502129541b17c14de8da}{testar\+\_\+verifica\+\_\+com\+\_\+sequencia}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a identificação de uma sequência inteira válida (13 cartas). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Testes unitários para as funções de mecânica de cartas (\doxylink{actions_8c}{actions.\+c}). 
+
+
+
+Definition in file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{test__actions_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__actions_8c_ad7208a6e4a78fda23ba3f01468748002}\index{test\_actions.c@{test\_actions.c}!testar\_joga@{testar\_joga}}
+\index{testar\_joga@{testar\_joga}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_joga()}{testar\_joga()}}
+{\footnotesize\ttfamily \label{test__actions_8c_ad7208a6e4a78fda23ba3f01468748002} 
+void testar\+\_\+joga (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a movimentação física de cartas. 
+
+Simula a passagem de uma carta da pilha 0 para a pilha 1. {\bfseries{Resultado Esperado:\+}} A pilha 0 perde a carta (tamanho 0) e a pilha 1 ganha a carta (tamanho 1). \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_a4e0710b9541e8646dc11f8a259bee6cf}{joga()} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00015}{15}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00017\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 1;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1]\ =\ 0;}
+\DoxyCodeLine{00018\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 5;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00019\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ 1;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \doxymbox{\hyperlink{actions_8c_a4e0710b9541e8646dc11f8a259bee6cf}{joga}}(0,\ 0,\ 1,\ 0,\ \&game);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0],\ 0);}
+\DoxyCodeLine{00024\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1],\ 1);}
+\DoxyCodeLine{00025\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[1][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ 5);}
+\DoxyCodeLine{00026\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__actions_8c_a6a64632c62cc2d65e26431621646ecaf}\index{test\_actions.c@{test\_actions.c}!testar\_tamanho\_sequencia@{testar\_tamanho\_sequencia}}
+\index{testar\_tamanho\_sequencia@{testar\_tamanho\_sequencia}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_tamanho\_sequencia()}{testar\_tamanho\_sequencia()}}
+{\footnotesize\ttfamily \label{test__actions_8c_a6a64632c62cc2d65e26431621646ecaf} 
+void testar\+\_\+tamanho\+\_\+sequencia (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa o cálculo do tamanho de uma sequência de cartas. 
+
+Cria duas cartas em sequência (5C e 4C) e verifica se a contagem está certa. {\bfseries{Resultado Esperado:\+}} O tamanho calculado tem de ser 2. \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\+\_\+sequencia} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00067}{67}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00069\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 2;}
+\DoxyCodeLine{00070\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 5;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00071\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 4;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ CU\_ASSERT\_EQUAL(\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(0,\ 0,\ \&game),\ 2);}
+\DoxyCodeLine{00074\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__actions_8c_a9350b91f0b1184adc4e4e2ffb4358aec}\index{test\_actions.c@{test\_actions.c}!testar\_valida\_destino@{testar\_valida\_destino}}
+\index{testar\_valida\_destino@{testar\_valida\_destino}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_valida\_destino()}{testar\_valida\_destino()}}
+{\footnotesize\ttfamily \label{test__actions_8c_a9350b91f0b1184adc4e4e2ffb4358aec} 
+void testar\+\_\+valida\+\_\+destino (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa as regras de colocação de uma carta no destino. 
+
+Verifica se é possível colocar um 4 de Copas sobre um 5 de Copas. {\bfseries{Resultado Esperado:\+}} A função deve retornar 1 (Verdadeiro). \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_a0b0a044dd21f55e4a542021a0c1f9b93}{valida\+\_\+jogada\+\_\+destino} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00049}{49}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00051\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 4;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[0][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00052\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 1;}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[1][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 5;\ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[1][0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{00055\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1]\ =\ 1;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ resultado\ =\ \doxymbox{\hyperlink{actions_8c_a0b0a044dd21f55e4a542021a0c1f9b93}{valida\_jogada\_destino}}(0,\ 0,\ 1,\ 0,\ \&game);}
+\DoxyCodeLine{00058\ \ \ \ \ CU\_ASSERT\_EQUAL(resultado,\ 1);}
+\DoxyCodeLine{00059\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__actions_8c_aed2dff57e09feff5e9460c08dc500385}\index{test\_actions.c@{test\_actions.c}!testar\_valida\_origem@{testar\_valida\_origem}}
+\index{testar\_valida\_origem@{testar\_valida\_origem}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_valida\_origem()}{testar\_valida\_origem()}}
+{\footnotesize\ttfamily \label{test__actions_8c_aed2dff57e09feff5e9460c08dc500385} 
+void testar\+\_\+valida\+\_\+origem (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa as regras de seleção de uma carta na origem. 
+
+Verifica se o jogo rejeita pilhas vazias e aceita cartas no topo. {\bfseries{Resultado Esperado:\+}} Retorna 0 para pilha vazia e 1 para jogada válida. \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{valida\+\_\+jogada\+\_\+origem} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00034}{34}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00036\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 0;\ }
+\DoxyCodeLine{00037\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[1]\ =\ 3;\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ CU\_ASSERT\_EQUAL(\doxymbox{\hyperlink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{valida\_jogada\_origem}}(0,\ 0,\ \&game),\ 0);}
+\DoxyCodeLine{00040\ \ \ \ \ CU\_ASSERT\_EQUAL(\doxymbox{\hyperlink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{valida\_jogada\_origem}}(1,\ 2,\ \&game),\ 1);}
+\DoxyCodeLine{00041\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__actions_8c_a3babb4851a27502129541b17c14de8da}\index{test\_actions.c@{test\_actions.c}!testar\_verifica\_com\_sequencia@{testar\_verifica\_com\_sequencia}}
+\index{testar\_verifica\_com\_sequencia@{testar\_verifica\_com\_sequencia}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_verifica\_com\_sequencia()}{testar\_verifica\_com\_sequencia()}}
+{\footnotesize\ttfamily \label{test__actions_8c_a3babb4851a27502129541b17c14de8da} 
+void testar\+\_\+verifica\+\_\+com\+\_\+sequencia (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a identificação de uma sequência inteira válida (13 cartas). 
+
+Cria uma sequência do Rei (13) ao Ás (1) do mesmo naipe na pilha 2. {\bfseries{Resultado Esperado:\+}} Retorna o índice da pilha onde está a sequência (2). \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\+\_\+sequencia\+\_\+inteira} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00097}{97}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Vamos\ usar\ a\ pilha\ 2}}
+\DoxyCodeLine{00100\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[2]\ =\ 13;}
+\DoxyCodeLine{00101\ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Criamos\ as\ 13\ cartas\ em\ ordem\ decrescente\ usando\ um\ ciclo\ curto}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ A\ carta\ no\ índice\ 0\ terá\ valor\ 13,\ índice\ 1\ terá\ 12,\ etc...\ até\ ao\ Ás\ (1)}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 13;\ i++)\ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[2][i].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 13\ -\/\ i;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[2][i].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};\ \textcolor{comment}{//\ Todas\ de\ Copas}}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{comment}{//\ O\ jogo\ deve\ identificar\ que\ a\ pilha\ 2\ tem\ uma\ sequência\ completa}}
+\DoxyCodeLine{00110\ \ \ \ \ CU\_ASSERT\_EQUAL(\doxymbox{\hyperlink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\_sequencia\_inteira}}(\&game),\ 2);}
+\DoxyCodeLine{00111\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__actions_8c_ae41857c754f586cb20df5d56bbde121f}\index{test\_actions.c@{test\_actions.c}!testar\_verifica\_sem\_sequencia@{testar\_verifica\_sem\_sequencia}}
+\index{testar\_verifica\_sem\_sequencia@{testar\_verifica\_sem\_sequencia}!test\_actions.c@{test\_actions.c}}
+\doxysubsubsection{\texorpdfstring{testar\_verifica\_sem\_sequencia()}{testar\_verifica\_sem\_sequencia()}}
+{\footnotesize\ttfamily \label{test__actions_8c_ae41857c754f586cb20df5d56bbde121f} 
+void testar\+\_\+verifica\+\_\+sem\+\_\+sequencia (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa se o jogo não deteta uma sequência quando ela não existe. 
+
+Simula pilhas que não têm sequências completas de 13 cartas. {\bfseries{Resultado Esperado:\+}} A função deve retornar -\/1. \begin{DoxySeeAlso}{See also}
+\doxylink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\+\_\+sequencia\+\_\+inteira} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__actions_8c_source_l00082}{82}} of file \doxymbox{\hyperlink{test__actions_8c_source}{test\+\_\+actions.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Simulamos\ pilhas\ sem\ o\ tamanho\ mínimo\ de\ 13\ cartas\ para\ existirem\ sequências}}
+\DoxyCodeLine{00085\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 5;\ }
+\DoxyCodeLine{00086\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[3]\ =\ 10;}
+\DoxyCodeLine{00087\ \ \ \ \ }
+\DoxyCodeLine{00088\ \ \ \ \ CU\_ASSERT\_EQUAL(\doxymbox{\hyperlink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\_sequencia\_inteira}}(\&game),\ -\/1);}
+\DoxyCodeLine{00089\ \}}
+
+\end{DoxyCode}

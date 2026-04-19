@@ -1,0 +1,151 @@
+\doxysection{JOGO Struct Reference}
+\hypertarget{struct_j_o_g_o}{}\label{struct_j_o_g_o}\index{JOGO@{JOGO}}
+
+
+Estrutura principal que guarda todo o estado atual da partida.  
+
+
+
+
+{\ttfamily \+\#include $<$actions.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char \doxymbox{\hyperlink{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}{naipes}} \+[4]\+
+\item 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}} \+[52]\+
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\+\_\+baralho}}
+\item 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} \doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}} \+[\doxymbox{\hyperlink{actions_8h_af6a42e6c6fa946422f6d681b9a926d76}{NUM\+\_\+\+COLUNAS}}]\+\+[\doxymbox{\hyperlink{actions_8h_ab52add864daeb23f3ed93970c237c794}{NUM\+\_\+\+LINHAS}}]\+
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\+\_\+pilha}} \+[\doxymbox{\hyperlink{actions_8h_af6a42e6c6fa946422f6d681b9a926d76}{NUM\+\_\+\+COLUNAS}}]\+
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}} \+[4]\+
+\item 
+struct \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}} \doxymbox{\hyperlink{struct_j_o_g_o_a00c5009916f8e8e3cc41c1dce67f3d38}{jog\+\_\+atual}}
+\item 
+struct \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}} \doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}} \+[\doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\+\_\+\+UNDO}}]\+
+\item 
+int \doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\+\_\+historial}}
+\item 
+struct \doxymbox{\hyperlink{struct_h_i_n_t}{HINT}} \doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Estrutura principal que guarda todo o estado atual da partida. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_j_o_g_o_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}\index{JOGO@{JOGO}!baralho@{baralho}}
+\index{baralho@{baralho}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{baralho}{baralho}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1} 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} JOGO::\+baralho\+[52]\+}
+
+O baralho principal (monte de onde se tiram cartas). 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00063}{63}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}\index{JOGO@{JOGO}!foundations@{foundations}}
+\index{foundations@{foundations}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{foundations}{foundations}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207} 
+int JOGO::\+foundations\+[4]\+}
+
+Array de flags, que indicam se as foundations já foram preenchidas 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00067}{67}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a92db554013a89335d7724f4104028648}\index{JOGO@{JOGO}!hint@{hint}}
+\index{hint@{hint}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{hint}{hint}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a92db554013a89335d7724f4104028648} 
+struct \doxymbox{\hyperlink{struct_h_i_n_t}{HINT}} JOGO::\+hint}
+
+Informações sobre o Hint. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00071}{71}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}\index{JOGO@{JOGO}!historial@{historial}}
+\index{historial@{historial}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{historial}{historial}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9} 
+struct \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}} JOGO::\+historial\+[\doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\+\_\+\+UNDO}}]\+}
+
+Array que guarda as últimas jogadas feitas para o sistema de Undo. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00069}{69}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a00c5009916f8e8e3cc41c1dce67f3d38}\index{JOGO@{JOGO}!jog\_atual@{jog\_atual}}
+\index{jog\_atual@{jog\_atual}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{jog\_atual}{jog\_atual}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a00c5009916f8e8e3cc41c1dce67f3d38} 
+struct \doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}} JOGO::\+jog\+\_\+atual}
+
+
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00068}{68}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}\index{JOGO@{JOGO}!jogadas\_historial@{jogadas\_historial}}
+\index{jogadas\_historial@{jogadas\_historial}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{jogadas\_historial}{jogadas\_historial}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638} 
+int JOGO::\+jogadas\+\_\+historial}
+
+Número atual de jogadas guardadas no histórico. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00070}{70}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}\index{JOGO@{JOGO}!matriz@{matriz}}
+\index{matriz@{matriz}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{matriz}{matriz}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919} 
+\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}} JOGO::\+matriz\+[\doxymbox{\hyperlink{actions_8h_af6a42e6c6fa946422f6d681b9a926d76}{NUM\+\_\+\+COLUNAS}}]\+\+[\doxymbox{\hyperlink{actions_8h_ab52add864daeb23f3ed93970c237c794}{NUM\+\_\+\+LINHAS}}]\+}
+
+A matriz que representa as cartas espalhadas na mesa. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00065}{65}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d}\index{JOGO@{JOGO}!naipes@{naipes}}
+\index{naipes@{naipes}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{naipes}{naipes}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a7272ccd3db6a53dce3cdcad318648a7d} 
+char JOGO::\+naipes\+[4]\+}
+
+Array com os caracteres dos 4 naipes possíveis. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}\index{JOGO@{JOGO}!tamanho\_baralho@{tamanho\_baralho}}
+\index{tamanho\_baralho@{tamanho\_baralho}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{tamanho\_baralho}{tamanho\_baralho}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e} 
+int JOGO::\+tamanho\+\_\+baralho}
+
+Número de cartas que ainda restam no baralho principal. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00064}{64}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+\Hypertarget{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}\index{JOGO@{JOGO}!tamanho\_pilha@{tamanho\_pilha}}
+\index{tamanho\_pilha@{tamanho\_pilha}!JOGO@{JOGO}}
+\doxysubsubsection{\texorpdfstring{tamanho\_pilha}{tamanho\_pilha}}
+{\footnotesize\ttfamily \label{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1} 
+int JOGO::\+tamanho\+\_\+pilha\+[\doxymbox{\hyperlink{actions_8h_af6a42e6c6fa946422f6d681b9a926d76}{NUM\+\_\+\+COLUNAS}}]\+}
+
+Array que guarda o número atual de cartas em cada uma das 10 pilhas. 
+
+Definition at line \doxymbox{\hyperlink{actions_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{actions_8h_source}{actions.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+\doxymbox{\hyperlink{actions_8h}{actions.\+h}}\end{DoxyCompactItemize}

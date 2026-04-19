@@ -1,0 +1,317 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+engine/\+buttons.c File Reference}
+\hypertarget{buttons_8c}{}\label{buttons_8c}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/buttons.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/buttons.c}}
+
+
+Implementação da lógica dos botões de interface (Hint, Undo) e histórico de jogadas.  
+
+
+{\ttfamily \+\#include "{}actions.\+h"{}}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include "{}prints.\+h"{}}\newline
+{\ttfamily \+\#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{buttons_8c_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\+\_\+\+UNDO}}~5
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{buttons_8c_acd4a2441df598a4d0e0f9205e88d9aa0}{hint}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Fornece uma dica (hint) ao jogador. Analisa a mesa para encontrar uma carta que possa ser validamente movida para o descarte e destaca-\/a visualmente. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{buttons_8c_af13483a493e606d1b0c5f076a8ca439d}{tem\+Hint}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Função que verifica se existe alguma jogada possível para ser mostrada no hint, ao percorrer o array p\+\_\+flags e verificar se em alguma posição está um 1, que indica que existe carta para para ser movida na pilha. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc}{procura\+\_\+destino}} (int y, int x, \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game, int \texorpdfstring{$\ast$}{*}flag)
+\begin{DoxyCompactList}\small\item\em Auxiliar da hint. Percorre para cada carta a procura, nas outra pilhas se existe uma carta no topo, um valor acima desta. No caso de ser do mesmo naipe coloca a flag, na carta para 1 que indica que a carta será mostrada a verde. E se a carta de destino encontrada for de um naipe diferente, coloca a flag da carta de origem a 2, que indica que ficará amarela. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{buttons_8c_a801078c29699b3a8584cc60f26db2ef0}{registar\+\_\+jogada}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Regista uma jogada no histórico para permitir o "{}\+Desfazer"{} (Undo). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{buttons_8c_a086905bb6eb9dfdbaa736fe6962d7d6c}{undo}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Desfaz a última jogada realizada pelo jogador. Verifica se é possível voltar atrás a jogada-\/ se não retorna uma mensagem, e se for possível chama a aux\+\_\+undo que faz toda a parte de devolver as cartas de onde vieram. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{buttons_8c_aa67a6dbc053037a58a4838d16d79e822}{aux\+\_\+undo}} (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}game)
+\begin{DoxyCompactList}\small\item\em Auxiliar do undo Onde está a lógica do undo, para o caso de ser possível retroceder uma jogada, Lê a última() entrada do histórico e reverte o movimento da(s) carta(s), devolvendo-\/a à sua posição original. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementação da lógica dos botões de interface (Hint, Undo) e histórico de jogadas. 
+
+\begin{DoxyAuthor}{Author}
+Esteban Yepez (a116272), Fernanda Cidrim (a116274), Martim Sousa (a113572) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026-\/04-\/19 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2026 
+\end{DoxyCopyright}
+
+
+Definition in file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{buttons_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{buttons_8c_acedb7a63cdbd9a4bbfe8a3d174c24b5c}\index{buttons.c@{buttons.c}!MAX\_UNDO@{MAX\_UNDO}}
+\index{MAX\_UNDO@{MAX\_UNDO}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_UNDO}{MAX\_UNDO}}
+{\footnotesize\ttfamily \label{buttons_8c_acedb7a63cdbd9a4bbfe8a3d174c24b5c} 
+\+\#define MAX\+\_\+\+UNDO~5}
+
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00019}{19}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{buttons_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{buttons_8c_aa67a6dbc053037a58a4838d16d79e822}\index{buttons.c@{buttons.c}!aux\_undo@{aux\_undo}}
+\index{aux\_undo@{aux\_undo}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{aux\_undo()}{aux\_undo()}}
+{\footnotesize\ttfamily \label{buttons_8c_aa67a6dbc053037a58a4838d16d79e822} 
+void aux\+\_\+undo (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Auxiliar do undo Onde está a lógica do undo, para o caso de ser possível retroceder uma jogada, Lê a última() entrada do histórico e reverte o movimento da(s) carta(s), devolvendo-\/a à sua posição original. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00110}{110}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Acede\ à\ última\ jogada}}
+\DoxyCodeLine{00112\ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})-\/-\/;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ ultimo\_mov\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}];}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ origem\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_original\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};\ \textcolor{comment}{//\ Onde\ elas\ estavam\ na\ origem}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ Localiza\ as\ cartas\ na\ chegada}}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_atual\_chegada\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}]\ -\/\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//O\ Loop\ de\ Devolução}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ i++)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[origem][pos\_original\ +\ i]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}][pos\_atual\_chegada\ +\ i];}
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ Ajustar\ os\ contadores\ de\ tamanho}}
+\DoxyCodeLine{00129\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[origem]\ +=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00130\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}]\ -\/=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00131\ \}}
+
+\end{DoxyCode}
+\Hypertarget{buttons_8c_acd4a2441df598a4d0e0f9205e88d9aa0}\index{buttons.c@{buttons.c}!hint@{hint}}
+\index{hint@{hint}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{hint()}{hint()}}
+{\footnotesize\ttfamily \label{buttons_8c_acd4a2441df598a4d0e0f9205e88d9aa0} 
+void hint (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Fornece uma dica (hint) ao jogador. Analisa a mesa para encontrar uma carta que possa ser validamente movida para o descarte e destaca-\/a visualmente. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00023}{23}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ flag;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ 10;\ y++)\{\ \textcolor{comment}{/*\ Por\ cada\ pilha\ */}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ flag\ =\ 1;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ \&\&\ flag;\ x++)\{\ \textcolor{comment}{/*\ Por\ cada\ carta\ */}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ há\ uma\ sequência\ que\ começa\ nessa\ mesma\ carta\ e\ vai}}
+\DoxyCodeLine{00030\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ até\ ao\ fundo\ da\ pilha,\ procurar\ destinos\ para\ esta\ carta\ */}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(x,\ y,\ game)\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/\ x)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc}{procura\_destino}}(y,\ x,\ game,\ \&flag);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{buttons_8c_af13483a493e606d1b0c5f076a8ca439d}{temHint}}(game))\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}}\ =\ -\/1;}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
+\Hypertarget{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc}\index{buttons.c@{buttons.c}!procura\_destino@{procura\_destino}}
+\index{procura\_destino@{procura\_destino}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{procura\_destino()}{procura\_destino()}}
+{\footnotesize\ttfamily \label{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc} 
+void procura\+\_\+destino (\begin{DoxyParamCaption}\item[{int}]{y}{, }\item[{int}]{x}{, }\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{flag}{}\end{DoxyParamCaption})}
+
+
+
+Auxiliar da hint. Percorre para cada carta a procura, nas outra pilhas se existe uma carta no topo, um valor acima desta. No caso de ser do mesmo naipe coloca a flag, na carta para 1 que indica que a carta será mostrada a verde. E se a carta de destino encontrada for de um naipe diferente, coloca a flag da carta de origem a 2, que indica que ficará amarela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & Índice da pilha a ser verificada. \\
+\hline
+{\em x} & Índice da carta na pilha y. \\
+\hline
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+{\em flag} & Indica se existe alguma jogada possível na pilha. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00051}{51}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y2\ =\ 0;\ y2\ <\ 10\ \&\&\ flag;\ y2++)\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ carta\_origem\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x];}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ carta\_destino\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y2][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y2]-\/1];}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (carta\_origem.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ ==\ carta\_destino.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ -\/\ 1)\{\ \textcolor{comment}{/*\ Se\ encontrar\ destino\ */}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ *flag\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Decide\ de\ que\ cor\ piscar\ */}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (carta\_origem.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ carta\_destino.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}})\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[y][x]\ =\ 1;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[y]\ =\ 1;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*<\ Carta\ fica\ VERDE\ */}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[y][x]\ =\ 2;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[y]\ =\ 1;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*<\ Carta\ fica\ AMARELA\ */}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \}}
+
+\end{DoxyCode}
+\Hypertarget{buttons_8c_a801078c29699b3a8584cc60f26db2ef0}\index{buttons.c@{buttons.c}!registar\_jogada@{registar\_jogada}}
+\index{registar\_jogada@{registar\_jogada}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{registar\_jogada()}{registar\_jogada()}}
+{\footnotesize\ttfamily \label{buttons_8c_a801078c29699b3a8584cc60f26db2ef0} 
+void registar\+\_\+jogada (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Regista uma jogada no histórico para permitir o "{}\+Desfazer"{} (Undo). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00074}{74}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//para\ meter\ as\ jogadas\ mais\ recentes\ então\ empurramos\ as\ mais\ velhas\ fora\ do\ array\ (Se\ o\ histórico\ estiver\ cheio,\ apaga\ a\ jogada\ mais\ antiga)}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ ==\ \doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}})\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}}\ -\/\ 1;\ i\ ++)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[i]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[i\ +\ 1];}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})-\/-\/;}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Guarda\ os\ dados\ da\ nova\ jogada}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ jogadas\_historial\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}};}
+\DoxyCodeLine{00085\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{00086\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};}
+\DoxyCodeLine{00087\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{00088\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{00089\ \ \ \ \ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})++;}
+\DoxyCodeLine{00092\ \}}
+
+\end{DoxyCode}
+\Hypertarget{buttons_8c_af13483a493e606d1b0c5f076a8ca439d}\index{buttons.c@{buttons.c}!temHint@{temHint}}
+\index{temHint@{temHint}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{temHint()}{temHint()}}
+{\footnotesize\ttfamily \label{buttons_8c_af13483a493e606d1b0c5f076a8ca439d} 
+int tem\+Hint (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Função que verifica se existe alguma jogada possível para ser mostrada no hint, ao percorrer o array p\+\_\+flags e verificar se em alguma posição está um 1, que indica que existe carta para para ser movida na pilha. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Bool 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00042}{42}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1)\ \textcolor{keywordflow}{return}\ 1;\ }
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+\Hypertarget{buttons_8c_a086905bb6eb9dfdbaa736fe6962d7d6c}\index{buttons.c@{buttons.c}!undo@{undo}}
+\index{undo@{undo}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{undo()}{undo()}}
+{\footnotesize\ttfamily \label{buttons_8c_a086905bb6eb9dfdbaa736fe6962d7d6c} 
+void undo (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}} \texorpdfstring{$\ast$}{*}}]{game}{}\end{DoxyParamCaption})}
+
+
+
+Desfaz a última jogada realizada pelo jogador. Verifica se é possível voltar atrás a jogada-\/ se não retorna uma mensagem, e se for possível chama a aux\+\_\+undo que faz toda a parte de devolver as cartas de onde vieram. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game} & Ponteiro para o estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{buttons_8c_source_l00095}{95}} of file \doxymbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ há\ jogadas\ para\ desfazer}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ ==\ 0)\{\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ mvprintw(0,\ 2,\ \textcolor{stringliteral}{"{}oh\ men\ para\ retroceder\ tanto\ no\ tempo\ é\ mais\ fácil\ comprar\ uma\ máquina\ do\ tempo.\(\backslash\)n"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00101\ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{comment}{//\ Faz\ o\ undo\ }}
+\DoxyCodeLine{00104\ \ \ \ \ \doxymbox{\hyperlink{buttons_8c_aa67a6dbc053037a58a4838d16d79e822}{aux\_undo}}(game);}
+\DoxyCodeLine{00105\ \ \ \ \ }
+\DoxyCodeLine{00106\ \}}
+
+\end{DoxyCode}

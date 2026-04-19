@@ -1,0 +1,411 @@
+\doxysection{prints.\+c}
+\hypertarget{prints_8c_source}{}\label{prints_8c_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/prints.c}}
+\doxymbox{\hyperlink{prints_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <ncurses.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <string.h>}\ \textcolor{comment}{//\ usamos\ o\ strcpy}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <locale.h>}\ \textcolor{comment}{//\ para\ suportar\ o\ UTF-\/8}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{prints_8h}{prints.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{actions_8h}{actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00020}00020\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ ATUALIZA\ Foundations\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00021}00021\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00022}00022\ \textcolor{comment}{Foundations\ vão\ ser,\ nesta\ ordem:}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00023}00023\ \textcolor{comment}{\ 0\ -\/\ Copas\ \ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00024}00024\ \textcolor{comment}{\ 1\ -\/\ Espadas\ \ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00025}00025\ \textcolor{comment}{\ 2\ -\/\ Ouros\ \ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00026}00026\ \textcolor{comment}{\ 3\ -\/\ Paus}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00027}00027\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00028}\doxymbox{\hyperlink{prints_8c_ab05f9c3e9d4ede8fd77eb32d18815275}{00028}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_ab05f9c3e9d4ede8fd77eb32d18815275}{atualizaFoundations}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0\ ;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a146d3f63e4de3aa27265db317e32a3b6}{defineCarta}}(\&c,\ i);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_ab6209314b280e8fe66b30176b31ef207}{foundations}}[i])\ \doxymbox{\hyperlink{prints_8c_aed1674ee65fa8faf9280486e59313087}{atualizaF}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{end\_foundations}},\ c,\ i);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00034}00034\ \}\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00036}\doxymbox{\hyperlink{prints_8c_a146d3f63e4de3aa27265db317e32a3b6}{00036}}\ \textcolor{keywordtype}{void}\ \ \doxymbox{\hyperlink{prints_8c_a146d3f63e4de3aa27265db317e32a3b6}{defineCarta}}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ *c,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ 0)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'C'};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 1)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'E'};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 2)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'O'};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (i\ ==\ 3)\ c-\/>\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'P'};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00045}\doxymbox{\hyperlink{prints_8c_aed1674ee65fa8faf9280486e59313087}{00045}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_aed1674ee65fa8faf9280486e59313087}{atualizaF}}(WINDOW\ *janela\_foundations[],\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c,\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ werase(janela\_foundations[i]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ mvwprintw(janela\_foundations[i],\ 1,\ 1,\ \textcolor{stringliteral}{"{}Foundation\ \%d"{}},\ i+1);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_foundations[i],\ 3,3,\ c);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ wrefresh(janela\_foundations[i]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00053}00053\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ ATUALIZA\ PILHAS\ DO\ HINT\ \ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00055}\doxymbox{\hyperlink{prints_8c_a4a0ff4a5413f60d307c9983fe1e66d5e}{00055}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a4a0ff4a5413f60d307c9983fe1e66d5e}{redesenha\_pilhasHint}}(\textcolor{keywordtype}{int}\ f,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00056}00056\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f\ ==\ (-\/1))\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1)\ \doxymbox{\hyperlink{prints_8c_aab880ef78b9a96c9a54dd00dbaa189cd}{alteraCor\_pilha}}(i,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i],\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00061}00061\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00062}00062\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (f\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ab171a3c1d96278ab1b58e168bd7250c7}{reset\_pilhaHint}}(game,\ p);\ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00064}00064\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00065}00065\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00066}00066\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00070}\doxymbox{\hyperlink{prints_8c_ab171a3c1d96278ab1b58e168bd7250c7}{00070}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_ab171a3c1d96278ab1b58e168bd7250c7}{reset\_pilhaHint}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <10;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[i]\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1\ \&\&\ ultCarta\ >=0)\ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ x\_local,\ y\_local,\ i,\ ultCarta);\ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00078}00078\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00080}\doxymbox{\hyperlink{prints_8c_aab880ef78b9a96c9a54dd00dbaa189cd}{00080}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_aab880ef78b9a96c9a54dd00dbaa189cd}{alteraCor\_pilha}}(\textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ WINDOW\ *janela\_pilha[],\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ werase(janela\_pilha[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ pilha);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha\ -\/1;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a81c8b190f670db39ce848d31fe41a876}{alteraCor\_carta}}(pilha,\ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,tamanho\_pilha,\ game);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00093}\doxymbox{\hyperlink{prints_8c_a81c8b190f670db39ce848d31fe41a876}{00093}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a81c8b190f670db39ce848d31fe41a876}{alteraCor\_carta}}(\textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ ultCarta,\ WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ tamanho\_pilha,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ tamanho\_pilha;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[pilha][j]\ ==\ 1)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela\_pilha[pilha],\ COLOR\_PAIR(5));\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(0,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[pilha][j]\ ==\ 2)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela\_pilha[pilha],\ COLOR\_PAIR(4));\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(0,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(1\ ,pilha,\ j,\ \ y\_local,\ x\_local,\ ultCarta,\ janela\_pilha,\ game);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00105}00105\ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[pilha],\ COLOR\_PAIR(5));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[pilha],\ COLOR\_PAIR(4));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\_local+=2;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00115}\doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{00115}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_acf36b7a3a11426b8553b432c2c9dc8e8}{aux\_alteraCorCarta}}(\textcolor{keywordtype}{int}\ f,\ \textcolor{keywordtype}{int}\ pilha,\ \textcolor{keywordtype}{int}\ j,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ ultCarta,\ WINDOW\ *janela\_pilha[],\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(f,\ janela\_pilha[pilha],\ y\_local,\ x\_local,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(f,\ janela\_pilha[pilha],\ y\_local,\ x\_local,\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[pilha][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00120}00120\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00123}00123\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/\ ATUALIZA\ PILHAS\ DA\ JOGADA\ \ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00125}\doxymbox{\hyperlink{prints_8c_af2192e94d6f6bf119e51612e66dec9ea}{00125}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_af2192e94d6f6bf119e51612e66dec9ea}{update\_pilha}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 0\ \&\&\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ !=\ (-\/1))\ \doxymbox{\hyperlink{prints_8c_a8229094269183e875350b84c2f4d193c}{pilha\_negrito}}(game,\ p);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ ==\ 1\ \&\&\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ !=\ (-\/1))\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ SAIDA}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ CHEGADA}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}});\ \textcolor{comment}{//\ TIRA\ O\ QUE\ TAVA\ EM\ NEGRITO\ -\/\ jogada\ inválida}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00135}00135\ \textcolor{comment}{//\ Função\ que\ faz\ o\ print\ das\ cartas\ da\ pilha\ x}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00136}\doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{00136}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_ae1a6cfd90592374fe9147a11412d0656}{redesenha\_pilha}}(\textcolor{keywordtype}{int}\ pilha,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ tamanho\_pilha[])\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ werase(janela\_pilha[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ pilha);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha[pilha]\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ultCarta\ >=\ 0)}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(janela\_pilha,\ matriz,\ x\_local,\ y\_local,\ pilha,\ ultCarta);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00150}00150\ \textcolor{comment}{//\ Função\ que\ principal\ que\ faz\ o\ print\ em\ NEGRITO\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00151}\doxymbox{\hyperlink{prints_8c_a8229094269183e875350b84c2f4d193c}{00151}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a8229094269183e875350b84c2f4d193c}{pilha\_negrito}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}*game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *\ p)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pilha\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ ;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ coluna\ =\ game\ -\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00154}00154\ \ \ \ \ \ \ \ \ werase(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}},\ pilha);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ lim\ =\ coluna;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ultCarta\ >=\ 0)}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ac9804c7b093f450ebb71030121d6c65f}{print\_pilha}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha],game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ x\_local,\ y\_local,\ pilha,\ lim,\ ultCarta);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ wrefresh(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}}[pilha]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00168}00168\ \textcolor{comment}{//\ Função\ AUXILIAR\ que\ faz\ o\ print\ em\ negrito\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00169}\doxymbox{\hyperlink{prints_8c_ac9804c7b093f450ebb71030121d6c65f}{00169}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_ac9804c7b093f450ebb71030121d6c65f}{print\_pilha}}(WINDOW\ *janela,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ lim,\ \textcolor{keywordtype}{int}\ ultCarta)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ ultCarta;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ a\ carta\ atual\ (j)\ for\ igual\ ou\ maior\ que\ o\ limite\ clicado,\ ativa\ o\ destaque}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ >=\ lim)\ \{\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ wattron(janela,\ A\_BOLD\ |\ A\_BLINK);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,janela,\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(1,\ janela,\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desliga\ IMEDIATAMENTE\ após\ imprimir\ a\ carta\ para\ não\ pintar\ o\ fundo\ da\ janela}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ wattroff(janela,\ A\_BOLD\ |\ A\_BLINK);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ x\_local\ +=\ 2;\ \textcolor{comment}{//\ EMPILHAMENTO\ VERTICAL\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00188}00188\ \textcolor{comment}{//\ \ -\/-\/-\/-\/-\/\ PRINCIPAIS\ PRINTS\ +\ DEFINIÇÃO\ DAS\ JANELAS/BOTÕES\ -\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00190}\doxymbox{\hyperlink{prints_8c_a51af124fd06bfc7f2e2004aedefb9729}{00190}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a51af124fd06bfc7f2e2004aedefb9729}{define\_TodasJanelas}}\ (\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *p,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00191}00191\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//\ PILHAS\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00193}00193\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a3b81ebf4200b2923946013ceac3dccd7}{definePilhas}}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}},\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}},\ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00194}00194\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00195}00195\ \ \ \ \ \textcolor{comment}{//\ BARALHO\ \&\ DESCARTE}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00196}00196\ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a09aa428fdf642b060c938a5bbf8682d7}{defineFoundations}}(p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a9cb8babe09d484fdc4dca67e439cd795}{end\_foundations}});\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00197}00197\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00198}00198\ \ \ \ \ \textcolor{comment}{//\ BOTÕES\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00199}00199\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}}\ =\ \doxymbox{\hyperlink{prints_8c_a5e459375cc71242bd0edaf48ac42ce25}{defineButtonUndo}}();}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00200}00200\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{end\_hint}}\ =\ \doxymbox{\hyperlink{prints_8c_a9faf09d9187a172514a8f95bfa64a61e}{defineButtonHint}}();}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00201}00201\ \ \ \ \ p-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{end\_ngame}}\ =\ \doxymbox{\hyperlink{prints_8c_a690b188121da1b8a5d875f9d94493aaf}{defineButtonNgame}}();}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00202}00202\ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00203}00203\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00205}00205\ \textcolor{comment}{//\ -\/-\/\ BOTÕES\ -\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00206}\doxymbox{\hyperlink{prints_8c_a9faf09d9187a172514a8f95bfa64a61e}{00206}}\ WINDOW*\ \doxymbox{\hyperlink{prints_8c_a9faf09d9187a172514a8f95bfa64a61e}{defineButtonHint}}()\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_hint;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00208}00208\ \ \ \ \ \ \ \ \ janela\_hint\ =\ newwin(3,\ 10,\ 2,\ 20);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00209}00209\ \ \ \ \ \ \ \ \ box(janela\_hint,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ wattron(janela\_hint,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ mvwprintw(janela\_hint,\ 1,\ 1,\ \textcolor{stringliteral}{"{}\ \ HINT"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ wrefresh(janela\_hint);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00213}00213\ \ \ \ \ \ \ \ \ wattroff(janela\_hint,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_hint;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00217}00217\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00219}\doxymbox{\hyperlink{prints_8c_a5e459375cc71242bd0edaf48ac42ce25}{00219}}\ WINDOW*\ \doxymbox{\hyperlink{prints_8c_a5e459375cc71242bd0edaf48ac42ce25}{defineButtonUndo}}()\{\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_undo;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ janela\_undo\ =\ newwin(3,\ 10,\ 2,\ 30);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ box(janela\_undo,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ wattron(janela\_undo,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ mvwprintw(janela\_undo,\ 1,\ 1,\ \textcolor{stringliteral}{"{}\ \ UNDO"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ wrefresh(janela\_undo);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ wattroff(janela\_undo,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_undo;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00230}00230\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00232}\doxymbox{\hyperlink{prints_8c_a690b188121da1b8a5d875f9d94493aaf}{00232}}\ WINDOW*\ \doxymbox{\hyperlink{prints_8c_a690b188121da1b8a5d875f9d94493aaf}{defineButtonNgame}}()\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ WINDOW\ *janela\_ngame;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00234}00234\ \ \ \ \ \ \ \ \ janela\_ngame\ =\ newwin(3,\ 10,\ 2,\ 40);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ box(janela\_ngame,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ wattron(janela\_ngame,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ mvwprintw(janela\_ngame,\ 1,\ 1,\ \textcolor{stringliteral}{"{}NEW\ GAME"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ wrefresh(janela\_ngame);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ wattroff(janela\_ngame,\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ janela\_ngame;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00242}00242\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00244}00244\ \textcolor{comment}{//\ -\/-\/\ FOUNDATIONS\ -\/-\/}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00245}\doxymbox{\hyperlink{prints_8c_a09aa428fdf642b060c938a5bbf8682d7}{00245}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a09aa428fdf642b060c938a5bbf8682d7}{defineFoundations}}(WINDOW\ *janela\_foundations[])\{\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ carta\ que\ vai\ ser\ mostrada\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ =\ \textcolor{charliteral}{'?'};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ 120;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cria\ as\ 4\ janelas\ das\ foundations\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 4;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ janela\_foundations[i]\ =\ newwin(10,\ 15,\ x,\ y);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mvwprintw(janela\_foundations[i],\ 1,\ 1,\ \textcolor{stringliteral}{"{}Foundation\ \%d"{}},\ i+1);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_foundations[i],\ 3,3,\ c);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y\ +=\ 18;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wrefresh(janela\_foundations[i]);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00266}00266\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00268}00268\ \textcolor{comment}{//\ -\/-\/\ PILHAS\ -\/-\/\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00269}\doxymbox{\hyperlink{prints_8c_a3b81ebf4200b2923946013ceac3dccd7}{00269}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a3b81ebf4200b2923946013ceac3dccd7}{definePilhas}}(\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \textcolor{keywordtype}{int}\ tamanho\_pilha[10],\ WINDOW\ *janela\_pilha[])\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00270}00270\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00271}00271\ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00272}00272\ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00274}00274\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i\ <\ 10;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00275}00275\ \ \ \ \ \ \ \ \ janela\_pilha[i]\ =\ newwin(42,\ 15,\ y,\ x);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00276}00276\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00277}00277\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}(janela\_pilha,\ i);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00278}00278\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\_local\ =\ 3;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00281}00281\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\_local\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ultCarta\ =\ tamanho\_pilha[i]\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ultCarta\ >=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}(janela\_pilha,matriz,\ x\_local,\ y\_local,\ i,\ ultCarta);\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ +=\ 20;}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00289}00289\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[i]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00290}00290\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00291}00291\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00293}00293\ \textcolor{comment}{//\ AUXILIARES\ (definePilhas)}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00294}\doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{00294}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_aa621cac158e4ad59ce0cb8d1872d2ace}{print\_nomePilha}}\ (WINDOW\ *janela\_pilha[],\ \textcolor{keywordtype}{int}\ i)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ wattron(janela\_pilha[i],\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ mvwprintw(janela\_pilha[i],\ 2,\ 2,\ \textcolor{stringliteral}{"{}\ \ PILHA\ \%d\ \ "{}},\ i+1);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00297}00297\ \ \ \ \ \ \ \ \ wattroff(janela\_pilha[i],\ COLOR\_PAIR(3));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00299}00299\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00302}\doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{00302}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a5cc38d541394015b2d0157cb48a72baa}{desenha\_pilha}}\ (WINDOW\ *janela\_pilha[],\doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ matriz[10][17],\ \ \textcolor{keywordtype}{int}\ x\_local,\ \textcolor{keywordtype}{int}\ y\_local,\ \textcolor{keywordtype}{int}\ i,\ \textcolor{keywordtype}{int}\ ultCarta)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00303}00303\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <=\ ultCarta;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ ==\ ultCarta)\ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(1,\ janela\_pilha[i],\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(1,\ janela\_pilha[i],\ y\_local,\ x\_local,\ matriz[i][j]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ x\_local\ +=\ 2;\ \textcolor{comment}{//\ Ajusta\ conforme\ a\ lógica\ de\ empilhamento}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00307}00307\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00308}00308\ \ \ \ \ \ \ \ \ wrefresh(janela\_pilha[i]);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00309}00309\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00312}00312\ \textcolor{comment}{//\ -\/-\/-\/\ PRINT\ CARTAS\ (window)\ -\/-\/-\/\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00314}\doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{00314}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_aaa3f8c8a3cde0ac6cf1f6ba50499ab9a}{wprint\_cartaInt}}(\textcolor{keywordtype}{int}\ f,\ WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c)\{\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\ =\ \doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ guarda\ o\ valor\ da\ carta\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00318}00318\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ valor[3];\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00319}00319\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(valor,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});\ \textcolor{comment}{//\ arrays\ ja\ sao\ pointers\ por\ natureza\ portanto\ fazer\ '\&valor'\ da\ o\ ponteiro\ de\ outro\ ponteiro\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ativa\ as\ cores\ específicas\ de\ cada\ carta}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'C'}\ ||\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'O'})}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00328}00328\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Faz\ o\ print\ da\ carta\ na\ janela}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00331}00331\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a892c3b2458c9e7a053626391921727c3}{print\_carta}}(win,\ x,\ y,\ s,\ valor);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00332}00332\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00334}00334\ \ \ \ \ \ \ \ \ refresh();}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desativa\ o\ atributo\ das\ cores}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00337}00337\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00338}00338\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00342}00342\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00345}\doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{00345}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_ae001fe870398817ed79cab266f0ce247}{wprint\_cartaTop}}(\textcolor{keywordtype}{int}\ f,\ WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ c)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ valor[3];\ \textcolor{comment}{//\ guarda\ o\ valor\ da\ carta\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00348}00348\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(valor,\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\ =\ \doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00352}00352\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ativa\ as\ cores\ específicas\ de\ cada\ carta}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (f)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'C'}\ ||\ c.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ \textcolor{charliteral}{'O'})}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wattron(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00358}00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00361}00361\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y,\ \ \ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00362}00362\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+1,\ x,\ \textcolor{stringliteral}{"{}|\ \%-\/2s\%s\ \ \ |"{}},\ valor,\ s);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00364}00364\ \ \ \ \ \ \ \ \ refresh();}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00366}00366\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Desativa\ o\ atributo\ das\ cores}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00367}00367\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(1));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00368}00368\ \ \ \ \ \ \ \ \ wattroff(win,\ COLOR\_PAIR(2));}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00372}00372\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00374}00374\ \textcolor{comment}{//\ -\/-\/-\/\ AUXILIARES\ (Prints\ cartas)\ -\/-\/-\/\ }}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00376}\doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{00376}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{prints_8c_a1b7430fb7d33aeca746fec8daef5ca42}{traduzsimbolo}}(\textcolor{keywordtype}{char}\ naipe)\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00377}00377\ \ \ \ \ \textcolor{keywordflow}{switch}(naipe)\ \{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00379}00379\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'C'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA5"{}};\ \textcolor{comment}{//\ Copas\ (Retorna\ o\ endereco\ na\ memoria)}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'O'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA6"{}};\ \textcolor{comment}{//\ Ouros}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'P'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA3"{}};\ \textcolor{comment}{//\ Paus}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'E'}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}\(\backslash\)xE2\(\backslash\)x99\(\backslash\)xA0"{}};\ \textcolor{comment}{//\ Espadas}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}?"{}};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00385}00385\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'C':\ return\ "{}"{};\ //\ Retorna\ o\ endereço\ da\ string\ na\ memória}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00386}00386\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'O':\ return\ "{}"{};}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00387}00387\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'P':\ return\ "{}"{};}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00388}00388\ \textcolor{comment}{\ \ \ \ \ \ \ \ case\ 'E':\ return\ "{}"{};}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00389}00389\ \textcolor{comment}{\ \ \ \ \ \ \ \ default:\ \ return\ "{}"{};}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00390}00390\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00391}00391\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00392}00392\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00395}\doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{00395}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a89f100a551d60e5a4c77484940f8987f}{traduzvalor}}(\textcolor{keywordtype}{char}\ *valor,\ \textcolor{keywordtype}{char}\ v)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00396}00396\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(v)\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \ strcpy(valor,\ \textcolor{stringliteral}{"{}A"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 11:\ strcpy(valor,\ \textcolor{stringliteral}{"{}J"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 12:\ strcpy(valor,\ \textcolor{stringliteral}{"{}Q"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 13:\ strcpy(valor,\ \textcolor{stringliteral}{"{}K"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0\ :\ strcpy(valor,\ \textcolor{stringliteral}{"{}?"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sprintf(valor,\ \textcolor{stringliteral}{"{}\%d"{}},\ v);\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00404}00404\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00405}00405\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00406}00406\ \}}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00408}\doxymbox{\hyperlink{prints_8c_a892c3b2458c9e7a053626391921727c3}{00408}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{prints_8c_a892c3b2458c9e7a053626391921727c3}{print\_carta}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s,\ \textcolor{keywordtype}{char}\ valor[3])\{}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00409}00409\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y,\ \ \ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00410}00410\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+1,\ x,\ \textcolor{stringliteral}{"{}|\ \%-\/2s\ \ \ \ |"{}},\ valor);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00411}00411\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+2,\ x,\ \textcolor{stringliteral}{"{}|\ \ \ \%s\ \ \ |"{}},\ s);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00412}00412\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+3,\ x,\ \textcolor{stringliteral}{"{}|\ \ \ \ \ \%2s|"{}},\ valor);}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00413}00413\ \ \ \ \ \ \ \ \ mvwprintw(win,\ y+4,\ x,\ \textcolor{stringliteral}{"{}+\ -\/-\/-\/-\/-\/\ +"{}});}
+\DoxyCodeLine{\Hypertarget{prints_8c_source_l00414}00414\ \}}
+
+\end{DoxyCode}

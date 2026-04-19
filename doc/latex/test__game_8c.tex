@@ -1,0 +1,209 @@
+\doxysection{/\+\+Users/\+estebanyepezorozco/\+uni/\+universidade/\+1ano/\+2semestre/\+\+LPII/\+project/\+fase2\+LP2/\+tests/\+test\+\_\+game.c File Reference}
+\hypertarget{test__game_8c}{}\label{test__game_8c}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_game.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/tests/test\_game.c}}
+
+
+Testes unitários para inicialização e controlo de estado (\doxylink{game_8c_source}{game.\+c}).  
+
+
+{\ttfamily \+\#include $<$CUnit/\+\+CUnit.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+engine/\+actions.\+h"{}}\newline
+{\ttfamily \+\#include "{}../\+engine/\+game.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{test__game_8c_a2b7183cf6a7edd81bb8ce7b72d84594d}{testar\+\_\+start\+\_\+game}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a configuração base de uma nova partida. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__game_8c_a6e13ea02ed438d031737dfcebaeac3a0}{testar\+\_\+inicializa\+\_\+jog\+Atual}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a limpeza da memória de cliques do jogador. {\bfseries{Resultado Esperado:\+}} Todos os valores da estrutura jog\+Atual repostos para valores negativos neutros. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__game_8c_a9d788bc7eb4b8822a88b87a46fa00537}{testar\+\_\+inicializa\+\_\+baralho}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a construção do baralho inicial. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__game_8c_ac88bba48bd762f81a6d66d501686c93b}{testar\+\_\+inicializa\+\_\+matriz}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a distribuição de cartas pelas pilhas da mesa. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__game_8c_a1605bdbbeedafd7afd77e75eea154b49}{testar\+\_\+define\+\_\+jog\+Atual}} (void)
+\begin{DoxyCompactList}\small\item\em Testa a máquina de estados (flags) após um clique. {\bfseries{Resultado Esperado:\+}} Um clique válido inicial altera a flag de -\/2 para 0. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{test__game_8c_a22587a0923ecea8a6158430e5b1d431c}{testar\+\_\+evalida\+\_\+tamanho\+Seq}} (void)
+\begin{DoxyCompactList}\small\item\em Testa se a carta clicada é realmente o topo de uma sequência válida. {\bfseries{Resultado Esperado:\+}} Retorna 1 se o clique coincidir com a última carta da pilha. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Testes unitários para inicialização e controlo de estado (\doxylink{game_8c_source}{game.\+c}). 
+
+
+
+Definition in file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{test__game_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__game_8c_a1605bdbbeedafd7afd77e75eea154b49}\index{test\_game.c@{test\_game.c}!testar\_define\_jogAtual@{testar\_define\_jogAtual}}
+\index{testar\_define\_jogAtual@{testar\_define\_jogAtual}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_define\_jogAtual()}{testar\_define\_jogAtual()}}
+{\footnotesize\ttfamily \label{test__game_8c_a1605bdbbeedafd7afd77e75eea154b49} 
+void testar\+\_\+define\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a máquina de estados (flags) após um clique. {\bfseries{Resultado Esperado:\+}} Um clique válido inicial altera a flag de -\/2 para 0. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_aafc8a90b7a6c2b023c169925ed0c3372}{define\+\_\+jog\+Atual} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00068}{68}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00070\ \ \ \ \ start\_game(\&game);}
+\DoxyCodeLine{00071\ \ \ \ \ inicializa\_baralho(\&game);}
+\DoxyCodeLine{00072\ \ \ \ \ inicializa\_matriz(\&game);}
+\DoxyCodeLine{00073\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}}\ =\ -\/2;}
+\DoxyCodeLine{00074\ \ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ define\_jogAtual(0,\ 7,\ \&game);\ }
+\DoxyCodeLine{00076\ \ \ \ \ CU\_ASSERT\_EQUAL(game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}},\ 0);}
+\DoxyCodeLine{00077\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__game_8c_a22587a0923ecea8a6158430e5b1d431c}\index{test\_game.c@{test\_game.c}!testar\_evalida\_tamanhoSeq@{testar\_evalida\_tamanhoSeq}}
+\index{testar\_evalida\_tamanhoSeq@{testar\_evalida\_tamanhoSeq}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_evalida\_tamanhoSeq()}{testar\_evalida\_tamanhoSeq()}}
+{\footnotesize\ttfamily \label{test__game_8c_a22587a0923ecea8a6158430e5b1d431c} 
+void testar\+\_\+evalida\+\_\+tamanho\+Seq (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa se a carta clicada é realmente o topo de uma sequência válida. {\bfseries{Resultado Esperado:\+}} Retorna 1 se o clique coincidir com a última carta da pilha. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_ad70dc846fa9d16bf89d09a3c4478d6d0}{evalida\+\_\+tamanho\+Seq} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00084}{84}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00086\ \ \ \ \ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ 0;\ game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ 2;\ }
+\DoxyCodeLine{00087\ \ \ \ \ game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[0]\ =\ 3;\ }
+\DoxyCodeLine{00088\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ CU\_ASSERT\_EQUAL(evalida\_tamanhoSeq(\&game),\ 1);}
+\DoxyCodeLine{00090\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__game_8c_a9d788bc7eb4b8822a88b87a46fa00537}\index{test\_game.c@{test\_game.c}!testar\_inicializa\_baralho@{testar\_inicializa\_baralho}}
+\index{testar\_inicializa\_baralho@{testar\_inicializa\_baralho}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_inicializa\_baralho()}{testar\_inicializa\_baralho()}}
+{\footnotesize\ttfamily \label{test__game_8c_a9d788bc7eb4b8822a88b87a46fa00537} 
+void testar\+\_\+inicializa\+\_\+baralho (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a construção do baralho inicial. 
+
+Verifica se as 52 cartas ganharam valor e naipe. {\bfseries{Resultado Esperado:\+}} A primeira carta deve ter valor 1 e a última valor 13. \begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_a34036e4230ab74a8981474cf619ed87b}{inicializa\+\_\+baralho} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00041}{41}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00043\ \ \ \ \ start\_game(\&game);}
+\DoxyCodeLine{00044\ \ \ \ \ inicializa\_baralho(\&game);}
+\DoxyCodeLine{00045\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[0].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ 1);}
+\DoxyCodeLine{00046\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_acc5906115598d1585104c5e7043635c1}{baralho}}[51].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}},\ 13);}
+\DoxyCodeLine{00047\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__game_8c_a6e13ea02ed438d031737dfcebaeac3a0}\index{test\_game.c@{test\_game.c}!testar\_inicializa\_jogAtual@{testar\_inicializa\_jogAtual}}
+\index{testar\_inicializa\_jogAtual@{testar\_inicializa\_jogAtual}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_inicializa\_jogAtual()}{testar\_inicializa\_jogAtual()}}
+{\footnotesize\ttfamily \label{test__game_8c_a6e13ea02ed438d031737dfcebaeac3a0} 
+void testar\+\_\+inicializa\+\_\+jog\+Atual (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a limpeza da memória de cliques do jogador. {\bfseries{Resultado Esperado:\+}} Todos os valores da estrutura jog\+Atual repostos para valores negativos neutros. 
+
+\begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_a4c3b555974e561fa717509691561b55b}{inicializa\+\_\+jog\+Atual} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00028}{28}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00030\ \ \ \ \ inicializa\_jogAtual(\&game);}
+\DoxyCodeLine{00031\ \ \ \ \ CU\_ASSERT\_EQUAL(game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}},\ -\/1);}
+\DoxyCodeLine{00032\ \ \ \ \ CU\_ASSERT\_EQUAL(game.jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a68f723fc1a344c66c065df45afa80719}{flag}},\ -\/2);}
+\DoxyCodeLine{00033\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__game_8c_ac88bba48bd762f81a6d66d501686c93b}\index{test\_game.c@{test\_game.c}!testar\_inicializa\_matriz@{testar\_inicializa\_matriz}}
+\index{testar\_inicializa\_matriz@{testar\_inicializa\_matriz}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_inicializa\_matriz()}{testar\_inicializa\_matriz()}}
+{\footnotesize\ttfamily \label{test__game_8c_ac88bba48bd762f81a6d66d501686c93b} 
+void testar\+\_\+inicializa\+\_\+matriz (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a distribuição de cartas pelas pilhas da mesa. 
+
+Garante que o baralho perde as cartas que são colocadas na matriz. {\bfseries{Resultado Esperado:\+}} O tamanho do baralho deve ser 0 após distribuir todas as cartas. \begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_ac7d4f253235d855c49d666f964a556fd}{inicializa\+\_\+matriz} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00055}{55}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00057\ \ \ \ \ start\_game(\&game);}
+\DoxyCodeLine{00058\ \ \ \ \ inicializa\_baralho(\&game);}
+\DoxyCodeLine{00059\ \ \ \ \ inicializa\_matriz(\&game);}
+\DoxyCodeLine{00060\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}},\ 0);\ }
+\DoxyCodeLine{00061\ \}}
+
+\end{DoxyCode}
+\Hypertarget{test__game_8c_a2b7183cf6a7edd81bb8ce7b72d84594d}\index{test\_game.c@{test\_game.c}!testar\_start\_game@{testar\_start\_game}}
+\index{testar\_start\_game@{testar\_start\_game}!test\_game.c@{test\_game.c}}
+\doxysubsubsection{\texorpdfstring{testar\_start\_game()}{testar\_start\_game()}}
+{\footnotesize\ttfamily \label{test__game_8c_a2b7183cf6a7edd81bb8ce7b72d84594d} 
+void testar\+\_\+start\+\_\+game (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Testa a configuração base de uma nova partida. 
+
+Verifica os parâmetros essenciais na criação de um novo jogo. {\bfseries{Resultado Esperado:\+}} Baralho com 52 cartas, pilha 5 com 5 cartas, histórico a 0. \begin{DoxySeeAlso}{See also}
+\doxylink{game_8h_a094821e96bdd2f7694bc33e276655205}{start\+\_\+game} 
+\end{DoxySeeAlso}
+
+
+Definition at line \doxymbox{\hyperlink{test__game_8c_source_l00015}{15}} of file \doxymbox{\hyperlink{test__game_8c_source}{test\+\_\+game.\+c}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ game;}
+\DoxyCodeLine{00017\ \ \ \ \ start\_game(\&game);}
+\DoxyCodeLine{00018\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a66c623eba8fb8a10443e59fb8b90b35e}{tamanho\_baralho}},\ 52);}
+\DoxyCodeLine{00019\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[5],\ 5);}
+\DoxyCodeLine{00020\ \ \ \ \ CU\_ASSERT\_EQUAL(game.\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}},\ 0);}
+\DoxyCodeLine{00021\ \}}
+
+\end{DoxyCode}

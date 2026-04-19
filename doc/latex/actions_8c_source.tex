@@ -1,0 +1,98 @@
+\doxysection{actions.\+c}
+\hypertarget{actions_8c_source}{}\label{actions_8c_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/actions.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/actions.c}}
+\doxymbox{\hyperlink{actions_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{actions_8h}{actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00016}\doxymbox{\hyperlink{actions_8c_a4e0710b9541e8646dc11f8a259bee6cf}{00016}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{actions_8c_a4e0710b9541e8646dc11f8a259bee6cf}{joga}}(\textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y2,\ \textcolor{keywordtype}{int}\ x2,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ As\ cartas\ da\ sequência\ na\ pilha\ y\ vão\ sendo\ adicionadas\ à\ pilha\ y2}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{for}(x,\ x2;\ x\ <\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ +\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ x++,\ x2++)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y2][x2]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x];\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y2]++;\ \textcolor{comment}{//\ O\ tamanho\ da\ pilha\ y2\ vai\ incrementando\ por\ 1\ }}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00021}00021\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]-\/-\/;\textcolor{comment}{//\ O\ tamanho\ da\ pilha\ y\ vai\ decrementando\ por\ 1\ }}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00027}\doxymbox{\hyperlink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{00027}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{actions_8c_a7df48353a6c4cbf7c58c725943aa4ef2}{valida\_jogada\_origem}}(\textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ x,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{/*\ Se\ a\ pilha\ está\ vazia,\ a\ jogada\ é\ imediatamente\ inválida.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00030}00030\ \textcolor{comment}{\ \ \ \ \ \ nota:\ penso\ que\ nao\ seja\ preciso\ esta\ parte,\ já\ que\ neste\ jogo}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00031}00031\ \textcolor{comment}{\ \ \ \ \ \ os\ cliques\ sao\ em\ cartas\ e\ nao\ em\ pilhas\ (nunca\ podes\ clicar\ numa\ carta\ que\ nao\ esta\ la)}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00032}00032\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ <=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00037}00037\ \ \ \ \ \textcolor{comment}{/*\ Se\ a\ carta\ escolhida\ for\ a\ última\ da\ coluna\ ou\ está\ numa\ sequência\ que\ vai\ até\ ao\ fim\ da\ coluna,}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00038}00038\ \textcolor{comment}{\ \ \ \ \ \ a\ jogada\ é\ válida}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00039}00039\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ ||\ ((\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(x,\ y,\ game)\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/\ x)))}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00048}\doxymbox{\hyperlink{actions_8c_a0b0a044dd21f55e4a542021a0c1f9b93}{00048}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{actions_8c_a0b0a044dd21f55e4a542021a0c1f9b93}{valida\_jogada\_destino}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Verificar\ que\ a\ cabeca\ da\ sequencia\ é\ valida\ em\ cima\ da\ ultima\ carta\ da\ pilha*/}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};\ \textcolor{comment}{//\ Representa\ o\ índice\ da\ pilha\ de\ destino.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/1\ ;\ \textcolor{comment}{//\ Representa\ o\ índice\ da\ última\ carta\ na\ pilha\ de\ destino.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordtype}{int}\ y2\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};\ \textcolor{comment}{//\ Representa\ o\ índice\ da\ pilha\ de\ origem.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordtype}{int}\ x2\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};\ \textcolor{comment}{//\ Representa\ o\ índice\ da\ primeira\ carta\ da\ sequência.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ \textcolor{comment}{//\ Representa\ o\ tamanho\ da\ sequência\ de\ cartas\ que\ serão\ movidas.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Verifica\ duas\ regras\ do\ destino:}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ 1.\ A\ carta\ do\ destino\ tem\ de\ ser\ exatamente\ uma\ unidade\ maior\ que\ a\ carta\ movida.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ 2.\ A\ pilha\ de\ destino\ não\ pode\ ultrapassar\ o\ limite\ máximo\ de\ 17\ cartas.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y2][x2].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ -\/\ 1}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \&\&\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ +\ n\ <=\ 17)}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00068}\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{00068}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Condição\ de\ paragem:\ Se\ chegou\ à\ última\ carta\ da\ pilha,\ o\ tamanho\ é\ 1.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/\ 1)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ a\ próxima\ carta\ é\ sequencial\ (valor\ -\/\ 1)\ e\ tem\ o\ mesmo\ naipe.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{if}\ ((game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x+1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ +\ 1)}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \&\&\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x+1].\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}})\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1\ +\ \doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(x+1,\ y,\ game);}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00082}\doxymbox{\hyperlink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{00082}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{actions_8c_ac4fc94698b79d7335e4900225e6a01a8}{verifica\_sequencia\_inteira}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Percorre\ as\ 10\ pilhas\ da\ mesa}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ 10;\ y++)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Só\ faz\ sentido\ verificar\ se\ a\ pilha\ tiver\ pelo\ menos\ 13\ cartas}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ >=\ 13)\{}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ 5;\ x++)\{\ \textcolor{comment}{//\ Se\ a\ pilha\ tem\ no\ máximo\ 17,\ é\ impossível\ ter\ 13\ cartas\ a\ partir\ da\ a\ coluna\ 5.}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Se\ o\ tamanho\ da\ sequência\ for\ 13\ e\ terminar\ exatamente\ na\ base\ da\ pilha}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(x,\ y,\ game)\ ==\ 13\ \&\&\ x+12\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/1)}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ y;}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00096}00096\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;\ \textcolor{comment}{//\ Não\ encontrou\ nenhuma\ sequência\ inteira}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{actions_8c_source_l00099}00099\ }
+
+\end{DoxyCode}

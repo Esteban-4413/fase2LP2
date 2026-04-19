@@ -1,0 +1,130 @@
+\doxysection{buttons.\+c}
+\hypertarget{buttons_8c_source}{}\label{buttons_8c_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/buttons.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/buttons.c}}
+\doxymbox{\hyperlink{buttons_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{actions_8h}{actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{prints_8h}{prints.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{game_8h}{game.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00018}00018\ \textcolor{comment}{//\ Limite\ de\ jogadas\ guardadas\ no\ histórico\ (see\ undo())}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00019}00019\ \textcolor{preprocessor}{\#define\ MAX\_UNDO\ 5\ }}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00023}\doxymbox{\hyperlink{actions_8h_acd4a2441df598a4d0e0f9205e88d9aa0}{00023}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{buttons_8c_acd4a2441df598a4d0e0f9205e88d9aa0}{hint}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ flag;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ y\ =\ 0;\ y\ <\ 10;\ y++)\{\ \textcolor{comment}{/*\ Por\ cada\ pilha\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ flag\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ x\ =\ 0;\ x\ <\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ \&\&\ flag;\ x++)\{\ \textcolor{comment}{/*\ Por\ cada\ carta\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Se\ há\ uma\ sequência\ que\ começa\ nessa\ mesma\ carta\ e\ vai}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00030}00030\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ até\ ao\ fundo\ da\ pilha,\ procurar\ destinos\ para\ esta\ carta\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{actions_8c_acb88d27b4536c11ceeeaa875b38b8328}{tamanho\_sequencia}}(x,\ y,\ game)\ ==\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y]\ -\/\ x)}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc}{procura\_destino}}(y,\ x,\ game,\ \&flag);}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00037}00037\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{buttons_8c_af13483a493e606d1b0c5f076a8ca439d}{temHint}}(game))\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a62b6e22708dee7c065b9d1aa2babeeef}{flag}}\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00042}\doxymbox{\hyperlink{actions_8h_af13483a493e606d1b0c5f076a8ca439d}{00042}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{buttons_8c_af13483a493e606d1b0c5f076a8ca439d}{temHint}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[i]\ ==\ 1)\ \textcolor{keywordflow}{return}\ 1;\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00051}\doxymbox{\hyperlink{actions_8h_aaa058caebdc5f6325ff14ef6b32d6cbc}{00051}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{buttons_8c_aaa058caebdc5f6325ff14ef6b32d6cbc}{procura\_destino}}(\textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ x,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \textcolor{keywordtype}{int}\ *flag)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ y2\ =\ 0;\ y2\ <\ 10\ \&\&\ flag;\ y2++)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ carta\_origem\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y][x];}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_c_a_r_t_a_s}{CARTAS}}\ carta\_destino\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[y2][game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[y2]-\/1];}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (carta\_origem.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ ==\ carta\_destino.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_a8007d28072603d52a87010cc406e6c7d}{valor}}\ -\/\ 1)\{\ \textcolor{comment}{/*\ Se\ encontrar\ destino\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ *flag\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Decide\ de\ que\ cor\ piscar\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (carta\_origem.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}}\ ==\ carta\_destino.\doxymbox{\hyperlink{struct_c_a_r_t_a_s_aeb6bb2ffb2a9a06046f11f3834440bd7}{naipe}})\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[y][x]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[y]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*<\ Carta\ fica\ VERDE\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a116a7c9d944a621e1473e88e779cbd24}{m\_flags}}[y][x]\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a92db554013a89335d7724f4104028648}{hint}}.\doxymbox{\hyperlink{struct_h_i_n_t_a90eabe854d37c94463a10888e12593e3}{p\_flags}}[y]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*<\ Carta\ fica\ AMARELA\ */}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00074}\doxymbox{\hyperlink{actions_8h_a801078c29699b3a8584cc60f26db2ef0}{00074}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{buttons_8c_a801078c29699b3a8584cc60f26db2ef0}{registar\_jogada}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00075}00075\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//para\ meter\ as\ jogadas\ mais\ recentes\ então\ empurramos\ as\ mais\ velhas\ fora\ do\ array\ (Se\ o\ histórico\ estiver\ cheio,\ apaga\ a\ jogada\ mais\ antiga)}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ ==\ \doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}})\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{actions_8h_acedb7a63cdbd9a4bbfe8a3d174c24b5c}{MAX\_UNDO}}\ -\/\ 1;\ i\ ++)}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[i]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[i\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})-\/-\/;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Guarda\ os\ dados\ da\ nova\ jogada}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ jogadas\_historial\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00085}00085\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00086}00086\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00087}00087\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00088}00088\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[jogadas\_historial].\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ game-\/>jog\_atual.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00089}00089\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00091}00091\ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})++;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00095}\doxymbox{\hyperlink{actions_8h_a086905bb6eb9dfdbaa736fe6962d7d6c}{00095}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{buttons_8c_a086905bb6eb9dfdbaa736fe6962d7d6c}{undo}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ Verifica\ se\ há\ jogadas\ para\ desfazer}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{if}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}\ ==\ 0)\{\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ mvprintw(0,\ 2,\ \textcolor{stringliteral}{"{}oh\ men\ para\ retroceder\ tanto\ no\ tempo\ é\ mais\ fácil\ comprar\ uma\ máquina\ do\ tempo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00102}00102\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//\ Faz\ o\ undo\ }}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00104}00104\ \ \ \ \ \doxymbox{\hyperlink{buttons_8c_aa67a6dbc053037a58a4838d16d79e822}{aux\_undo}}(game);}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00105}00105\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00110}\doxymbox{\hyperlink{actions_8h_aa67a6dbc053037a58a4838d16d79e822}{00110}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{buttons_8c_aa67a6dbc053037a58a4838d16d79e822}{aux\_undo}}(\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//\ Acede\ à\ última\ jogada}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00112}00112\ \ \ \ \ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}})-\/-\/;}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_j_o_g_a_d_a}{JOGADA}}\ ultimo\_mov\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a3194855378d27a7de0fce23facf777c9}{historial}}[game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a9817e64448846b6183bbec9e580fc638}{jogadas\_historial}}];}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00115}00115\ \ \ \ \ \textcolor{keywordtype}{int}\ origem\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a4df85c7dfcc60650dec677c846b2b9fe}{pilha}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00116}00116\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00117}00117\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}}\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00118}00118\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_original\ =\ ultimo\_mov.\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a3655d39f786874b8510f1192ea6758d6}{coluna}};\ \textcolor{comment}{//\ Onde\ elas\ estavam\ na\ origem}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Localiza\ as\ cartas\ na\ chegada}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00121}00121\ \ \ \ \ \textcolor{keywordtype}{int}\ pos\_atual\_chegada\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}]\ -\/\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//O\ Loop\ de\ Devolução}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[origem][pos\_original\ +\ i]\ =\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_aaff4e20521312249db7e42a6feb90919}{matriz}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}][pos\_atual\_chegada\ +\ i];}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ Ajustar\ os\ contadores\ de\ tamanho}}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00129}00129\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[origem]\ +=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00130}00130\ \ \ \ \ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[\doxymbox{\hyperlink{struct_j_o_g_a_d_a_a254d3da684ee2ef4ec257e626254b77c}{chegada}}]\ -\/=\ \doxymbox{\hyperlink{struct_j_o_g_a_d_a_acd9f62c534daf0e1ca323ab3489f9473}{n}};}
+\DoxyCodeLine{\Hypertarget{buttons_8c_source_l00131}00131\ \}}
+
+\end{DoxyCode}

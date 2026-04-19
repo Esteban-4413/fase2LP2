@@ -1,0 +1,96 @@
+\doxysection{click.\+c}
+\hypertarget{click_8c_source}{}\label{click_8c_source}\index{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/click.c@{/Users/estebanyepezorozco/uni/universidade/1ano/2semestre/LPII/project/fase2LP2/engine/click.c}}
+\doxymbox{\hyperlink{click_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <ncurses.h>}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{click_8h}{click.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{prints_8h}{prints.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00017}\doxymbox{\hyperlink{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304}{00017}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{click_8c_a4dce9c1a910314e90eb9dd1a4ae96304}{verifica\_click}}\ (\doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas,\ \textcolor{keywordtype}{int}\ *num\_carta)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00018}00018\ \ \ \ \ MEVENT\ event;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (getmouse(\&event)\ ==\ OK)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ r\ =\ \doxymbox{\hyperlink{click_8c_a6d8783947f3cabde18947a6051afab66}{eclickValido}}(event.x,\ event.y,\ janelas);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(r\ >=\ 0\ \&\&\ r\ <\ 11)\ *num\_carta\ =\ \doxymbox{\hyperlink{click_8c_a6fa6537e62d6292d21713b5698bfd570}{coords\_para\_carta}}(event.y,\ r,\ game);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ r;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00028}\doxymbox{\hyperlink{click_8c_a6d8783947f3cabde18947a6051afab66}{00028}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{click_8c_a6d8783947f3cabde18947a6051afab66}{eclickValido}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s}{POINTERS}}\ *janelas)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_ad6b2067613c2fd292e1a8ad2db5ab286}{end\_hint}},\ x,\ y))\ \textcolor{keywordflow}{return}\ 11;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a840fd335bb5341be6a299470e626d770}{end\_undo}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (12);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_aa8cb3224f092497b68403184ef138230}{end\_ngame}},\ x,\ y))\ \textcolor{keywordflow}{return}\ (13);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{click_8c_a1bebe819b692eb5cf732fd5685d6af54}{eclicknaPilha}}(x,\ y,\ janelas-\/>\doxymbox{\hyperlink{struct_p_o_i_n_t_e_r_s_a34e315c8b7638ed1c819a3977b2eec59}{end\_pilhas}});\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verifica\ as\ pilhas\ }}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ }}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00035}00035\ \textcolor{comment}{\ \ \ \ \ \ \ \ Vai\ passar\ a\ dar\ de\ 0\ a\ 10\ correpondendo\ ao\ número\ da\ pilha\ }}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00036}00036\ \textcolor{comment}{\ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00044}\doxymbox{\hyperlink{click_8c_a1bebe819b692eb5cf732fd5685d6af54}{00044}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{click_8c_a1bebe819b692eb5cf732fd5685d6af54}{eclicknaPilha}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ WINDOW\ *janela\_pilha[])\{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 10;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(janela\_pilha[i],\ x,\ y))\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i;\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00054}\doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{00054}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{click_8c_a0fdad2fe95c7cc85cf5c55e93594cbf7}{eJanela}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ xmin,\ xmax,\ ymin,\ ymax;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{click_8c_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}}(win,\ \&xmin,\ \&xmax,\ \&ymin,\ \&ymax);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ x\ tem\ de\ estar\ ENTRE\ o\ min\ e\ o\ max}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{if}\ ((x\ >=\ xmin)\ \&\&\ (x\ <=\ xmax)\ \&\&\ (y\ >=\ ymin)\ \&\&\ (y\ <=\ ymax))\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00064}\doxymbox{\hyperlink{click_8c_adb962a066bc9f2db379ce6268470620f}{00064}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{click_8c_adb962a066bc9f2db379ce6268470620f}{tamanhojanela}}(WINDOW\ *win,\ \textcolor{keywordtype}{int}\ *xmin,\ \textcolor{keywordtype}{int}\ *xmax,\ \textcolor{keywordtype}{int}\ *ymin,\ \textcolor{keywordtype}{int}\ *ymax)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordtype}{int}\ altura,\ largura;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ guarda\ no\ x\ e\ no\ y\ as\ coordenadas\ onde\ se\ encontra\ o\ ponto\ superior\ esquerdo\ da\ janela}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00068}00068\ \ \ \ \ getbegyx(win,\ *ymin,\ *xmin);\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//guarda\ no\ x\ e\ no\ y\ as\ dimensões\ da\ janela}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00071}00071\ \ \ \ \ getmaxyx(win,\ altura,\ largura);\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00073}00073\ \ \ \ \ *ymax\ =\ *ymin\ +\ altura\ -\/\ 1;\ \textcolor{comment}{//\ -\/1\ porque\ as\ coordenadas\ são\ inclusivas}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00074}00074\ \ \ \ \ *xmax\ =\ *xmin\ +\ largura\ -\/\ 1;\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00078}\doxymbox{\hyperlink{click_8c_a6fa6537e62d6292d21713b5698bfd570}{00078}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{click_8c_a6fa6537e62d6292d21713b5698bfd570}{coords\_para\_carta}}(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ pilha,\ \doxymbox{\hyperlink{struct_j_o_g_o}{JOGO}}\ *game)\{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ 14;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ comprimento\_cabeca\_carta\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ comprimento\_carta\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ <\ offset)\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;\ \textcolor{comment}{/*<\ Clique\ fora\ da\ pilha\ (em\ cima\ dela)*/}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ (x\ -\/\ offset)\ /\ comprimento\_cabeca\_carta;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00087}00087\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{if}\ (idx\ >=\ game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/\ 1)\{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cabeca\_ultima\_carta\ =\ offset\ +\ comprimento\_cabeca\_carta*(game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]-\/1);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pes\_ultima\_carta\ =\ cabeca\_ultima\_carta\ +\ comprimento\_carta;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ >\ pes\_ultima\_carta)\{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (game-\/>\doxymbox{\hyperlink{struct_j_o_g_o_a62a018df05ce78769dd4fcffa6d654e1}{tamanho\_pilha}}[pilha]\ -\/1);}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{return}\ idx;}
+\DoxyCodeLine{\Hypertarget{click_8c_source_l00099}00099\ \}}
+
+\end{DoxyCode}
